@@ -1,0 +1,173 @@
+.navbar {
+  background: #b3ddf2;
+  height: 80px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.2rem;
+  position: sticky;
+  top: 0;
+  z-index: 999;
+}
+
+.navbar-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 80px;
+  max-width: 1800px;
+}
+
+.navbar-logo {
+  color: red;
+  justify-self: start;
+  margin-left: 0px;
+  cursor: pointer;
+  text-decoration: none;
+  font-family: "New Athletic M54";
+  font-size: 3rem;
+  display: flex;
+  align-items: center;
+}
+
+.fa-typo3 {
+  margin-left: 0.5rem;
+  font-size: 1.8rem;
+}
+
+.nav-menu {
+  display: grid;
+  grid-template-columns: repeat(4, auto);
+  grid-gap: 10px;
+  list-style: none;
+  text-align: center;
+  width: 60vw;
+  justify-content: end;
+  margin-right: 2rem;
+  margin-top: 5em;
+}
+
+.nav-item {
+  height: 80px;
+}
+
+.nav-links {
+  color: red;
+  display: flex;
+  align-items: center;
+  font-family: "New Athletic M54";
+  text-decoration: none;
+  padding: 0.5rem 1rem;
+  height: 100%;
+}
+
+.nav-links:hover {
+  color: white;
+  transition: all 0.3s ease-out;
+}
+
+.fa-bars {
+  color: #fff;
+}
+
+.nav-links-mobile {
+  display: none;
+}
+
+.menu-icon {
+  display: none;
+}
+
+@media screen and (max-width: 960px) {
+  .NavbarItems {
+    position: relative;
+  }
+
+  .nav-menu {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 100vh;
+    position: absolute;
+    top: 0px;
+    left: -100%;
+    opacity: 1;
+    transition: all 0.5s ease;
+  }
+
+  .navbar-logo {
+    bottom: 0.8em;
+  }
+
+  .nav-menu.active {
+    background: #b3ddf2;
+    margin-left: 1em;
+    left: -1em;
+    opacity: 1;
+    padding: 0em;
+    padding-right: 0em;
+    transition: all 0.5s ease;
+    z-index: 1;
+  }
+
+  .nav-links {
+    text-align: center;
+    padding-top: 2em;
+    width: 92%;
+    margin-right: auto;
+    margin-top: 1em;
+    margin-left: auto;
+    display: table;
+  }
+
+  .nav-links:hover {
+    background-color: #fff;
+    color: #b3ddf2;
+    border-radius: 0;
+  }
+
+  .navbar-logo {
+    position: absolute;
+    top: 0;
+    left: 0;
+    transform: translate(25%, 50%);
+  }
+
+  .menu-icon {
+    display: block;
+    position: absolute;
+    top: 0;
+    right: 0;
+    transform: translate(-100%, 60%);
+    font-size: 1.8rem;
+    cursor: pointer;
+  }
+
+  .fa-times {
+    color: #fff;
+    font-size: 2rem;
+  }
+
+  .nav-links-mobile {
+    display: block;
+    text-align: center;
+    margin: auto;
+    border-radius: 4px;
+    width: 90%;
+    margin-top: 1em;
+    text-decoration: none;
+    font-size: 1.5rem;
+    font-family: "New Athletic M54";
+    background-color: transparent;
+    color: #fff;
+    padding: 20px 20px;
+    border: 1px solid #fff;
+    transition: all 0.3s ease-out;
+  }
+
+  .nav-links-mobile:hover {
+    background: #fff;
+    color: red;
+    transition: 250ms;
+  }
+} ;
