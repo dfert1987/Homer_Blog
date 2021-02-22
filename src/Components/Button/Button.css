@@ -9,7 +9,7 @@
   font-family: "New Athletic M54";
   border-radius: 2px;
   cursor: pointer;
-    font-family: "New Athletic M54";
+  font-family: "New Athletic M54";
 
   outline: none;
   padding: 8px 30px;
@@ -19,14 +19,42 @@
   background-color: var(--primary);
   border: 1px solid white;
   color: var(--red);
+  transition: all 0.3s ease-out;
 }
 
 .btn--outline {
   background-color: transparent;
   border: 1px solid white;
-  color: white;
+  color: red;
   padding: 8px 20px;
   transition: all 0.3s ease-out;
+}
+
+.btn--bigoutline {
+  background-color: transparent;
+  border: 1px solid white;
+  color: red;
+  padding: 8px 20px;
+  transition: all 0.3s ease-out;
+}
+.btn--bigoutline {
+  background-color: transparent;
+  border: 1px solid white;
+  color: red;
+  padding: 8px 20px;
+  text-shadow: 2px 2px 5px black;
+  transition: all 0.3s ease-out;
+  margin-right: 0.5em;
+}
+
+.btn--bigprimary {
+  background-color: white;
+  border: 1px solid white;
+  color: red;
+  padding: 8px 20px;
+  text-shadow: 2px 2px 5px black;
+  transition: all 0.3s ease-out;
+  margin-left: 0.5em;
 }
 
 .btn--medium {
@@ -39,9 +67,34 @@
   font-size: 20px;
 }
 
+.btn--xlarge {
+  padding: 12px 50px;
+  font-size: 40px;
+}
+
 .btn--medium:hover,
 .btn--large:hover {
   background-color: white;
   color: red;
+  transition: all 0.3s ease-out;
+}
+
+.btn--outline:hover {
+  background-color: white;
+  transition: all 0.3s ease-out;
+}
+
+.btn--primary:hover {
+  background-color: transparent;
+  transition: all 0.3s ease-out;
+}
+
+.btn--bigoutline:hover {
+  background-color: white;
+  transition: all 0.3s ease-out;
+}
+
+.btn--bigprimary:hover {
+  background-color: transparent;
   transition: all 0.3s ease-out;
 }

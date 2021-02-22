@@ -1,0 +1,36 @@
+.hero-container {
+  background: url("https://i.imgur.com/5RNh0SZ.png") center center/cover
+    no-repeat;
+  height: 100vh;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  box-shadow: inset 0 0 0 1000px rgba(0, 0, 0, 0, 2);
+  object-fit: contain;
+}
+
+.title {
+  color: red;
+  font-family: "New Athletic M54";
+  text-shadow: 2px 2px 4px black;
+  font-size: 100px;
+  margin-top: 2em;
+  margin-bottom: 0em;
+  padding-bottom: 0em;
+  position: relative;
+  top: 0.2em;
+}
+
+.subtitle {
+  color: #fff;
+  text-shadow: 2px 2px 4px black;
+  font-size: 50px;
+  font-family: "New Athletic M54";
+  margin-bottom: 1em;
+}
+
+.btns {
+  text-shadow: 2px 1px 5px black;
+  margin: 1em;
+}
