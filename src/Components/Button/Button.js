@@ -5,7 +5,7 @@ import {Link} from "react-router-dom";
 const STYLES = [
   "btn--primary",
   "btn--outline",
-  "btn--bigoutline",
+  "btn--bigblueprimary",
   "btn--bigprimary",
 ];
 const SIZES = ["btn--medium", "btn--large", "btn--xlarge"];

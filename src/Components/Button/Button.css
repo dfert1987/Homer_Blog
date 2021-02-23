@@ -37,8 +37,8 @@
   padding: 8px 20px;
   transition: all 0.3s ease-out;
 }
-.btn--bigoutline {
-  background-color: transparent;
+.btn--bigblueprimary {
+  background-color: #b3ddf2;
   border: 1px solid white;
   color: red;
   padding: 8px 20px;
@@ -49,7 +49,7 @@
 
 .btn--bigprimary {
   background-color: white;
-  border: 1px solid white;
+  border: 1px solid #b3ddf2;
   color: red;
   padding: 8px 20px;
   text-shadow: 2px 2px 5px black;
@@ -89,12 +89,34 @@
   transition: all 0.3s ease-out;
 }
 
-.btn--bigoutline:hover {
-  background-color: white;
+.btn--bigblueprimary:hover {
+  background-color: transparent;
   transition: all 0.3s ease-out;
 }
 
 .btn--bigprimary:hover {
   background-color: transparent;
   transition: all 0.3s ease-out;
+}
+
+@media screen and (max-width: 960px) {
+  .btn--bigblueprimary {
+    margin-right: 0em;
+    margin-bottom: .5em;
+  }
+
+  .btn--bigprimary {
+    margin-left: 0em;
+    padding-left: .5em;
+    padding-right: .5em;
+  }
+  .btn--bigblueprimary:hover {
+    background-color: transparent;
+    transition: all 0.3s ease-out;
+  }
+
+  .btn--bigprimary:hover {
+    background-color: transparent;
+    transition: all 0.3s ease-out;
+  }
 }
