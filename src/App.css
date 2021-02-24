@@ -16,24 +16,6 @@
   font-size: 3rem;
 }
 
-.services {
-  /* background-image: url('/images/img-2.jpg'); */
-  background-position: center;
-  background-size: cover;
-  background-repeat: no-repeat;
-  color: #fff;
-  font-size: 100px;
-}
-
-.products {
-  /* background-image: url('/images/img-1.jpg'); */
-  background-position: center;
-  background-size: fill;
-  background-repeat: no-repeat;
-  color: #fff;
-  font-size: 100px;
-}
-
 .sign-up {
   /* background-image: url('/images/img-8.jpg'); */
   background-position: center;
@@ -42,4 +24,57 @@
   color: #fff;
   font-size: 100px;
 }
+.cubs-banner {
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: 50%;
+  background-image: url("https://i.imgur.com/lN8WTqA.png[");
+  height: 300px;
+}
+.cubs {
+  font-size: 100px;
+  font-family: "New Athletic M54";
+  text-align: center;
+  color: blue;
+}
+.bears-banner {
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: 50%;
+  background-image: url("https://i.imgur.com/sUim7TH.png");
+  height: 300px;
+}
 
+.bears {
+  font-size: 100px;
+  font-family: "New Athletic M54";
+  text-align: center;
+  color: #d66e23;
+}
+
+.bulls-banner {
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: 50%;
+  background-image: url("https://i.imgur.com/e0jcFSR.png");
+  height: 300px;
+}
+
+.bulls {
+  font-size: 100px;
+  font-family: "New Athletic M54";
+  text-align: center;
+  color: red;
+}
+
+.about {
+  font-size: 100px;
+  font-family: "New Athletic M54";
+  text-align: center;
+}
+
+.signup {
+  font-size: 100px;
+  font-family: "New Athletic M54";
+  text-align: center;
+}
