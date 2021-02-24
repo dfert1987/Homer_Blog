@@ -27,22 +27,34 @@
 .cubs-banner {
   background-position: center;
   background-repeat: no-repeat;
-  background-size: 50%;
+  background-size: 100%;
   background-image: url("https://i.imgur.com/lN8WTqA.png[");
-  height: 300px;
+  height: 100%;
+  margin-left: 1em;
+  margin-right: 1em;
+  margin-top: 1em;
+  box-shadow: 3px 3px 5px black;
+
 }
 .cubs {
   font-size: 100px;
   font-family: "New Athletic M54";
   text-align: center;
   color: blue;
+  text-shadow: 2px 2px 6px white;
 }
+
 .bears-banner {
   background-position: center;
   background-repeat: no-repeat;
-  background-size: 50%;
+  background-size: 100%;
   background-image: url("https://i.imgur.com/sUim7TH.png");
-  height: 300px;
+  height: 100%;
+  margin-left: 1em;
+  margin-right: 1em;
+  margin-top: 1em;
+  box-shadow: 3px 3px 5px black;
+
 }
 
 .bears {
@@ -50,14 +62,20 @@
   font-family: "New Athletic M54";
   text-align: center;
   color: #d66e23;
+  text-shadow: 2px 2px 6px black;
+
 }
 
 .bulls-banner {
   background-position: center;
   background-repeat: no-repeat;
-  background-size: 50%;
-  background-image: url("https://i.imgur.com/e0jcFSR.png");
-  height: 300px;
+  background-size: 100%;
+  background-image: url("https://i.imgur.com/knFPx7x.png?2");
+  height: 100%;
+  margin-left: 1em;
+  margin-right: 1em;
+  margin-top: 1em;
+  box-shadow: 3px 3px 5px black;
 }
 
 .bulls {
@@ -65,6 +83,9 @@
   font-family: "New Athletic M54";
   text-align: center;
   color: red;
+  text-shadow: 2px 2px 6px black;
+
+  
 }
 
 .about {
