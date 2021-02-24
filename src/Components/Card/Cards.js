@@ -21,6 +21,32 @@ function Cards() {
               label="Bears"
               path="/bears"
             />
+            <CardItem
+              src="https://i.imgur.com/ZZ5dLJU.jpg"
+              text="How Did We Get Here? The Suddenly Bleak State of the Cubs"
+              label="Cubs"
+              path="/cubs"
+            />
+          </ul>
+          <ul className="cards-items">
+            <CardItem
+              src="https://i.imgur.com/MwgKmUM.jpg"
+              text="Pace and Nagy: An Honest Evaluation"
+              label="Bears"
+              path="/bears"
+            />
+            <CardItem
+              src="https://i.imgur.com/Y2Eorvu.jpg"
+              text="Thad Young: An Ode to the Journeyman"
+              label="Bulls"
+              path="/bulls"
+            />
+            <CardItem
+              src="https://i.imgur.com/dOYcX5j.jpg?1"
+              text="Homer: A Different Brand of Sports Blog"
+              label="About"
+              path="/about"
+            />
           </ul>
         </div>
       </div>
