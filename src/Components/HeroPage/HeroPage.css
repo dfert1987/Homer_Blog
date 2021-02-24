@@ -37,15 +37,28 @@
 
 @media screen and (max-width: 960px) {
   .title {
-    font-size: 70px;
+    margin-top: em;
+    font-size: 80px;
   }
   .subtitle {
     font-size: 35px;
   }
 
   .hero-btns {
-    display: flex;
-    flex-direction: column;
+    display: block;
     align-items: center;
+    width: 200px;
+  }
+  .btn {
+    width: 100%;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .title {
+    font-size: 60px;
+  }
+  .subtitle {
+    font-size: 25px;
   }
 }
