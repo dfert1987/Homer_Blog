@@ -1,0 +1,15 @@
+.footer-container {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    margin-bottom: 2em;
+}
+
+.footer-contact {
+    text-align: center;
+}
+
+.footer-contact-heading {
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    text-align: center;
+}
