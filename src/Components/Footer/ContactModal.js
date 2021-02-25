@@ -9,43 +9,48 @@ export const ContactModal = ({contactModal, setContactModal}) => {
         <h1 className="modal-title">Contact Form</h1>
         <form>
           <p className="name-header" type="Name:">
-            <input name="name" placeholder="Your name..."></input>
+            Name:
           </p>
+          <input
+            className="input"
+            name="name"
+            placeholder="Your name..."
+          ></input>
           <p className="email-header" type="Email:">
-            <input
-              type="email"
-              name="email"
-              placeholder="Your email..."
-            ></input>
+            Email:
           </p>
+          <input
+            className="input"
+            type="email"
+            name="email"
+            placeholder="Your email..."
+          ></input>
           <p className="message-header" type="Message:">
-            <textarea
-              name="message"
-              rows="8"
-              cols="50"
-              placeholder="Your message..."
-            ></textarea>
+            Message:
           </p>
           <textarea
+            className="message-input"
             name="message"
             rows="8"
-            cols="50"
+            cols="38"
             placeholder="Your message..."
           ></textarea>
-          <Button
-            className="send-button"
-            buttonStyle="btn--primary-send"
-            onClick={() => setContactModal(false)}
-          >
-            SEND
-          </Button>
-          <Button
-            className="send-button"
-            buttonStyle="btn--outline3"
-            onClick={() => setContactModal(false)}
-          >
-            CANCEL
-          </Button>
+          <div className="button-container">
+            <Button
+              className="send-button"
+              buttonStyle="btn--primary-send"
+              onClick={() => setContactModal(false)}
+            >
+              SEND
+            </Button>
+            <Button
+              className="cancel-button"
+              buttonStyle="btn--outline3"
+              onClick={() => setContactModal(false)}
+            >
+              CANCEL
+            </Button>
+          </div>
         </form>
       </div>
     </>
