@@ -107,13 +107,46 @@
   margin-bottom: 1em;
 }
 
-.about-image {
+.about-main-image {
+  background-image: url("https://i.imgur.com/LWoVpZv.jpg");
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  height: 500px;
+  width: 60%;
   margin-left: auto;
   margin-right: auto;
-  margin-top: 1em;
-  width: 400px;
+  box-shadow: 0 0 40px -10px #000;
+  border-radius: 6px;
 }
 
-.about-container {
-  text-align: center;
+.about-text-container {
+  margin-top: 1em;
+  margin-bottom: 2em;
+  margin-left: 7em;
+  margin-right: 7em;
+}
+
+.paragraph-header {
+  font-size: 30px;
+  font-family: "Trebuchet MS";
+  margin-bottom: 0.5em;
+}
+
+.about-text-questions {
+  font-family: "Trebuchet MS";
+  font-style: italic;
+  font-size: 20px;
+  margin-bottom: 1em;
+}
+
+.about-text {
+  font-family: "Trebuchet MS";
+  font-size: 20px;
+}
+
+.about-text-last {
+  font-family: "Trebuchet MS";
+  font-size: 20px;
+  margin-top: 1em;
 }

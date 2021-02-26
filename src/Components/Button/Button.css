@@ -17,7 +17,7 @@
 
 .btn--primary {
   background-color: var(--primary);
-  border: 1px solid white;
+  border: 1px solid red;
   color: var(--red);
   transition: all 0.3s ease-out;
 }
@@ -29,6 +29,31 @@
   padding: 8px 20px;
   transition: all 0.3s ease-out;
 }
+
+.btn--outline2 {
+  background-color: transparent;
+  border: 1px solid white;
+  color: red;
+  padding: 8px 20px;
+  transition: all 0.3s ease-out;
+}
+
+.btn--outline3 {
+  background-color: red;
+  border: 1px solid #b3ddf2;
+  color: white;
+  padding: 8px 20px;
+  transition: all 0.3s ease-out;
+}
+
+.btn--primary-send {
+  background-color: transparent;
+    border: 1px solid red;
+    color: red;
+
+}
+
+
 
 .btn--bigoutline {
   background-color: transparent;
@@ -83,10 +108,22 @@
   background-color: white;
   transition: all 0.3s ease-out;
 }
+.btn--outline2:hover {
+  color: #b3ddf2;
+  transition: all 0.3s ease-out;
+}
+.btn--outline3:hover {
+  color: red;
+  background-color: transparent;
+  transition: all 0.3s ease-out;
+}
 
 .btn--primary:hover {
   background-color: transparent;
   transition: all 0.3s ease-out;
+}
+.btn--primary-send:hover {
+  background-color: var(--blue);
 }
 
 .btn--bigblueprimary:hover {
