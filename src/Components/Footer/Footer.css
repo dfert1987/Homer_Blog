@@ -13,3 +13,11 @@
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
     text-align: center;
 }
+
+.add-post {
+    text-align: center;
+    color: red;  
+    cursor: pointer;
+    font-family: "New Athletic M54";
+    text-decoration: none;
+}

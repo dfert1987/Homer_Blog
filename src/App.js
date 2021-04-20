@@ -8,6 +8,7 @@ import Bulls from "./Components/Pages/Bulls";
 import Cubs from "./Components/Pages/Cubs";
 import Bears from "./Components/Pages/Bears";
 import SignUp from "./Components/Pages/SignUp";
+import AdminCreatePost from "./Admin/AdminCreatePost";
 
 
 
@@ -26,6 +27,7 @@ function App() {
           <Route path="/bulls" exact component={Bulls} />
           <Route path="/bears" exact component={Bears} />
           <Route path="/cubs" exact component={Cubs} />
+          <Route path="/AdminCreatePost" exact component={AdminCreatePost} />
         </Switch>
       </Router>
     </>

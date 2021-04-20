@@ -28,7 +28,7 @@
   background-position: center;
   background-repeat: no-repeat;
   background-size: 100%;
-  background-image: url("https://i.imgur.com/lN8WTqA.png[");
+  background-image: url("https://i.imgur.com/lN8WTqA.png");
   height: 100%;
   margin-left: 1em;
   margin-right: 1em;
@@ -98,6 +98,10 @@
   font-family: "New Athletic M54";
   text-align: center;
   font-size: 100px;
+  padding-top: 0em;
+}
+.about-container {
+  margin-top: 1em;
 }
 .about-subheader {
   color: red;
@@ -108,16 +112,14 @@
 }
 
 .about-main-image {
-  background-image: url("https://i.imgur.com/LWoVpZv.jpg");
-  background-position: center;
-  background-size: cover;
-  background-repeat: no-repeat;
-  height: 500px;
+  height: 300px;
   width: 60%;
+  display: flex;
   margin-left: auto;
   margin-right: auto;
   box-shadow: 0 0 40px -10px #000;
   border-radius: 6px;
+  text-align: center;
 }
 
 .about-text-container {
@@ -149,4 +151,8 @@
   font-family: "Trebuchet MS";
   font-size: 20px;
   margin-top: 1em;
+}
+
+.about-title-container {
+  text-align: center;
 }

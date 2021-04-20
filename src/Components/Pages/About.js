@@ -7,7 +7,11 @@ export default function About() {
       <div className="about-title-container">
         <h1 className="about-header">WELCOME TO HOMER</h1>
         <h3 className="about-subheader">A Safe Place for Diehards</h3>
-        <div className="about-main-image"></div>
+        <img
+          className="about-main image"
+          alt="big-logo"
+          src="https://Zi.imgur.com/MaLqLee.png"
+        />
       </div>
       <div className="about-text-container">
         <h4 className="paragraph-header">What is Homer?</h4>
@@ -17,8 +21,7 @@ export default function About() {
         </p>
         <p className="about-text-questions">
           Do you avoid conversations about MJ vs Lebron, because you know you'll
-          get too heated and 'cause a scene', and potentially 'end a
-          friendship'?
+          get too heated and 'cause a scene', potentially 'ending a friendship'?
         </p>
         <p className="about-text-questions">
           Do you find that watching any major Chicago sporting event to be a
@@ -40,10 +43,10 @@ export default function About() {
         </p>
         <p className="about-text">
           Here, we're smart enough to know that our particular brand of fandom
-          is too intense for many, and may even prevent us from 'logical thinking' or
-          or the formation of 'healthy relationships', yet we lean into it
-          anyway. So if you're a Cubs, Bears or Bulls superfan then rest easy,
-          because this is your safe space.
+          is too intense for many, and may even prevent us from 'logical
+          thinking' or or the formation of 'healthy relationships', yet we lean
+          into it anyway. So if you're a Cubs, Bears or Bulls superfan then rest
+          easy, because this is your safe space.
         </p>
         <p className="about-text-last">Welcome to Homer!</p>
       </div>
