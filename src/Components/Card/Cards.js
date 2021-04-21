@@ -32,36 +32,36 @@ function Cards() {
         <div className='cards-wrapper'>
           <ul className='cards-items'>
             <CardItem
-              src={blogs.length > 0 ? blogs[0].mainImage : ''}
-              text={blogs.length > 0 ? blogs[0].text : ''}
-              label={blogs.length > 0 ? blogs[0].category : ''}
-              path={`/${blogs.length > 0 ? blogs[0].category : ''}`}
+              src={blogs.length > 0 ? blogs[blogs.length - 1].mainImage : ''}
+              text={blogs.length > 0 ? blogs[blogs.length - 1].title : ''}
+              label={blogs.length > 0 ? blogs[blogs.length - 1].category : ''}
+              path={`/${blogs.length > 0 ? blogs[blogs.length - 1].category : ''}`}
             />
             <CardItem
-              src='https://i.imgur.com/EmVgHk2.jpg'
-              text='The curious case of Mitch Trubisky apologists.'
-              label='Bears'
-              path='/bears'
+              src={blogs.length > 0 ? blogs[blogs.length - 2].mainImage : ''}
+              text={blogs.length > 0 ? blogs[blogs.length - 2].title : ''}
+              label={blogs.length > 0 ? blogs[blogs.length - 2].category : ''}
+              path={`/${blogs.length > 0 ? blogs[blogs.length - 2].category : ''}`}
             />
           </ul>
           <ul className='cards-items'>
             <CardItem
-              src='https://i.imgur.com/ZZ5dLJU.jpg'
-              text='How Did We Get Here? The Suddenly Bleak State of the Cubs.'
-              label='Cubs'
-              path='/cubs'
+              src={blogs.length > 0 ? blogs[blogs.length - 3].mainImage : ''}
+              text={blogs.length > 0 ? blogs[blogs.length - 3].title : ''}
+              label={blogs.length > 0 ? blogs[blogs.length - 3].category : ''}
+              path={`/${blogs.length > 0 ? blogs[blogs.length - 3].category : ''}`}
+              />
+            <CardItem
+              src={blogs.length > 0 ? blogs[blogs.length - 4].mainImage : ''}
+              text={blogs.length > 0 ? blogs[blogs.length - 4].title : ''}
+              label={blogs.length > 0 ? blogs[blogs.length - 4].category : ''}
+              path={`/${blogs.length > 0 ? blogs[blogs.length - 4].category : ''}`}
             />
             <CardItem
-              src='https://i.imgur.com/MwgKmUM.jpg'
-              text='Pace and Nagy: So, how much can we blame these guys?'
-              label='Bears'
-              path='/bears'
-            />
-            <CardItem
-              src='https://i.imgur.com/Y2Eorvu.jpg'
-              text='Thad Young: An Ode to the NBA Journeyman.'
-              label='Bulls'
-              path='/bulls'
+              src={blogs.length > 0 ? blogs[blogs.length - 5].mainImage : ''}
+              text={blogs.length > 0 ? blogs[blogs.length - 5].title : ''}
+              label={blogs.length > 0 ? blogs[blogs.length - 5].category : ''}
+              path={`/${blogs.length > 0 ? blogs[blogs.length - 5].category : ''}`}
             />
           </ul>
         </div>

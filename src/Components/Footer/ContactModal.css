@@ -1,12 +1,12 @@
 .modal-container {
   z-index: 999;
-  position: absolute;
-  left: 35%;
-  top: 155%;
-  margin-bottom: 7em;
+  margin-left: auto;
+  margin-right: auto;
   width: 27%;
   min-width: 300px;
   height: 550px;
+  position: relative;
+  bottom: 30em;
   background-color: #b3ddf2;
   border-radius: 6px;
   box-shadow: 0 0 40px -10px #000;
@@ -16,7 +16,7 @@
 }
 
 .modal-title {
-  font-family: "New Athletic M54";
+  font-family: 'New Athletic M54';
   margin-top: 0.5em;
   margin-bottom: 0.5em;
   width: 190px;
@@ -26,15 +26,15 @@
 }
 
 .name-header {
-  font-family: "New Athletic M54";
+  font-family: 'New Athletic M54';
 }
 
 .email-header {
-  font-family: "New Athletic M54";
+  font-family: 'New Athletic M54';
 }
 
 .message-header {
-  font-family: "New Athletic M54";
+  font-family: 'New Athletic M54';
   margin-bottom: 0.3em;
 }
 
@@ -46,8 +46,8 @@
   outline: none;
   resize: none;
   border: 0;
-  font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
-    "Lucida Sans", Arial, sans-serif;
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande',
+    'Lucida Sans', Arial, sans-serif;
   transition: all 0.3s;
   border-bottom: 2px solid black;
   margin-bottom: 1.5em;
@@ -55,18 +55,23 @@
 
 .message-input {
   margin-bottom: 1em;
-  font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
-    "Lucida Sans", Arial, sans-serif;
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande',
+    'Lucida Sans', Arial, sans-serif;
   padding: 10px;
   border-radius: 5px;
   width: 90%;
   border: 2px solid black;
 }
+.contact-container {
+margin-left: auto;
+margin-right: auto;
+height: 0em;
+}
 
 @media screen and (max-width: 960px) {
   .modal-container {
-  position: absolute;
-  left: 30%;
-  top: 380%;
+    position: absolute;
+    left: 30%;
+    top: 380%;
   }
 }

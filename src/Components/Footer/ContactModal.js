@@ -4,7 +4,7 @@ import "./ContactModal.css";
 
 export const ContactModal = ({contactModal, setContactModal}) => {
   return contactModal ? (
-    <>
+    <div className="contact-container">
       <div className="modal-container">
         <h1 className="modal-title">Contact Form</h1>
         <form>
@@ -53,7 +53,7 @@ export const ContactModal = ({contactModal, setContactModal}) => {
           </div>
         </form>
       </div>
-    </>
+    </div>
   ) : null;
 };
 
