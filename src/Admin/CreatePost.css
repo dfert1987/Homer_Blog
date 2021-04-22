@@ -1,11 +1,13 @@
 .main {
-    width: 50%;
-    margin-left: auto;
-    margin-right: auto;
-    margin-top: 3em;
+  width: 50%;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 3em;
+  text-align: center;
 }
 
 .add-title {
-    font-family: "New Athletic M54";
-    color: red;
+  font-family: 'New Athletic M54';
+  color: red;
+  font-size: 60px;
 }
