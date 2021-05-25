@@ -1,5 +1,4 @@
 .main {
-  width: 50%;
   margin-left: auto;
   margin-right: auto;
   margin-top: 3em;
@@ -7,7 +6,85 @@
 }
 
 .add-title {
-  font-family: 'New Athletic M54';
   color: red;
+  font-family: 'New Athletic M54';
   font-size: 60px;
+}
+
+.add-post-form {
+  box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.22);
+  -moz-box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.22);
+  -webkit-box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.22);
+  display: flex;
+  flex-flow: column;
+  font-family: 'Trebuchet MS';
+  margin-bottom: 2em;
+  margin-left: auto;
+  margin-right: auto;
+  width: 50em;
+}
+
+.above-blog-container {
+  display: flex;
+  flex-flow: column;
+  margin-top: 1em;
+}
+
+.input {
+  box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  outline: none;
+  display: block;
+  margin-left: 2em;
+  margin-right: 4em;
+  padding: .5em;
+  border: none;
+  border-bottom: 1px solid #ddd;
+  background: transparent;
+  margin-bottom: 10px;
+  font: 16px 'Trebuchet MS';
+  height: 45px;
+}
+
+.submit-button {
+  -moz-box-shadow: inset 0px 1px 0px 0px grey;
+  -webkit-box-shadow: inset 0px 1px 0px 0px grey;
+  box-shadow: inset 0px 1px 0px 0px darkred;
+  background-color: red;
+  border: 1px solid #b3ddf2;
+  display: inline-block;
+  cursor: pointer;
+  color: #ffffff;
+  font-family: 'Trebuchet MS';
+  font-size: 18px;
+  padding: 8px 18px;
+  margin-bottom: .5em;
+  margin-left: 2em;
+  margin-top: 3em;
+  border-radius: 3px;
+  text-decoration: none;
+  text-transform: uppercase;
+  transition: all 0.3s ease-out;
+  width: 8em;
+}
+
+.category-input {
+  font-family: 'Trebuchet MS';
+  font-size: 18px;
+  height: 3em;
+  margin-left: 2em;
+  margin-right: auto;
+  padding: .5em;
+}
+
+.submit-buton:hover {
+  color: red;
+  background-color: white;
+  transition: all 0.3s ease-out;
+}
+
+.quill {
+  margin-top: .5em;
+  height: 30em;
 }
