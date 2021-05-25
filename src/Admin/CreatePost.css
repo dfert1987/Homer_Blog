@@ -21,7 +21,7 @@
   margin-bottom: 2em;
   margin-left: auto;
   margin-right: auto;
-  width: 50em;
+  width: 52em;
 }
 
 .above-blog-container {
@@ -86,5 +86,6 @@
 
 .quill {
   margin-top: .5em;
+  margin-bottom: 2em;
   height: 30em;
 }

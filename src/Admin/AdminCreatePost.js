@@ -1,4 +1,4 @@
-import React, {useState, useCallback} from 'react';
+import React, {useState} from 'react';
 import ReactQuill from 'react-quill';
 
 import './CreatePost.css';
@@ -8,32 +8,42 @@ export default function AdminCreatePost() {
   const [title, setTitle] = useState('');
   const [subtitle, setSubtitle] = useState('');
   const [category, setCategory] = useState('');
+  const [newPost, setNewPost] = useState();
 
-  const postData = {
-    body: content,
+  const post = {
     title: title,
+    subtitle: subtitle,
+    mainImage: '',
+    secondImage: '',
+    thirdImage: '',
+    body: content,
+    thumbsUp: 0,
+    thumbsDown: 0,
     category: category,
+    author: '',
   };
-
-  console.log(content);
+  console.log(post);
 
   const onSubmit = (event) => {
     event.preventDefault();
+    console.log(post);
+    const newBlog = {
+      blog: post,
+    };
     fetch('http://localhost:3000/blogs', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
       },
-      body: JSON.stringify(postData),
+      body: JSON.stringify(newBlog),
     });
-    setContent('');
   };
 
   return (
     <div className='container'>
       <div className='main'>
         <h1 className='add-title'>Add A Post</h1>
-        <form method='post' id='identifier' className='add-post-form'>
+        <form className='add-post-form' onSubmit={onSubmit}>
           <div className='above-blog-container'>
             <input
               className='input'
@@ -62,6 +72,7 @@ export default function AdminCreatePost() {
               <option value='bulls'>Bulls</option>
               <option value='bears'>Bears</option>
               <option value='cubs'>Cubs</option>
+              <option value='meatball'>The Meatball</option>
             </select>
           </div>
           <ReactQuill
@@ -72,12 +83,7 @@ export default function AdminCreatePost() {
             value={content}
             className='quill'
           />
-          <input
-            className='submit-button'
-            type='submit'
-            value='Add Post'
-            onSubmit={onSubmit}
-          />
+          <input className='submit-button' type='submit' />
         </form>
       </div>
     </div>
@@ -110,5 +116,5 @@ AdminCreatePost.formats = [
   'link',
   'image',
   'video',
-  'code-block'
+  'code-block',
 ];

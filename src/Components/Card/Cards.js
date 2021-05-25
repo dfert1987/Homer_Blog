@@ -7,7 +7,6 @@ function Cards() {
 
   useEffect(() => {
       fetchBlogs();
-  // eslint-disable-next-line react-hooks/exhaustive-deps
   },[]);
 
   const fetchBlogs = async () => {
