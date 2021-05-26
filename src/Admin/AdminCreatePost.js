@@ -1,5 +1,6 @@
 import React, {useState} from 'react';
 import ReactQuill from 'react-quill';
+import { useHistory } from "react-router-dom";
 
 import './CreatePost.css';
 
@@ -8,12 +9,13 @@ export default function AdminCreatePost() {
   const [title, setTitle] = useState('');
   const [subtitle, setSubtitle] = useState('');
   const [category, setCategory] = useState('');
-  const [newPost, setNewPost] = useState();
+  const [mainImage, setMainImage] = useState('');
+  const history = useHistory();
 
   const post = {
     title: title,
     subtitle: subtitle,
-    mainImage: '',
+    mainImage: mainImage,
     secondImage: '',
     thirdImage: '',
     body: content,
@@ -22,7 +24,6 @@ export default function AdminCreatePost() {
     category: category,
     author: '',
   };
-  console.log(post);
 
   const onSubmit = (event) => {
     event.preventDefault();
@@ -37,6 +38,12 @@ export default function AdminCreatePost() {
       },
       body: JSON.stringify(newBlog),
     });
+    setTitle('');
+    setSubtitle('');
+    setMainImage('');
+    setCategory('');
+    setContent('');
+    history.push('/');
   };
 
   return (
@@ -48,7 +55,7 @@ export default function AdminCreatePost() {
             <input
               className='input'
               type='text'
-              placeholder='Some Title..'
+              placeholder='Choose a title:'
               value={title}
               name='title'
               onChange={(e) => setTitle(e.target.value)}
@@ -56,14 +63,22 @@ export default function AdminCreatePost() {
             <input
               className='input'
               type='text'
-              placeholder='Some Subtitle..'
+              placeholder='Choose a Subtitle...'
               value={subtitle}
               name='subtitle'
               onChange={(e) => setSubtitle(e.target.value)}
             />
+            <input
+              className='input'
+              type='text'
+              placeholder='Paste Preview Image Link..'
+              value={mainImage}
+              name='mainImage'
+              onChange={(e) => setMainImage(e.target.value)}
+            />
             <select
               className='category-input'
-              placeholder='Some Category..'
+              placeholder='Some Category...'
               value={category}
               name='category'
               onChange={(e) => setCategory(e.target.value)}

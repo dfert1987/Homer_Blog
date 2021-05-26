@@ -6,8 +6,8 @@ function Cards() {
   const [blogs, setBlogs] = useState([]);
 
   useEffect(() => {
-      fetchBlogs();
-  },[]);
+    fetchBlogs();
+  }, []);
 
   const fetchBlogs = async () => {
     console.log('ok');
@@ -15,7 +15,6 @@ function Cards() {
     const data = await response.json();
     setBlogs(data);
   };
-
 
   return (
     <div className='cards'>
@@ -32,35 +31,75 @@ function Cards() {
           <ul className='cards-items'>
             <CardItem
               src={blogs.length > 0 ? blogs[blogs.length - 1].mainImage : ''}
-              text={blogs.length > 0 ? blogs[blogs.length - 1].title : ''}
+              text={
+                blogs.length > 0
+                  ? `${blogs[blogs.length - 1].title} - ${
+                      blogs[blogs.length - 1].subtitle
+                    }`
+                  : ''
+              }
               label={blogs.length > 0 ? blogs[blogs.length - 1].category : ''}
-              path={`/${blogs.length > 0 ? blogs[blogs.length - 1].category : ''}`}
+              path={`/${
+                blogs.length > 0 ? blogs[blogs.length - 1].category : ''
+              }`}
             />
             <CardItem
               src={blogs.length > 0 ? blogs[blogs.length - 2].mainImage : ''}
-              text={blogs.length > 0 ? blogs[blogs.length - 2].title : ''}
+              text={
+                blogs.length > 0
+                  ? `${blogs[blogs.length - 2].title} - ${
+                      blogs[blogs.length - 2].subtitle
+                    }`
+                  : ''
+              }
               label={blogs.length > 0 ? blogs[blogs.length - 2].category : ''}
-              path={`/${blogs.length > 0 ? blogs[blogs.length - 2].category : ''}`}
+              path={`/${
+                blogs.length > 0 ? blogs[blogs.length - 2].category : ''
+              }`}
             />
           </ul>
           <ul className='cards-items'>
             <CardItem
               src={blogs.length > 0 ? blogs[blogs.length - 3].mainImage : ''}
-              text={blogs.length > 0 ? blogs[blogs.length - 3].title : ''}
+              text={
+                blogs.length > 0
+                  ? `${blogs[blogs.length - 3].title} - ${
+                      blogs[blogs.length - 3].subtitle
+                    }`
+                  : ''
+              }
               label={blogs.length > 0 ? blogs[blogs.length - 3].category : ''}
-              path={`/${blogs.length > 0 ? blogs[blogs.length - 3].category : ''}`}
-              />
+              path={`/${
+                blogs.length > 0 ? blogs[blogs.length - 3].category : ''
+              }`}
+            />
             <CardItem
               src={blogs.length > 0 ? blogs[blogs.length - 4].mainImage : ''}
-              text={blogs.length > 0 ? blogs[blogs.length - 4].title : ''}
+              text={
+                blogs.length > 0
+                  ? `${blogs[blogs.length - 4].title} - ${
+                      blogs[blogs.length - 4].subtitle
+                    }`
+                  : ''
+              }
               label={blogs.length > 0 ? blogs[blogs.length - 4].category : ''}
-              path={`/${blogs.length > 0 ? blogs[blogs.length - 4].category : ''}`}
+              path={`/${
+                blogs.length > 0 ? blogs[blogs.length - 4].category : ''
+              }`}
             />
             <CardItem
               src={blogs.length > 0 ? blogs[blogs.length - 5].mainImage : ''}
-              text={blogs.length > 0 ? blogs[blogs.length - 5].title : ''}
+              text={
+                blogs.length > 0
+                  ? `${blogs[blogs.length - 5].title} - ${
+                      blogs[blogs.length - 5].subtitle
+                    }`
+                  : ''
+              }
               label={blogs.length > 0 ? blogs[blogs.length - 5].category : ''}
-              path={`/${blogs.length > 0 ? blogs[blogs.length - 5].category : ''}`}
+              path={`/${
+                blogs.length > 0 ? blogs[blogs.length - 5].category : ''
+              }`}
             />
           </ul>
         </div>

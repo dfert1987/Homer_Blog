@@ -10,10 +10,6 @@ import Bears from "./Components/Pages/Bears";
 import SignUp from "./Components/Pages/SignUp";
 import AdminCreatePost from "./Admin/AdminCreatePost";
 
-
-
-
-
 function App() {
   return (
     <>
