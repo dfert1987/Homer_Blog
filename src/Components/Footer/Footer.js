@@ -10,7 +10,7 @@ function Footer({setContactModal}) {
     <div className="footer-container">
       <section className="footer-contact">
         <p className="footer-contact-heading">
-          Comments? Quesstions? Problems?
+          Comments? Questions? Problems?
         </p>
         <Button buttonStyle="btn--outline2" onClick={handleClick}>
           CONTACT US

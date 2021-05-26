@@ -26,8 +26,6 @@ export default function AdminCreatePost() {
   };
 
   const onSubmit = (event) => {
-    event.preventDefault();
-    console.log(post);
     const newBlog = {
       blog: post,
     };
@@ -44,6 +42,7 @@ export default function AdminCreatePost() {
     setCategory('');
     setContent('');
     history.push('/');
+    event.preventDefault();
   };
 
   return (

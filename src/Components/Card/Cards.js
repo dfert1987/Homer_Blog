@@ -10,7 +10,6 @@ function Cards() {
   }, []);
 
   const fetchBlogs = async () => {
-    console.log('ok');
     const response = await fetch('http://localhost:3000/blogs');
     const data = await response.json();
     setBlogs(data);
