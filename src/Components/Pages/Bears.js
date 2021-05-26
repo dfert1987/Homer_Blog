@@ -1,19 +1,20 @@
-import React, {useEffect, useState} from 'react';
+import React, {useCallback, useEffect, useState} from 'react';
 import CardItem from '../Card/CardItem';
+
 import '../../App.css';
 
 export default function Bears() {
   const [bearsBlogs, setBearsBlogs] = useState([]);
 
-  useEffect(() => {
-    fetchBlogs();
-  }, []);
-
-  const fetchBlogs = async () => {
+  const fetchBlogs = useCallback(async() => {
     const response = await fetch('http://localhost:3000/blogs');
     const data = await response.json();
     filterBlogs(data);
-  };
+  }, []);
+
+  useEffect(() => {
+    fetchBlogs();
+  }, [fetchBlogs]);
 
   const filterBlogs = (blogs) => {
     const filteredBlogs = blogs.filter((blog) => blog.category === 'bears');
@@ -30,7 +31,6 @@ export default function Bears() {
     );
   });
 
-  console.log(bearsBlogs);
   return (
     <div className='container'>
       <div className='bears-banner'>
