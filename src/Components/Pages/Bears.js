@@ -1,6 +1,5 @@
 import React, {useCallback, useEffect, useState} from 'react';
 import CardItem from '../Card/CardItem';
-
 import '../../App.css';
 
 export default function Bears() {
