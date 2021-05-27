@@ -1,6 +1,6 @@
 import React, {useEffect, useState} from 'react';
 import CardItem from '../Card/CardItem';
-import '../../App.css';
+import './TeamPages.css';
 
 export default function Meatball() {
   const [meatballBlogs, setMeatballBlogs] = useState([]);
@@ -36,7 +36,7 @@ export default function Meatball() {
     return (
       <CardItem
         src={blog.mainImage}
-        text={`${blog.title} - ${blog.subtitle}`}
+        text={`${blog.title}`}
         label={blog.category}
       />
     );
@@ -57,7 +57,9 @@ export default function Meatball() {
     <div container>
       <div className='meatball-banner' />
       <div className='blog-container'>
+        <h3 className='featured'>Featured Blogs</h3>
         <div className='top-blog'>{mainRow}</div>
+        <h3 className='past-blogs'>Past Blogs</h3>
         <div className='old-blogs'>{cards}</div>
       </div>
     </div>

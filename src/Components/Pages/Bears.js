@@ -1,6 +1,6 @@
 import React, {useEffect, useState} from 'react';
 import CardItem from '../Card/CardItem';
-import '../../App.css';
+import './TeamPages.css';
 
 export default function Bears() {
   const [bearsBlogs, setBearsBlogs] = useState([]);
@@ -36,7 +36,7 @@ export default function Bears() {
     return (
       <CardItem
         src={blog.mainImage}
-        text={`${blog.title} - ${blog.subtitle}`}
+        text={`${blog.title}`}
         label={blog.category}
         className='bottomCards'
       />
@@ -57,10 +57,12 @@ export default function Bears() {
   return (
     <div className='container'>
       <div className='bears-banner'>
-        <h1 className='bears'>BEARS</h1>
+        <h1 className='bears-title'>BEARS</h1>
       </div>
       <div className='blog-container'>
+        <h3 className='featured'>Featured Blogs</h3>
         <div className='top-blog'>{mainRow}</div>
+        <h3 className='past-blogs'>Past Blogs</h3>
         <div className='old-blogs'>{cards}</div>
       </div>
     </div>
