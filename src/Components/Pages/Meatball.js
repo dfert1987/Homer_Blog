@@ -1,23 +1,35 @@
-import React, {useCallback, useEffect, useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import CardItem from '../Card/CardItem';
 import '../../App.css';
 
 export default function Meatball() {
   const [meatballBlogs, setMeatballBlogs] = useState([]);
-
-  const fetchBlogs = useCallback(async () => {
-    const response = await fetch('http://localhost:3000/blogs');
-    const data = await response.json();
-    filterBlogs(data);
-  }, []);
+  const [firstBlogs, setFirstBlogs] = useState([]);
 
   useEffect(() => {
+    const fetchBlogs = async () => {
+      const response = await fetch('http://localhost:3000/blogs');
+      const data = await response.json();
+      filterBlogs(data);
+    };
     fetchBlogs();
-  }, [fetchBlogs]);
+    const filterBlogs = (blogs) => {
+      const allFilteredBlogs = blogs.filter(
+        (blog) => blog.category === 'meatball'
+      );
+      setFeaturedBlogs(allFilteredBlogs.reverse());
+      setRemainingBlogs(allFilteredBlogs);
+    };
+  }, []);
 
-  const filterBlogs = (blogs) => {
-    const filteredBlogs = blogs.filter((blog) => blog.category === 'meatball');
-    setMeatballBlogs(filteredBlogs);
+  const setRemainingBlogs = (blogs) => {
+    const minusTwo = blogs.filter((data, idx) => idx > 1);
+    setMeatballBlogs(minusTwo);
+  };
+
+  const setFeaturedBlogs = (blogs) => {
+    const firstTwo = blogs.filter((data, idx) => idx < 2);
+    setFirstBlogs(firstTwo);
   };
 
   const cards = meatballBlogs.map((blog) => {
@@ -30,12 +42,23 @@ export default function Meatball() {
     );
   });
 
+  const mainRow = firstBlogs.map((blog) => {
+    return (
+      <CardItem
+        src={blog.mainImage}
+        text={`${blog.title} - ${blog.subtitle}`}
+        label={blog.category}
+        className='topCards'
+      />
+    );
+  });
+
   return (
-    <div className='container'>
+    <div container>
       <div className='meatball-banner' />
       <div className='blog-container'>
-        <div className='top-blog'>{cards}</div>
-        <div className='old-blogs'></div>
+        <div className='top-blog'>{mainRow}</div>
+        <div className='old-blogs'>{cards}</div>
       </div>
     </div>
   );

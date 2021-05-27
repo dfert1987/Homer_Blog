@@ -28,7 +28,7 @@
   background-position: center;
   background-repeat: no-repeat;
   background-size: 100%;
-  background-image: url("https://i.imgur.com/lN8WTqA.png");
+  background-image: url('https://i.imgur.com/lN8WTqA.png');
   height: 20em;
   margin-left: 1em;
   margin-right: 1em;
@@ -37,8 +37,8 @@
 }
 .cubs {
   font-size: 130px;
-  padding-top: .65em;
-  font-family: "New Athletic M54";
+  padding-top: 0.65em;
+  font-family: 'New Athletic M54';
   text-align: center;
   color: blue;
   text-shadow: 2px 2px 6px white;
@@ -48,7 +48,7 @@
   background-position: center;
   background-repeat: no-repeat;
   background-size: 100%;
-  background-image: url("https://i.imgur.com/sUim7TH.png");
+  background-image: url('https://i.imgur.com/sUim7TH.png');
   height: 20em;
   margin-left: 1em;
   margin-right: 1em;
@@ -60,20 +60,19 @@
   background-position: center;
   background-repeat: no-repeat;
   background-size: 100%;
-  background-image: url("https://i.imgur.com/NnUhWl9.jpg");
+  background-image: url('https://i.imgur.com/NnUhWl9.jpg');
   height: 20em;
   margin-left: auto;
   margin-right: auto;
   margin-top: 1em;
   box-shadow: 3px 3px 5px black;
   width: 70%;
-
 }
 
 .bears {
   font-size: 130px;
-  font-family: "New Athletic M54";
-  padding-top: .65em;
+  font-family: 'New Athletic M54';
+  padding-top: 0.65em;
   justify-content: center;
   text-align: center;
   color: #d66e23;
@@ -84,7 +83,7 @@
   background-position: center;
   background-repeat: no-repeat;
   background-size: 100%;
-  background-image: url("https://i.imgur.com/knFPx7x.png?2");
+  background-image: url('https://i.imgur.com/knFPx7x.png?2');
   height: 20em;
   margin-left: 1em;
   margin-right: 1em;
@@ -94,8 +93,8 @@
 
 .bulls {
   font-size: 130px;
-  padding-top: .65em;
-  font-family: "New Athletic M54";
+  padding-top: 0.65em;
+  font-family: 'New Athletic M54';
   text-align: center;
   color: red;
   text-shadow: 2px 2px 6px black;
@@ -103,28 +102,31 @@
 
 .about {
   font-size: 100px;
-  font-family: "New Athletic M54";
+  font-family: 'New Athletic M54';
   text-align: center;
 }
 
 .signup {
   font-size: 100px;
-  font-family: "New Athletic M54";
+  font-family: 'New Athletic M54';
   text-align: center;
 }
+
 .about-header {
-  font-family: "New Athletic M54";
+  font-family: 'New Athletic M54';
   text-align: center;
   font-size: 100px;
   padding-top: 0em;
 }
+
 .about-container {
   margin-top: 1em;
 }
+
 .about-subheader {
   color: red;
   text-align: center;
-  font-family: "New Athletic M54";
+  font-family: 'New Athletic M54';
   font-size: 40px;
   margin-bottom: 1em;
 }
@@ -149,24 +151,24 @@
 
 .paragraph-header {
   font-size: 30px;
-  font-family: "Trebuchet MS";
+  font-family: 'Trebuchet MS';
   margin-bottom: 0.5em;
 }
 
 .about-text-questions {
-  font-family: "Trebuchet MS";
+  font-family: 'Trebuchet MS';
   font-style: italic;
   font-size: 20px;
   margin-bottom: 1em;
 }
 
 .about-text {
-  font-family: "Trebuchet MS";
+  font-family: 'Trebuchet MS';
   font-size: 20px;
 }
 
 .about-text-last {
-  font-family: "Trebuchet MS";
+  font-family: 'Trebuchet MS';
   font-size: 20px;
   margin-top: 1em;
 }
@@ -174,3 +176,35 @@
 .about-title-container {
   text-align: center;
 }
+
+.blog-container {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 2em;
+  width: 90%;
+}
+
+.old-blogs {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 2em;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 2em;
+}
+
+.top-blog {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  margin-bottom: 1em;
+  margin-left: auto;
+  margin-right: auto;
+  justify-content: center;
+}
+
+
