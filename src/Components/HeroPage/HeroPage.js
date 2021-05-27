@@ -1,28 +1,29 @@
-import React from "react";
-import {Button} from "../Button/Button";
+import React from 'react';
+import {Button} from '../Button/Button';
 import './HeroPage.css';
 import '../../App.css';
 
 function HeroSection() {
   return (
-    <div className="hero-container">
-      <h1 className="title">THE HOMER</h1>
-      <h3 className="subtitle">Meatballs Welcome</h3>
-      <div className="hero-btns">
+    <div className='hero-container'>
+      <h1 className='title'>THE HOMER</h1>
+      <h3 className='subtitle'>Meatballs Welcome</h3>
+      <div className='hero-btns'>
         <Button
-          className="btns"
-          buttonStyle="btn--bigblueprimary"
-          buttonSize="btn--xlarge"
+          className='btn-right'
+          buttonStyle='btn--bigblueprimary'
+          buttonSize='btn--xlarge'
+          href='./About'
         >
-          ENTER
+          About
         </Button>
         <Button
-          className="btns"
-          buttonStyle="btn--bigprimary"
-          buttonSize="btn--xlarge"
-          href="./Login"
+          className='btn-left'
+          buttonStyle='btn--bigprimary'
+          buttonSize='btn--xlarge'
+          href='./Login'
         >
-          LOGIN
+          Login
         </Button>
       </div>
     </div>

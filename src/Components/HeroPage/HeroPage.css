@@ -30,10 +30,10 @@
   margin-bottom: 1em;
 }
 
-.btns {
-  text-shadow: 2px 1px 5px black;
+.btn-left {
   margin: 1em;
 }
+
 
 @media screen and (max-width: 960px) {
   .title {
