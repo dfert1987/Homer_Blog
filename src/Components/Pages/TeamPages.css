@@ -1,0 +1,67 @@
+.bears-banner {
+  background-position: stretch;
+  background-repeat: no-repeat;
+  background-size: 100%;
+  background-image: url('https://i.imgur.com/sUim7TH.png');
+  max-height: 20em;
+  margin-left: 1em;
+  margin-right: 1em;
+  margin-top: 1em;
+  justify-content: center;
+  box-shadow: 3px 3px 5px black;
+}
+
+.bears-title {
+  color: #d66e23;
+  font-family: 'New Athletic M54';
+  font-size: 80px;
+  height: 100%;
+  margin-bottom: auto;
+  margin-top: auto;
+  text-align: center;
+  text-shadow: 2px 2px 6px black;
+}
+
+.blog-container {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 2em;
+  width: 90%;
+}
+
+.old-blogs {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 2em;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 2em;
+}
+
+.top-blog {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  margin-bottom: 5em;
+  justify-content: center;
+}
+
+/* media queries */
+
+/* tablets */
+@media only screen and (min-width: 760px) {
+
+  .bears-banner {
+    height: 10em;
+  }
+
+  .bears-title {
+    font-size: 120px;
+    padding-top: .1em;
+  }
+  
+}

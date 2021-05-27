@@ -37,7 +37,7 @@ export default function Cubs() {
     return (
       <CardItem
         src={blog.mainImage}
-        text={`${blog.title} - ${blog.subtitle}`}
+        text={`${blog.title}`}
         label={blog.category}
         className='bottomCards'
       />

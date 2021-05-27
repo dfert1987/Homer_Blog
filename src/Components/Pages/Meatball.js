@@ -36,7 +36,7 @@ export default function Meatball() {
     return (
       <CardItem
         src={blog.mainImage}
-        text={`${blog.title} - ${blog.subtitle}`}
+        text={`${blog.title}`}
         label={blog.category}
       />
     );
