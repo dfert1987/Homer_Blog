@@ -1,6 +1,6 @@
 import React, {useEffect, useState} from 'react';
 import CardItem from '../Card/CardItem';
-import '../../App.css';
+import './TeamPages.css';
 
 export default function Meatball() {
   const [meatballBlogs, setMeatballBlogs] = useState([]);

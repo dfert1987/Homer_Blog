@@ -22,22 +22,6 @@
   font-size: 100px;
 }
 
-.meatball-banner {
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: 100%;
-  background-image: url('https://i.imgur.com/NnUhWl9.jpg');
-  height: 20em;
-  margin-left: auto;
-  margin-right: auto;
-  margin-top: 1em;
-  box-shadow: 3px 3px 5px black;
-  width: 70%;
-}
-
-
-
-
 .about {
   font-size: 100px;
   font-family: 'New Athletic M54';

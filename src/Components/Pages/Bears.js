@@ -59,10 +59,12 @@ export default function Bears() {
       <div className='bears-banner'>
         <h1 className='bears-title'>BEARS</h1>
       </div>
-      {/* <div className='blog-container'>
+      <div className='blog-container'>
+        <h3 className='featured'>Featured Blogs</h3>
         <div className='top-blog'>{mainRow}</div>
+        <h3 className='past-blogs'>Past Blogs</h3>
         <div className='old-blogs'>{cards}</div>
-      </div> */}
+      </div>
     </div>
   );
 }

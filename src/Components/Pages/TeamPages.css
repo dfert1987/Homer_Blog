@@ -37,6 +37,19 @@
   max-height: 20em;
 }
 
+.meatball-banner {
+  background-position: stretch;
+  background-repeat: no-repeat;
+  background-size: 100%;
+  background-image: url('https://i.imgur.com/NnUhWl9.jpg');
+  box-shadow: 3px 3px 5px black;
+  height: 5em;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 1em;
+  width: 70%;
+}
+
 .bears-title {
   color: #d66e23;
   font-family: 'New Athletic M54';
@@ -66,33 +79,43 @@
 .blog-container {
   display: flex;
   flex-direction: column;
-  flex-wrap: wrap;
   justify-content: space-around;
-  margin-left: auto;
-  margin-right: auto;
   margin-top: 2em;
-  width: 90%;
+}
+
+.featured {
+  color: red;
+  font-family: 'New Athletic M54';
+  font-size: 35px;
+  margin-bottom: .25em;
+  margin-left: 0.5em;
+  text-shadow: 2px 2px 4px black;
+}
+
+.past-blogs {
+  color: red;
+  font-family: 'New Athletic M54';
+  font-size: 35px;
+  margin-bottom: .5em;
+  text-align: center;
+  text-shadow: 2px 2px 4px black;
 }
 
 .old-blogs {
-  display: flex;
-  justify-content: center;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
   margin-bottom: 2em;
-  margin-left: auto;
-  margin-right: auto;
-  margin-top: 2em;
+  margin-left: 1em;
+  margin-right: 1em;
 }
 
 .top-blog {
   display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  margin-bottom: 5em;
+  flex-direction: column;
   justify-content: center;
 }
 
 /* media queries */
-
 /* tablets */
 @media only screen and (min-width: 760px) {
   .bears-banner {
@@ -118,12 +141,53 @@
     padding-top: 0.1em;
   }
 
+  .meatball-banner {
+    height: 1em;
+  }
+
   .bulls-title {
     font-size: 120px;
   }
 
   .cubs-title {
     font-size: 130px;
+  }
+
+  .top-blog {
+    margin-left: 2em;
+    margin-right: 2em;
+  }
+
+  .old-blogs {
+    margin-left: 2em;
+    margin-right: 2em;
+  }
+
+  .featured {
+    font-size: 50px;
+    margin-left: 1em;
+  }
+
+  .past-blogs {
+      font-size: 40px;
+  }
+}
+
+@media only screen and (max-width: 280px) {
+  .meatball-banner {
+    height: 4em;
+  }
+}
+
+@media only screen and (min-width: 540px) {
+  .meatball-banner {
+    height: 7.9em;
+  }
+}
+
+@media only screen and (min-width: 1020px) {
+  .meatball-banner {
+    height: 13em;
   }
 }
 
@@ -159,5 +223,30 @@
   .bulls-title {
     font-size: 130px;
     padding-top: 0.25em;
+  }
+
+  .top-blog {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    margin-left: 4em;
+    margin-right: 4em;
+  }
+
+  .old-blogs {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    margin-left: 4em;
+    margin-right: 4em;
+    margin-top: .25em;
+  }
+
+  .featured {
+      font-size: 60px;
+      margin-left: 1.5em;
+  }
+
+  .past-blogs {
+      font-size: 60px;
+      margin-top: .5em;
   }
 }
