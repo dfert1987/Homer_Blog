@@ -1,7 +1,6 @@
 import React, {useEffect, useState} from 'react';
 import CardItem from '../Card/CardItem';
-
-import '../../App.css';
+import './TeamPages.css';
 
 export default function Cubs() {
   const [cubsBlogs, setCubsBlogs] = useState([]);
@@ -58,12 +57,12 @@ export default function Cubs() {
   return (
     <div className='container'>
       <div className='cubs-banner'>
-        <h1 className='cubs'>CUBS</h1>
+        <h1 className='cubs-title'>CUBS</h1>
       </div>
-      <div className='blog-container'>
+      {/* <div className='blog-container'>
         <div className='top-blog'>{mainRow}</div>
         <div className='old-blogs'>{cards}</div>
-      </div>
+      </div> */}
     </div>
   );
 }

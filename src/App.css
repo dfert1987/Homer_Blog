@@ -5,9 +5,6 @@
   /* font-family: 'PT Sans', sans-serif; */
 }
 
-.home,
-.services,
-.products,
 .sign-up {
   display: flex;
   height: 90vh;
@@ -24,25 +21,6 @@
   color: #fff;
   font-size: 100px;
 }
-.cubs-banner {
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: 100%;
-  background-image: url('https://i.imgur.com/lN8WTqA.png');
-  height: 20em;
-  margin-left: 1em;
-  margin-right: 1em;
-  margin-top: 1em;
-  box-shadow: 3px 3px 5px black;
-}
-.cubs {
-  font-size: 130px;
-  padding-top: 0.65em;
-  font-family: 'New Athletic M54';
-  text-align: center;
-  color: blue;
-  text-shadow: 2px 2px 6px white;
-}
 
 .meatball-banner {
   background-position: center;
@@ -57,35 +35,8 @@
   width: 70%;
 }
 
-.bears {
-  font-size: 80px;
-  font-family: 'New Athletic M54';
-  justify-content: center;
-  text-align: center;
-  color: #d66e23;
-  text-shadow: 2px 2px 6px black;
-}
 
-.bulls-banner {
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: 100%;
-  background-image: url('https://i.imgur.com/knFPx7x.png?2');
-  height: 20em;
-  margin-left: 1em;
-  margin-right: 1em;
-  margin-top: 1em;
-  box-shadow: 3px 3px 5px black;
-}
 
-.bulls {
-  font-size: 130px;
-  padding-top: 0.65em;
-  font-family: 'New Athletic M54';
-  text-align: center;
-  color: red;
-  text-shadow: 2px 2px 6px black;
-}
 
 .about {
   font-size: 100px;
@@ -162,32 +113,4 @@
 
 .about-title-container {
   text-align: center;
-}
-
-.blog-container {
-  display: flex;
-  flex-direction: column;
-  flex-wrap: wrap;
-  justify-content: space-around;
-  margin-left: auto;
-  margin-right: auto;
-  margin-top: 2em;
-  width: 90%;
-}
-
-.old-blogs {
-  display: flex;
-  justify-content: center;
-  margin-bottom: 2em;
-  margin-left: auto;
-  margin-right: auto;
-  margin-top: 2em;
-}
-
-.top-blog {
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  margin-bottom: 5em;
-  justify-content: center;
 }
