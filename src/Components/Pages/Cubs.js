@@ -52,7 +52,7 @@ export default function Cubs() {
         text={`${blog.title} - ${blog.subtitle}`}
         label={blog.category}
         className='topCards'
-        path={`/blog/${blog.id}`}
+        path={`blog/${blog.id}`}
 
       />
     );

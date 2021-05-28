@@ -1,4 +1,5 @@
 import React, {useState, useEffect} from 'react';
+import {Link} from 'react-router-dom';
 import CardItem from './CardItem';
 import './Cards.css';
 
@@ -38,9 +39,7 @@ function Cards() {
                   : ''
               }
               label={blogs.length > 0 ? blogs[blogs.length - 1].category : ''}
-              path={`/blog/${
-                blogs.length > 0 ? blogs[blogs.length - 1].category : ''
-              }/${blogs.length > 0 ? blogs[blogs.length - 1].id : ''}`}
+              path={`/blog/${blogs.length > 0 ? blogs[blogs.length - 1].id : ''}`}
             />
             <CardItem
               src={blogs.length > 0 ? blogs[blogs.length - 2].mainImage : ''}
@@ -52,9 +51,6 @@ function Cards() {
                   : ''
               }
               label={blogs.length > 0 ? blogs[blogs.length - 2].category : ''}
-              path={`/blog/${
-                blogs.length > 0 ? blogs[blogs.length - 2].category : ''
-              }/${blogs.length > 0 ? blogs[blogs.length - 2].id : ''}`}
             />
           </ul>
           <ul className='cards-items'>
