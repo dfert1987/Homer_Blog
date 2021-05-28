@@ -38,6 +38,7 @@ export default function Bears() {
         src={blog.mainImage}
         text={`${blog.title}`}
         label={blog.category}
+        path={`/blog/${blog.id}`}
         className='bottomCards'
       />
     );
@@ -50,6 +51,7 @@ export default function Bears() {
         text={`${blog.title} - ${blog.subtitle}`}
         label={blog.category}
         className='topCards'
+        path={`/blog/${blog.id}`}
       />
     );
   });
