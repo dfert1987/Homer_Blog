@@ -1,5 +1,4 @@
 import React, {useState, useEffect} from 'react';
-import {Link} from 'react-router-dom';
 import CardItem from './CardItem';
 import './Cards.css';
 
@@ -51,6 +50,7 @@ function Cards() {
                   : ''
               }
               label={blogs.length > 0 ? blogs[blogs.length - 2].category : ''}
+              path={`/blog/${blogs.length > 0 ? blogs[blogs.length - 2].id : ''}`}
             />
           </ul>
           <ul className='cards-items'>
@@ -64,9 +64,7 @@ function Cards() {
                   : ''
               }
               label={blogs.length > 0 ? blogs[blogs.length - 3].category : ''}
-              path={`/blog/${
-                blogs.length > 0 ? blogs[blogs.length - 3].category : ''
-              }/${blogs.length > 0 ? blogs[blogs.length - 3].id : ''}`}
+              path={`/blog/${blogs.length > 0 ? blogs[blogs.length - 3].id : ''}`}
             />
             <CardItem
               src={blogs.length > 0 ? blogs[blogs.length - 4].mainImage : ''}
@@ -78,9 +76,7 @@ function Cards() {
                   : ''
               }
               label={blogs.length > 0 ? blogs[blogs.length - 4].category : ''}
-              path={`/blog/${
-                blogs.length > 0 ? blogs[blogs.length - 4].category : ''
-              }/${blogs.length > 0 ? blogs[blogs.length - 4].id : ''}`}
+              path={`/blog/${blogs.length > 0 ? blogs[blogs.length - 4].id : ''}`}
             />
             <CardItem
               src={blogs.length > 0 ? blogs[blogs.length - 5].mainImage : ''}
@@ -92,9 +88,7 @@ function Cards() {
                   : ''
               }
               label={blogs.length > 0 ? blogs[blogs.length - 5].category : ''}
-              path={`/blog/${
-                blogs.length > 0 ? blogs[blogs.length - 5].category : ''
-              }/${blogs.length > 0 ? blogs[blogs.length - 5].id : ''}`}
+              path={`/blog/${blogs.length > 0 ? blogs[blogs.length - 5].id : ''}`}
             />
           </ul>
         </div>
