@@ -187,7 +187,7 @@
 
 @media only screen and (min-width: 1020px) {
   .meatball-banner {
-    height: 13em;
+    height: 15em;
   }
 }
 
@@ -248,5 +248,12 @@
   .past-blogs {
       font-size: 60px;
       margin-top: .5em;
+  }
+}
+
+
+@media only screen and (min-width: 1500px) {
+  .meatball-banner {
+    height: 22em;
   }
 }

@@ -2,7 +2,6 @@
   box-sizing: border-box;
   margin: 0;
   padding: 0;
-  /* font-family: 'PT Sans', sans-serif; */
 }
 
 .sign-up {
@@ -14,7 +13,6 @@
 }
 
 .sign-up {
-  /* background-image: url('/images/img-8.jpg'); */
   background-position: center;
   background-size: cover;
   background-repeat: no-repeat;

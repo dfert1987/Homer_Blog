@@ -1,10 +1,12 @@
 import React, {useEffect, useState} from 'react';
 import CardItem from '../Card/CardItem';
+import Footer from "../../Components/Footer/Footer";
 import './TeamPages.css';
 
 export default function Cubs() {
   const [cubsBlogs, setCubsBlogs] = useState([]);
   const [firstBlogs, setFirstBlogs] = useState([]);
+  const [contactModal, setContactModal] = useState(false);
 
   useEffect(() => {
     const fetchBlogs = async () => {
@@ -69,6 +71,7 @@ export default function Cubs() {
         <h3 className='past-blogs'>Past Blogs</h3>
         <div className='old-blogs'>{cards}</div>
       </div>
+      <Footer contactModal={contactModal} setContactModal={setContactModal} />
     </div>
   );
 }

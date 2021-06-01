@@ -14,11 +14,11 @@ import Blog from "./Components/Pages/Blog";
 
 function App() {
   return (
-    <>
+    <div className='background'>
       <Router>
         <NavBar />
         <Switch>
-          <Route path="/" exact component={Home} />
+          <Route path="/" exact component={Home} className='background' />
           <Route path="/about" exact component={About} />
           <Route path="/signup" exact component={SignUp} />
           <Route path="/bulls" exact component={Bulls} />
@@ -29,7 +29,7 @@ function App() {
           <Route path="/AdminCreatePost" exact component={AdminCreatePost} />
         </Switch>
       </Router>
-    </>
+    </div>
   );
 }
 

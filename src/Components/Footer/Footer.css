@@ -1,23 +1,32 @@
 .footer-container {
-    display: flex;
-    flex-wrap: wrap;
-    flex-direction: column;
-    margin-bottom: 2em;
+  background-color: #b3ddf2;
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
 }
 
 .footer-contact {
-    text-align: center;
+  padding-bottom: 1em;
+  padding-top: 1em;
+  text-align: center;
 }
 
 .footer-contact-heading {
-    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
-    text-align: center;
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande',
+    'Lucida Sans', Arial, sans-serif;
+  margin-bottom: 0.5em;
+  text-align: center;
 }
 
 .add-post {
-    text-align: center;
-    color: red;  
-    cursor: pointer;
-    font-family: "New Athletic M54";
-    text-decoration: none;
+  color: red;
+  cursor: pointer;
+  font-family: 'New Athletic M54';
+  font-size: 30px;
+  text-align: center;
+  text-decoration: none;
+}
+
+.add-post-container {
+    margin-top: 1em;
 }
