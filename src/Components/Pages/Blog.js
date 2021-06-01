@@ -56,9 +56,11 @@ function Blog() {
       <h1 className='blogTitle'>{blog.title}</h1>
       <h3 className='blogSubtitle'>{capitalizeSub(blog.subtitle)}</h3>
       <img className='mainImage' alt='main-image' src={blog.mainImage} />
+      <hr className='divider' />
       <div id='bodyContainer' className='bodyContainer'>
         {getBodyHTML(blog.body)}
       </div>
+      <hr className='dividerBottom' />
     </div>
   );
 }

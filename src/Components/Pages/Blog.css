@@ -31,8 +31,29 @@
   width: 60%;
 }
 
-.bodyContainer p img {
-  text-align: center;
+.bodyContainer {
+    font-size: 20px;
+  margin-bottom: 2em;
   margin-left: auto;
   margin-right: auto;
+  margin-top: 2em;
+}
+
+.divider {
+  border-radius: 8em;
+  border-top: 3px solid red;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 2em;
+  width: 70%;
+}
+
+.dividerBottom {
+  border-radius: 8em;
+  border-top: 3px solid red;
+  margin-bottom: 2em;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 2em;
+  width: 70%;
 }

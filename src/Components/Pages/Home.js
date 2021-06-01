@@ -8,7 +8,7 @@ import ContactModal from "../Footer/ContactModal";
 function Home() {
   const [contactModal, setContactModal] = useState(false);
   return (
-    <>
+    <div className="home-container">
       <HeroPage />
       <Cards />
       <ContactModal
@@ -17,7 +17,7 @@ function Home() {
         className="contact-modal"
       />
       <Footer contactModal={contactModal} setContactModal={setContactModal} />
-    </>
+    </div>
   );
 }
 
