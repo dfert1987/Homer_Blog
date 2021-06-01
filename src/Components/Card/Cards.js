@@ -38,9 +38,7 @@ function Cards() {
                   : ''
               }
               label={blogs.length > 0 ? blogs[blogs.length - 1].category : ''}
-              path={`/${
-                blogs.length > 0 ? blogs[blogs.length - 1].category : ''
-              }`}
+              path={`/blog/${blogs.length > 0 ? blogs[blogs.length - 1].id : ''}`}
             />
             <CardItem
               src={blogs.length > 0 ? blogs[blogs.length - 2].mainImage : ''}
@@ -52,9 +50,7 @@ function Cards() {
                   : ''
               }
               label={blogs.length > 0 ? blogs[blogs.length - 2].category : ''}
-              path={`/${
-                blogs.length > 0 ? blogs[blogs.length - 2].category : ''
-              }`}
+              path={`/blog/${blogs.length > 0 ? blogs[blogs.length - 2].id : ''}`}
             />
           </ul>
           <ul className='cards-items'>
@@ -68,9 +64,7 @@ function Cards() {
                   : ''
               }
               label={blogs.length > 0 ? blogs[blogs.length - 3].category : ''}
-              path={`/${
-                blogs.length > 0 ? blogs[blogs.length - 3].category : ''
-              }`}
+              path={`/blog/${blogs.length > 0 ? blogs[blogs.length - 3].id : ''}`}
             />
             <CardItem
               src={blogs.length > 0 ? blogs[blogs.length - 4].mainImage : ''}
@@ -82,9 +76,7 @@ function Cards() {
                   : ''
               }
               label={blogs.length > 0 ? blogs[blogs.length - 4].category : ''}
-              path={`/${
-                blogs.length > 0 ? blogs[blogs.length - 4].category : ''
-              }`}
+              path={`/blog/${blogs.length > 0 ? blogs[blogs.length - 4].id : ''}`}
             />
             <CardItem
               src={blogs.length > 0 ? blogs[blogs.length - 5].mainImage : ''}
@@ -96,9 +88,7 @@ function Cards() {
                   : ''
               }
               label={blogs.length > 0 ? blogs[blogs.length - 5].category : ''}
-              path={`/${
-                blogs.length > 0 ? blogs[blogs.length - 5].category : ''
-              }`}
+              path={`/blog/${blogs.length > 0 ? blogs[blogs.length - 5].id : ''}`}
             />
           </ul>
         </div>

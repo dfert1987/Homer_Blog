@@ -10,6 +10,7 @@ import Bears from "./Components/Pages/Bears";
 import Meatball from "./Components/Pages/Meatball";
 import SignUp from "./Components/Pages/SignUp";
 import AdminCreatePost from "./Admin/AdminCreatePost";
+import Blog from "./Components/Pages/Blog";
 
 function App() {
   return (
@@ -24,6 +25,7 @@ function App() {
           <Route path="/bears" exact component={Bears} />
           <Route path="/cubs" exact component={Cubs} />
           <Route path="/meatball" exact component={Meatball} />
+          <Route path="/blog/:blogId" component={Blog} />
           <Route path="/AdminCreatePost" exact component={AdminCreatePost} />
         </Switch>
       </Router>

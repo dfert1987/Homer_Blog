@@ -1,7 +1,6 @@
 import React, {useState} from 'react';
 import ReactQuill from 'react-quill';
-import { useHistory } from "react-router-dom";
-
+import {useHistory} from 'react-router-dom';
 import './CreatePost.css';
 
 export default function AdminCreatePost() {
@@ -113,6 +112,7 @@ AdminCreatePost.modules = {
     ['link', 'image', 'video'],
     ['clean'],
     ['code-block'],
+    [{align: ''}, {align: 'center'}, {align: 'right'}, {align: 'justify'}],
   ],
 };
 

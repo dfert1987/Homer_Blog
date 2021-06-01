@@ -39,6 +39,7 @@ export default function Bulls() {
         text={`${blog.title}`}
         label={blog.category}
         className='bottomCards'
+        path={`/blog/${blog.id}`}
       />
     );
   });
@@ -50,6 +51,7 @@ export default function Bulls() {
         text={`${blog.title} - ${blog.subtitle}`}
         label={blog.category}
         className='topCards'
+        path={`/blog/${blog.id}`}
       />
     );
   });
