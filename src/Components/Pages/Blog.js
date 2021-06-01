@@ -1,5 +1,6 @@
 import React, {useEffect, useState} from 'react';
 import {useParams} from 'react-router-dom';
+import './Blog.css';
 
 const defaultBlog = {
   id: 0,
@@ -33,17 +34,31 @@ function Blog() {
     if (str === '') {
       return null;
     } else {
-      var image = document.getElementById('image');
-      image.insertAdjacentHTML('afterend', str);
+      var image = document.getElementById('bodyContainer');
+      image.insertAdjacentHTML('afterbegin', str);
     }
   };
 
+  const capitalizeSub = (sub) => {
+    if (sub) {
+      const splitSub = sub.split(' ');
+
+      for (let i = 0; i < splitSub.length; i++) {
+        splitSub[i] = splitSub[i][0].toUpperCase() + splitSub[i].substr(1);
+      }
+      return splitSub.join(' ');
+    }
+    return null;
+  };
+
   return (
-    <div>
+    <div className='blogContainer'>
       <h1 className='blogTitle'>{blog.title}</h1>
-      <h3 className='blogSubtitle'>{blog.subtitle}</h3>
-      <img id="image" className='mainImage' alt='main-image' src={blog.mainImage} />
-      {getBodyHTML(blog.body)}
+      <h3 className='blogSubtitle'>{capitalizeSub(blog.subtitle)}</h3>
+      <img className='mainImage' alt='main-image' src={blog.mainImage} />
+      <div id='bodyContainer' className='bodyContainer'>
+        {getBodyHTML(blog.body)}
+      </div>
     </div>
   );
 }
