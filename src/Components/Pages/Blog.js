@@ -1,6 +1,9 @@
 import React, {useEffect, useState} from 'react';
 import {useParams} from 'react-router-dom';
+import Footer from '../../Components/Footer/Footer';
+import AboutTheAuthor from '../../Components/AboutTheAuthor/AboutTheAuthor';
 import './Blog.css';
+import About from './About';
 
 const defaultBlog = {
   id: 0,
@@ -19,6 +22,7 @@ const defaultBlog = {
 function Blog() {
   const {blogId} = useParams();
   const [blog, setBlog] = useState(defaultBlog);
+  const [contactModal, setContactModal] = useState(false);
 
   useEffect(() => {
     fetchBlogs();
@@ -53,14 +57,18 @@ function Blog() {
 
   return (
     <div className='blogContainer'>
-      <h1 className='blogTitle'>{blog.title}</h1>
-      <h3 className='blogSubtitle'>{capitalizeSub(blog.subtitle)}</h3>
+      <div className='blogTitleContainer'>
+        <h1 className='blogTitle'>{blog.title}</h1>
+        <h3 className='blogSubtitle'>{capitalizeSub(blog.subtitle)}</h3>
+      </div>
       <img className='mainImage' alt='main-image' src={blog.mainImage} />
       <hr className='divider' />
       <div id='bodyContainer' className='bodyContainer'>
         {getBodyHTML(blog.body)}
       </div>
-      <hr className='dividerBottom' />
+      <hr className='dividerBottom' />{' '}
+      <AboutTheAuthor />
+      <Footer contactModal={contactModal} setContactModal={setContactModal} />
     </div>
   );
 }

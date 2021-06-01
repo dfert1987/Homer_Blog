@@ -4,7 +4,7 @@ import "./Footer.css";
 
 export default function CreatePost() {
     return (
-      <div>
+      <div className='add-post-container'>
         <Link className="add-post" to="/AdminCreatePost">Add A Post</Link>
       </div>
     );

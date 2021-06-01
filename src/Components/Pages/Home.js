@@ -7,6 +7,7 @@ import ContactModal from "../Footer/ContactModal";
 
 function Home() {
   const [contactModal, setContactModal] = useState(false);
+
   return (
     <div className="home-container">
       <HeroPage />

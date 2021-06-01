@@ -1,21 +1,23 @@
-import React from "react";
-import {Button} from "../Button/Button";
-import CreatePost from "../Footer/CreatePost";
-import "./Footer.css";
+import React from 'react';
+import {Button} from '../Button/Button';
+import CreatePost from '../Footer/CreatePost';
+import './Footer.css';
 
 function Footer({setContactModal}) {
   const handleClick = () => setContactModal(true);
 
   return (
-    <div className="footer-container">
-      <section className="footer-contact">
-        <p className="footer-contact-heading">
-          Comments? Questions? Problems?
-        </p>
-        <Button buttonStyle="btn--outline2" onClick={handleClick}>
+    <div className='footer-container'>
+      <section className='footer-contact'>
+        <p className='footer-contact-heading'>Comments? Questions? Problems?</p>
+        <Button
+          className='contact-button'
+          buttonStyle='btn--outline1'
+          onClick={handleClick}
+        >
           CONTACT US
         </Button>
-        <CreatePost className="admin" />
+        <CreatePost className='admin' />
       </section>
     </div>
   );
