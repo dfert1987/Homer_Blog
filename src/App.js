@@ -8,7 +8,7 @@ import Bulls from './Components/Pages/Bulls';
 import Cubs from './Components/Pages/Cubs';
 import Bears from './Components/Pages/Bears';
 import Meatball from './Components/Pages/Meatball';
-import SignUp from './Components/Pages/SignUp';
+import Login from './Components/Pages/Login';
 import AdminCreatePost from './Admin/AdminCreatePost';
 import Blog from './Components/Pages/Blog';
 
@@ -20,7 +20,7 @@ function App() {
         <Switch>
           <Route path='/' exact component={Home} />
           <Route path='/about' exact component={About} />
-          <Route path='/signup' exact component={SignUp} />
+          <Route path='/login' exact component={Login} />
           <Route path='/bulls' exact component={Bulls} />
           <Route path='/bears' exact component={Bears} />
           <Route path='/cubs' exact component={Cubs} />
