@@ -1,10 +1,14 @@
 import React, {useState} from 'react';
+import LoginForm from '../LoginOptions/LoginForm';
+import VerifyCode from '../LoginOptions/VerifyCode';
+import ResetPassword from '../LoginOptions/ResetPassword';
+
 import './Login.css';
 
 export default function Login() {
   const [userEmail, setUserEmail] = useState('');
   const [selectedForm, setSelectedForm] = useState('');
-  
+
   const LOGIN = 'login';
   const RESET_PASSWORD = 'resetPassword';
   const VERIFY_CODE = 'verifyCode';
@@ -35,6 +39,7 @@ export default function Login() {
       );
       break;
     case VERIFY_CODE:
+      sidePanel = <PanelContent />;
       content = (
         <VerifyCode
           id={id}
@@ -44,12 +49,22 @@ export default function Login() {
       );
       break;
     case RESET_PASSWORD:
+      sidePanel = <PanelContent />;
       content = (
         <ResetPassword
           id={id}
           setSelectedForm={() => setSelectedForm(VERIFY_CODE)}
           setEmail={(email) => setUserEmail(email)}
           setCancel={() => setSelectedForm(LOGIN)}
+        />
+      );
+      break;
+    default:
+      sidePanel = <PanelContent />;
+      content = (
+        <LoginForm
+          id={id}
+          setSelectedForm={() => setSelectedForm(RESET_PASSWORD)}
         />
       );
   }
@@ -74,19 +89,5 @@ export default function Login() {
         </div>
       </div>
     </div>
-
-    /* <div className='side-image-container'>
-        <div className='side-image-tile-container'>
-          <h3 className='side-image-title'>HOMER</h3>
-          <h4 className='side-image-subtitle'>Meatballs Welcome</h4>
-        </div>
-      </div>
-      <div className='right-side-container'>
-        <h2 className='login-title'>Welcome Back to Homer</h2>
-        <form className='login-form'>
-          <label className='login-form-label'>Username</label>
-          <input className='login-input'></input>
-        </form>
-      </div> */
   );
 }
