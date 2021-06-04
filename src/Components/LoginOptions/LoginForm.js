@@ -1,6 +1,7 @@
 import React, {useCallback, useState} from 'react';
 import {Button} from '../Button/Button';
 import {useHistory} from 'react-router-dom';
+import './LoginForm.css';
 
 export default function LoginForm({id, setSelectedForm}) {
   const history = useHistory();
@@ -52,14 +53,25 @@ export default function LoginForm({id, setSelectedForm}) {
               onChange={updateField}
             />
           </div>
-          <div className='login-button-container'>
-            <Button
-              id={`${loginFormId}-submit`}
-              className='login-button'
-              type='submit'
-            >
-              Log In
-            </Button>
+          <div className='buttons'>
+            <div className='login-button-container'>
+              <Button
+                id={`${loginFormId}-submit`}
+                className='login-button'
+                type='submit'
+              >
+                Log In
+              </Button>
+            </div>
+            <div className='signup-button-container'>
+              <Button
+                id={`${loginFormId}-sign-up`}
+                className='signup-button'
+                type='submit'
+              >
+                Sign Up
+              </Button>
+            </div>
           </div>
         </form>
         <hr className='login-divider' />
