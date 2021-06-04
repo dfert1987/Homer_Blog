@@ -17,8 +17,12 @@ export default function Login() {
     return (
       <div className='side-image-container'>
         <div className='side-image-title-container'>
-          <h3 className='side-image-title'>HOMER</h3>
-          <h4 className='side-image-subtitle'>Meatballs Welcome</h4>
+          <img
+            className='side-image-logo'
+            src='https://Zi.imgur.com/MaLqLee.png'
+            alt='homer-logo'
+          />
+          <div className='side-image-subtitle'>A Safe Place for Die-Hards</div>
         </div>
       </div>
     );

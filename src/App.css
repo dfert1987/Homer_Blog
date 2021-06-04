@@ -5,24 +5,24 @@
 }
 
 .sign-up {
-  display: flex;
-  height: 90vh;
   align-items: center;
-  justify-content: center;
+  display: flex;
   font-size: 3rem;
+  height: 90vh;
+  justify-content: center;
 }
 
 .sign-up {
   background-position: center;
-  background-size: cover;
   background-repeat: no-repeat;
+  background-size: cover;
   color: #fff;
   font-size: 100px;
 }
 
 .about {
-  font-size: 100px;
   font-family: 'New Athletic M54';
+  font-size: 100px;
   text-align: center;
 }
 
@@ -34,9 +34,9 @@
 
 .about-header {
   font-family: 'New Athletic M54';
-  text-align: center;
   font-size: 100px;
   padding-top: 0em;
+  text-align: center;
 }
 
 .about-container {
@@ -45,28 +45,28 @@
 
 .about-subheader {
   color: red;
-  text-align: center;
   font-family: 'New Athletic M54';
   font-size: 40px;
   margin-bottom: 1em;
-}
-
-.about-main-image {
-  height: 300px;
-  width: 60%;
-  display: flex;
-  margin-left: auto;
-  margin-right: auto;
-  box-shadow: 0 0 40px -10px #000;
-  border-radius: 6px;
   text-align: center;
 }
 
+.about-main-image {
+  border-radius: 6px;
+  box-shadow: 0 0 40px -10px #000;
+  display: flex;
+  height: 300px;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+  width: 60%;
+}
+
 .about-text-container {
-  margin-top: 1em;
   margin-bottom: 2em;
   margin-left: 7em;
   margin-right: 7em;
+  margin-top: 1em;
 }
 
 .paragraph-header {
@@ -77,8 +77,8 @@
 
 .about-text-questions {
   font-family: 'Trebuchet MS';
-  font-style: italic;
   font-size: 20px;
+  font-style: italic;
   margin-bottom: 1em;
 }
 
