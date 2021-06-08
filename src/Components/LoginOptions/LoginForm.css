@@ -82,12 +82,12 @@
 }
 
 .buttons {
-    display: flex;
-    flex-direction: row;
+  display: flex;
+  flex-direction: row;
 }
 
 .signup-button-container {
-    margin-left: 1em;
+  margin-left: 1em;
 }
 
 .login-bottom-row {

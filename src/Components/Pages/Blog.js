@@ -23,14 +23,11 @@ function Blog() {
   const [blog, setBlog] = useState(defaultBlog);
   const [contactModal, setContactModal] = useState(false);
 
-  
   useEffect(() => {
-      fetch(`http://localhost:3000/blogs/${blogId}`)
-        .then((response) => response.json())
-        .then((response) => setBlog(response));
+    fetch(`http://localhost:3000/blogs/${blogId}`)
+      .then((response) => response.json())
+      .then((response) => setBlog(response));
   }, [blogId]);
-
-
 
   const getBodyHTML = (str) => {
     if (str === '') {
@@ -64,8 +61,7 @@ function Blog() {
       <div id='bodyContainer' className='bodyContainer'>
         {getBodyHTML(blog.body)}
       </div>
-      <hr className='dividerBottom' />{' '}
-      <AboutTheAuthor />
+      <hr className='dividerBottom' /> <AboutTheAuthor />
       <Footer contactModal={contactModal} setContactModal={setContactModal} />
     </div>
   );

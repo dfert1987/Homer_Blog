@@ -1,5 +1,6 @@
 import React, {useCallback, useState} from 'react';
 import {Button} from '../Button/Button';
+import './ResetPassword.css';
 
 export default function ResetPassword({
   id,
@@ -24,7 +25,7 @@ export default function ResetPassword({
 
   return (
     <div id={resetId} className='reset-wrapper'>
-      <div className='reeset-title'>Forgot Your Password?</div>
+      <div className='reset-title'>Forgot Your Password?</div>
       <div className='reset-instructions'>
         Enter your email below and we'll send reset instructions
       </div>
@@ -40,21 +41,25 @@ export default function ResetPassword({
           />
         </div>
         <div className='reset-button-container'>
-          <Button
-            id={`${resetId}-cancel`}
-            className='reset-cancel'
-            onClick={setCancel}
-            type='button'
-          >
-            Cancel
-          </Button>
-          <Button
-            id={`${resetId}-submit`}
-            className='reset-submit'
-            type='submit'
-          >
-            Send Reset Instructions
-          </Button>
+          <div className='reset-cancel-container'>
+            <Button
+              id={`${resetId}-cancel`}
+              className='reset-cancel'
+              onClick={setCancel}
+              type='button'
+            >
+              Cancel
+            </Button>
+          </div>
+          <div className='reset-submit-container'>
+            <Button
+              id={`${resetId}-submit`}
+              className='reset-submit'
+              type='submit'
+            >
+              Send Reset Instructions
+            </Button>
+          </div>
         </div>
       </form>
     </div>
