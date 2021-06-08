@@ -3,7 +3,6 @@ import {useParams} from 'react-router-dom';
 import Footer from '../../Components/Footer/Footer';
 import AboutTheAuthor from '../../Components/AboutTheAuthor/AboutTheAuthor';
 import './Blog.css';
-import About from './About';
 
 const defaultBlog = {
   id: 0,
@@ -24,15 +23,14 @@ function Blog() {
   const [blog, setBlog] = useState(defaultBlog);
   const [contactModal, setContactModal] = useState(false);
 
+  
   useEffect(() => {
-    fetchBlogs();
-  }, []);
+      fetch(`http://localhost:3000/blogs/${blogId}`)
+        .then((response) => response.json())
+        .then((response) => setBlog(response));
+  }, [blogId]);
 
-  const fetchBlogs = async () => {
-    fetch(`http://localhost:3000/blogs/${blogId}`)
-      .then((response) => response.json())
-      .then((response) => setBlog(response));
-  };
+
 
   const getBodyHTML = (str) => {
     if (str === '') {
@@ -61,7 +59,7 @@ function Blog() {
         <h1 className='blogTitle'>{blog.title}</h1>
         <h3 className='blogSubtitle'>{capitalizeSub(blog.subtitle)}</h3>
       </div>
-      <img className='mainImage' alt='main-image' src={blog.mainImage} />
+      <img className='mainImage' alt='side-panel' src={blog.mainImage} />
       <hr className='divider' />
       <div id='bodyContainer' className='bodyContainer'>
         {getBodyHTML(blog.body)}

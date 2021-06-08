@@ -1,8 +1,26 @@
-import React from 'react';
+import React, {useCallback, useState} from 'react';
 import {Button} from '../Button/Button';
 
-export default function ResetPassword({id, setSelectedForm}) {
+export default function ResetPassword({
+  id,
+  setSelectedForm,
+  setEmail,
+  setCancel,
+}) {
   const resetId = `${id}-reset`;
+  const [userEmail, setUserEmail] = useState('');
+
+  const onSubmit = () => {
+    setEmail(userEmail);
+    setSelectedForm();
+  };
+
+  const updateField = useCallback(
+    (field, value) => {
+      setUserEmail(value);
+    },
+    [setUserEmail]
+  );
 
   return (
     <div id={resetId} className='reset-wrapper'>
@@ -16,8 +34,8 @@ export default function ResetPassword({id, setSelectedForm}) {
           <input
             className='reset-email-input'
             type='text'
-            id={`${reseetId}-email`}
-            value={email}
+            id={`${resetId}-email`}
+            value={userEmail}
             onChange={updateField}
           />
         </div>
