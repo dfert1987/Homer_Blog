@@ -1,5 +1,6 @@
 import React, {useState} from 'react';
 import {Button} from '../Button/Button';
+import './VerifyCode.css';
 
 export default function VerifyCode({id, setSelectedForm, userEmail}) {
   const [confirmationCode, setCode] = useState('');
@@ -68,14 +69,16 @@ export default function VerifyCode({id, setSelectedForm, userEmail}) {
             />
           </div>
           <div className='verify-button-container'>
-            <Button
-              id={`${verifyId}-cancel`}
-              className='cancel-button'
-              type='button'
-              onClick={() => setSelectedForm()}
-            >
-              Cancel
-            </Button>
+            <div className='cancel-container'>
+              <Button
+                id={`${verifyId}-cancel`}
+                className='cancel-button'
+                type='button'
+                onClick={() => setSelectedForm()}
+              >
+                Cancel
+              </Button>
+            </div>
             <Button
               id={`${verifyId}-submit`}
               className='new-password-button'
