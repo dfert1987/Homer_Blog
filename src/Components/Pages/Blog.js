@@ -33,8 +33,8 @@ function Blog() {
     if (str === '') {
       return null;
     } else {
-      var image = document.getElementById('bodyContainer');
-      image.insertAdjacentHTML('afterbegin', str);
+      var htmlContent = document.getElementById('bodyContainer');
+      htmlContent.insertAdjacentHTML('afterbegin', str);
     }
   };
 
