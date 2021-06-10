@@ -1,0 +1,134 @@
+.verify-wrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin: 0em auto;
+  max-width: 600px;
+  width: 100%;
+}
+
+.verify-form-wrapper {
+  margin-left: 'auto';
+  margin-right: 'auto';
+  width: '100%';
+}
+
+.verify-instructions {
+  color: red;
+  font-family: 'New Athletic M54';
+  font-size: 28px;
+  font-weight: 900;
+  margin-bottom: '.25em';
+  text-shadow: 2px 2px 4px black;
+}
+
+.code-sent-message {
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande',
+    'Lucida Sans', Arial, sans-serif;
+  font-size: '14px';
+  margin-bottom: 1em;
+  padding-bottom: '2em';
+}
+
+.user-email {
+  font-style: 'italic';
+}
+
+.verify-form {
+  max-width: 1000px;
+}
+
+.code-input-container {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: '1em';
+  max-width: '120px';
+}
+
+.code-label {
+  color: red;
+  font-family: 'New Athletic M54';
+  font-size: 24px;
+}
+
+.code-input {
+  background-color: white;
+  height: 30px;
+  max-width: 200px;
+  width: 40%;
+}
+
+.code-input:active {
+  background-color: transparent;
+}
+
+.button-and-resend-message {
+  align-content: 'left';
+  margin-bottom: 0.5em;
+  margin-top: 0.5em;
+}
+
+.resend-code-button {
+  margin-bottom: 0.5em;
+  margin-left: '.25em';
+  margin-top: '0em';
+  max-width: '110px';
+  padding: 0em;
+  position: relative;
+  right: 1em;
+}
+
+.sent-message {
+  font-style: italic;
+}
+
+.verify-divider {
+  margin-bottom: '1.5em';
+  margin-top: '1em';
+  width: 75%;
+}
+
+.new-password-input-container {
+  display: flex;
+  flex-direction: column;
+  margin-top: 1em;
+}
+
+.new-password-input-label {
+  color: red;
+  font-family: 'New Athletic M54';
+  font-size: 24px;
+}
+
+.new-password-input {
+  background-color: white;
+  height: 30px;
+  max-width: 400px;
+  width: 100%;
+}
+
+.new-password-input:active {
+  background-color: transparent;
+}
+
+.verify-button-container {
+  display: flex;
+  flex-direction: row;
+  padding-top: 0.5em;
+  text-align: left;
+}
+
+.cancel-container {
+  margin-right: 1em;
+}
+
+@media screen and (min-width: 500px) {
+  .verify-wrapper {
+    padding-left: 1em;
+    padding-right: 1em;
+  }
+
+  .verify-form-wrapper {
+    max-width: '600px';
+  }
+}

@@ -25,6 +25,7 @@ export default function AdminCreatePost() {
   };
 
   const onSubmit = (event) => {
+    console.log(post.body);
     const newBlog = {
       blog: post,
     };
@@ -131,4 +132,5 @@ AdminCreatePost.formats = [
   'image',
   'video',
   'code-block',
+  'align',
 ];
