@@ -90,7 +90,7 @@ export default function LoginForm({id, setSelectedForm}) {
             />
           </div>
           <div className='input-wrapper-bottom'>
-            {showLogin ? (
+            {!showLogin ? (
               <div className='input-wrapper-middle'>
                 <label className='email-label'>Email</label>
                 <input
