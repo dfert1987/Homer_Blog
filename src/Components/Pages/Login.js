@@ -2,7 +2,6 @@ import React, {useState} from 'react';
 import LoginForm from '../LoginOptions/LoginForm';
 import VerifyCode from '../LoginOptions/VerifyCode';
 import ResetPassword from '../LoginOptions/ResetPassword';
-
 import './Login.css';
 
 export default function Login() {

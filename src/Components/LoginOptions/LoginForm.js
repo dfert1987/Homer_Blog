@@ -1,4 +1,4 @@
-import React, {useCallback, useState} from 'react';
+import React, {useState} from 'react';
 import {Button} from '../Button/Button';
 import {useHistory} from 'react-router-dom';
 import './LoginForm.css';
@@ -7,23 +7,46 @@ export default function LoginForm({id, setSelectedForm}) {
   const history = useHistory();
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
+  const [email, setEmail] = useState('');
 
-  const onSubmit = () => {
+  const onSubmit = (event) => {
+    const user = {
+      username: username,
+      password: password,
+    };
+    fetch('http://localhost:3000/login', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(user),
+    })
+    setUsername('');
+    setPassword('');
     history.push('/');
+    event.preventDefault();
     return;
   };
 
-  const updateField = useCallback(
-    (name, value) => {
-      if (name === 'username') {
-        setUsername(value);
-      }
-      if (name === 'password') {
-        setPassword(value);
-      }
-    },
-    [setUsername, setPassword]
-  );
+  const createUser = () => {
+    const newUser = {
+      username: username,
+      password: password,
+      email: email,
+    };
+    fetch('http://localhost:3000/users', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(newUser),
+    })
+    setUsername('');
+    setPassword('');
+    setEmail('');
+    history.push('/');
+    return;
+  }
 
   const loginFormId = `${id}-login`;
 
@@ -38,7 +61,7 @@ export default function LoginForm({id, setSelectedForm}) {
               className='login-input'
               id={`${loginFormId}-username`}
               value={username}
-              onChange={updateField}
+              onChange={(e) => setUsername(e.target.value)}
               name='username'
             />
           </div>
@@ -50,7 +73,18 @@ export default function LoginForm({id, setSelectedForm}) {
               id={`${loginFormId}-password`}
               value={password}
               name='password'
-              onChange={updateField}
+              onChange={(e) => setPassword(e.target.value)}
+            />
+          </div>
+          <div className='input-wrapper-bottom'>
+            <label className='login-password-label'>Email</label>
+            <input
+              className='password-input'
+              type='text'
+              id={`${loginFormId}-email`}
+              value={email}
+              name='email'
+              onChange={(e) => setEmail(e.target.value)}
             />
           </div>
           <div className='buttons'>
@@ -67,7 +101,8 @@ export default function LoginForm({id, setSelectedForm}) {
               <Button
                 id={`${loginFormId}-sign-up`}
                 className='signup-button'
-                type='submit'
+                type='button'
+                onClick={(e) => createUser(e.target.value)}
               >
                 Sign Up
               </Button>
@@ -79,7 +114,7 @@ export default function LoginForm({id, setSelectedForm}) {
           <Button
             id={`${loginFormId}-reset`}
             className='forgot-password-button'
-            onClick={() => setSelectedForm()}
+            onClick={() => setSelectedForm('resetPassword')}
             type='button'
           >
             Forgot Your Password?
