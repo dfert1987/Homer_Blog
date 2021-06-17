@@ -78,7 +78,7 @@ export default function LoginForm({id, setSelectedForm}) {
               name='username'
             />
           </div>
-          <div className='input-wrapper-bottom'>
+          <div className='input-wrapper-middle'>
             <label className='login-password-label'>Password</label>
             <input
               className='password-input'
@@ -88,11 +88,11 @@ export default function LoginForm({id, setSelectedForm}) {
               name='password'
               onChange={(e) => setPassword(e.target.value)}
             />
-          </div>{' '}
+          </div>
           <div className='input-wrapper-bottom'>
             {showLogin ? (
-              <>
-                <label className='login-email-label'>Email</label>
+              <div className='input-wrapper-middle'>
+                <label className='email-label'>Email</label>
                 <input
                   className='password-input'
                   type='text'
@@ -101,7 +101,7 @@ export default function LoginForm({id, setSelectedForm}) {
                   name='email'
                   onChange={(e) => setEmail(e.target.value)}
                 />{' '}
-              </>
+              </div>
             ) : null}
           </div>
           <div className='buttons'>
