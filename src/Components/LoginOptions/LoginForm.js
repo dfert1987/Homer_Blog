@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import {Button} from '../Button/Button';
 import {useHistory} from 'react-router-dom';
 import './LoginForm.css';
@@ -9,6 +9,7 @@ export default function LoginForm({id, setSelectedForm}) {
   const [password, setPassword] = useState('');
   const [email, setEmail] = useState('');
   const [showLogin, setShowLogin] = useState(true);
+  const [userProf, setUserProf] = useState();
 
   const onSubmit = (event) => {
     if (showLogin) {
@@ -30,12 +31,21 @@ export default function LoginForm({id, setSelectedForm}) {
         'Content-Type': 'application/json',
       },
       body: JSON.stringify(user),
-    });
-    setUsername('');
-    setPassword('');
-    history.push('/');
-    return;
+    })
+      .then((response) => response.json())
+      .then((result) => setUserProf(result.user));
   };
+
+  useEffect(() => {
+    if (userProf) {
+      console.log(userProf)
+      localStorage.setItem('user', JSON.stringify(userProf));
+      setUsername('');
+      setPassword('');
+      history.push('/');
+      return;
+    }
+  }, [userProf, history]);
 
   const createUser = () => {
     const newUser = {
@@ -53,7 +63,7 @@ export default function LoginForm({id, setSelectedForm}) {
     setUsername('');
     setPassword('');
     setEmail('');
-    history.push('/');
+    setShowLogin(true);
     return;
   };
 
