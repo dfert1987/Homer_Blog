@@ -11,6 +11,7 @@ import Login from './Components/Pages/Login';
 import AdminCreatePost from './Admin/AdminCreatePost';
 import Blog from './Components/Pages/Blog';
 import './App.css';
+import UserProfile from './Components/Pages/UserProfile';
 
 function App() {
   const [userProfile, setUserProfile] = useState();
@@ -41,6 +42,12 @@ function App() {
             path='/AdminCreatePost'
             exact
             component={AdminCreatePost}
+            user={userProfile}
+          />
+          <Route
+            path='/profile'
+            exact
+            component={UserProfile}
             user={userProfile}
           />
         </Switch>
