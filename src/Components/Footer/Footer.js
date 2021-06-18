@@ -1,10 +1,22 @@
-import React from 'react';
+import React, {useEffect, useState} from 'react';
 import {Button} from '../Button/Button';
 import CreatePost from '../Footer/CreatePost';
 import './Footer.css';
 
 function Footer({setContactModal}) {
+  const [user, setUser] = useState();
   const handleClick = () => setContactModal(true);
+
+  useEffect(() => {
+    setUser(JSON.parse(localStorage.getItem('user')));
+  }, [setUser]);
+
+  const adminOptions = () => {
+    if (user && user.admin === true) {
+      return <CreatePost className='admin' />;
+    }
+    return null;
+  };
 
   return (
     <div className='footer-container'>
@@ -17,7 +29,8 @@ function Footer({setContactModal}) {
         >
           CONTACT US
         </Button>
-        <CreatePost className='admin' />
+        {adminOptions()}
+        {/* <CreatePost className='admin' /> */}
       </section>
     </div>
   );
