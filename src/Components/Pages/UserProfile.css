@@ -2,3 +2,110 @@
   display: flex;
   flex-direction: column;
 }
+
+.profile-body {
+  display: flex;
+  flex-direction: column;
+}
+
+.username-admin-container {
+  display: flex;
+  flex-direction: row;
+}
+
+.profile-header {
+  align-items: center;
+  background-color: #b3ddf2;
+  border-top: 4px solid #fff;
+  color: #fff;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  padding: 3rem 5% 2rem;
+}
+
+.profile-avatar {
+  border: 4px solid #fff;
+  border-radius: 50%;
+  box-sizing: border-box;
+  height: 12rem;
+  margin-right: 4%;
+  width: 12rem;
+}
+
+.profile-title {
+  font-size: 55px;
+}
+
+.header-text-container {
+  display: flex;
+  flex-direction: column;
+  font-family: 'Trebuchet MS';
+}
+
+.profile-about {
+  font-size: 35px;
+}
+
+.profile-admin {
+  font-size: 35px;
+  margin-left: 0.5em;
+}
+
+.profile-card-content {
+  display: flex;
+  flex-direction: column;
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande',
+    'Lucida Sans', Arial, sans-serif;
+  justify-content: center;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 1em;
+}
+.column-container {
+  display: flex;
+  flex-direction: row;
+}
+
+.first-column {
+  display: flex;
+  flex-direction: column;
+  margin-right: 3em;
+}
+
+.second-column {
+  display: flex;
+  flex-direction: column;
+}
+.label {
+  font-size: 25px;
+}
+
+.user-name {
+  margin-bottom: 1em;
+}
+
+.user-email {
+  margin-bottom: 1em;
+}
+
+.city-container {
+  margin-top: 1em;
+}
+
+.state-container {
+  margin-top: 1em;
+}
+
+.about-container {
+  margin-bottom: 2em;
+}
+
+.edit-button {
+  margin-right: 1em;
+}
+
+.button-container {
+  display: flex;
+  flex-direction: row;
+}
