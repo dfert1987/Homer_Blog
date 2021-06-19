@@ -76,6 +76,7 @@ export default function UserProfile() {
             </div>
           </div>
         </header>
+        {!editing ? (
         <div className='profile-card-content'>
           <div className='column-container'>
             <div className='first-column'>
@@ -115,7 +116,9 @@ export default function UserProfile() {
           </div>
           <div className='button-container'>
             <div className='edit-button'>
-              <Button type='button' onClick={setIsEditing(true)}>Edit Profile</Button>
+              <Button type='button' onClick={setEditing(true)}>
+                Edit Profile
+              </Button>
             </div>
             <div className='exit-button'>
               <Link to='/'>
@@ -124,6 +127,12 @@ export default function UserProfile() {
             </div>
           </div>
         </div>
+        ) : ( 
+            <form className='edit-profile-form'>
+
+            </form>
+        )
+        }
       </div>
     </div>
   );
