@@ -8,27 +8,46 @@ import './UserProfile.css';
 export default function UserProfile() {
   const [user, setUser] = useState();
   const [editing, setEditing] = useState(false);
-  const [firstName, setFirstName] = useState('');
-  const [lastName, setLastName] = useState('');
-  const [email, setEmail] = useState('');
-  const [city, setCity] = useState('');
-  const [state, setState] = useState('');
-  const [avatar, setAvatar] = useState('');
-  const [dob, setDob] = useState('');
-  const [twitter, setTwitter] = useState('');
-  const [about, setAbout] = useState('');
-
-  const onSubmit = () => {
-    setEditing(false);
-  };
-
-  const setIsEditing = () => {
-    setEditing(true)
-  }
+  const [firstName, setFirstName] = useState(user ? user.first_name : '');
+  const [lastName, setLastName] = useState(user ? user.last_name : '');
+  const [email, setEmail] = useState(user ? user.email : '');
+  const [city, setCity] = useState(user ? user.city : '');
+  const [state, setState] = useState(user ? user.state : '');
+  const [avatar, setAvatar] = useState(user ? user.avatar : '');
+  const [dob, setDob] = useState(user ? user.dob : '');
+  const [twitter, setTwitter] = useState(user ? user.twitter : '');
+  const [about, setAbout] = useState(user ? user.about : '');
 
   useEffect(() => {
     setUser(JSON.parse(localStorage.getItem('user')));
   }, [setUser]);
+
+  const onSubmit = (e) => {
+    const newUser = {
+      first_name: firstName,
+      last_name: lastName,
+      email: email,
+      city: city,
+      state: state,
+      dob: dob,
+      twitter: twitter,
+      about: about,
+      password: user.password_digest,
+      username: user.username,
+    };
+    if (user) {
+      fetch(`http://localhost:3000/users/${user.id}`, {
+        method: 'PATCH',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(newUser),
+      });
+    }
+    console.log(newUser);
+    e.preventDefault();
+    console.log(user);
+  };
 
   const populate = (descriptor) => {
     if (!user) {
@@ -183,7 +202,7 @@ export default function UserProfile() {
             </div>
             <div className='button-container'>
               <div className='edit-button'>
-                <Button type='button' onClick={() => setIsEditing()}>
+                <Button type='button' onClick={() => setEditing(true)}>
                   Edit Profile
                 </Button>
               </div>
@@ -194,16 +213,24 @@ export default function UserProfile() {
               </div>
             </div>
           </div>
-        ) : ( 
+        ) : (
           <div className='form-container'>
-            <h3 className='form-header'>Edit Your Personal Info</h3>
-            <form className='edit-profile-form' onSubmit={() => onSubmit}>
+            <header className='header-container'>
+              <h3 className='form-header'>Edit Your Personal Info</h3>
+              <h4 className='form-subheader'>
+                Only fill out fields you want updated
+              </h4>
+            </header>
+            <form className='edit-profile-form' onSubmit={onSubmit}>
               <div className='input-wrapper'>
                 <div className='first-name-wrapper'>
                   <label className='form-label'>First Name:</label>
                   <input
                     id={`${id}-first-name-input`}
                     className='first-name-input'
+                    placeholder={
+                      user.first_name ? user.first_name : 'First Name...'
+                    }
                     value={firstName}
                     onChange={(e) => setFirstName(e.target.value)}
                     name='firstName'
@@ -214,6 +241,9 @@ export default function UserProfile() {
                   <input
                     id={`${id}-last-name-input`}
                     className='last-name-input'
+                    placeholder={
+                      user.last_name ? user.last_name : 'Last Name...'
+                    }
                     value={lastName}
                     onChange={(e) => setLastName(e.target.value)}
                     name='lastName'
@@ -224,6 +254,9 @@ export default function UserProfile() {
                   <input
                     id={`${id}-email-input`}
                     className='email-input'
+                    placeholder={
+                      user.email ? user.email : 'sombody@gmail.com...'
+                    }
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
                     name='email'
@@ -234,6 +267,9 @@ export default function UserProfile() {
                   <input
                     id={`${id}-twitter-input`}
                     className='twitter-input'
+                    placeholder={
+                      user.twitter ? user.twitter : 'twitter.com/Joe-Fan'
+                    }
                     value={twitter}
                     onChange={(e) => setTwitter(e.target.value)}
                     name='twitter'
@@ -245,6 +281,7 @@ export default function UserProfile() {
                     id={`${id}-dob-input`}
                     className='dob-input'
                     value={dob}
+                    placeholder={user.dob ? user.dob : '01/10/1990'}
                     onChange={(e) => setDob(e.target.value)}
                     name='dob'
                   />
@@ -255,6 +292,7 @@ export default function UserProfile() {
                     id={`${id}-city-input`}
                     className='city-input'
                     value={city}
+                    placeholder={user.city ? user.city : 'Chicago'}
                     onChange={(e) => setCity(e.target.value)}
                     name='city'
                   />
@@ -267,14 +305,21 @@ export default function UserProfile() {
                     value={state}
                     onChange={(e) => setState(e.target.value)}
                     name='state'
-                    options={states}
-                  />
+                  >
+                    <option value='IL'>IL</option>
+                    {states.map((state) => (
+                      <option value={state}>{state}</option>
+                    ))}
+                  </select>
                 </div>
                 <div className='avatar-wrapper'>
                   <label className='avatar-label'>Avatar:</label>
                   <input
                     id={`${id}-avatar-input`}
                     className='avatar-input'
+                    placeholder={
+                      user.avatar ? user.avatar : 'Some image link...'
+                    }
                     value={avatar}
                     onChange={(e) => setAvatar(e.target.value)}
                     name='avatar'
@@ -285,6 +330,9 @@ export default function UserProfile() {
                   <textarea
                     id={`${id}-about-input`}
                     className='about-input'
+                    placeholder={
+                      user.about ? user.about : 'Tell us about yourself...'
+                    }
                     value={about}
                     onChange={(e) => setAbout(e.target.value)}
                     name='about'
@@ -303,11 +351,10 @@ export default function UserProfile() {
               </div>
             </form>
             <hr className='form-divider' />
-            <UpdatePass user={user} id={id} setEditing={setEditing}/>
+            <UpdatePass user={user} id={id} />
           </div>
-          )}
+        )}
       </div>
-
     </div>
   );
 }

@@ -110,7 +110,7 @@ export default function LoginForm({id, setSelectedForm}) {
                   value={email}
                   name='email'
                   onChange={(e) => setEmail(e.target.value)}
-                />{' '}
+                />
               </div>
             ) : null}
           </div>
