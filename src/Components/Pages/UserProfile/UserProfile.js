@@ -6,84 +6,163 @@ import {Link} from 'react-router-dom';
 import './UserProfile.css';
 
 export default function UserProfile() {
-  const [user, setUser] = useState();
+  const defaultUser = {
+    first_name: '',
+    last_name: '',
+    email: '',
+    dob: '',
+    twitter: '',
+    avatar: '',
+    city: '',
+    state: '',
+    about: '',
+  };
+  const [storedUser, setStoredUser] = useState();
   const [editing, setEditing] = useState(false);
-  const [firstName, setFirstName] = useState(user ? user.first_name : '');
-  const [lastName, setLastName] = useState(user ? user.last_name : '');
-  const [email, setEmail] = useState(user ? user.email : '');
-  const [city, setCity] = useState(user ? user.city : '');
-  const [state, setState] = useState(user ? user.state : '');
-  const [avatar, setAvatar] = useState(user ? user.avatar : '');
-  const [dob, setDob] = useState(user ? user.dob : '');
-  const [twitter, setTwitter] = useState(user ? user.twitter : '');
-  const [about, setAbout] = useState(user ? user.about : '');
+  const [twitter, setTwitter] = useState();
+  const [first_name, setFirst_name] = useState();
+  const [last_name, setLast_name] = useState();
+  const [email, setEmail] = useState();
+  const [avatar, setAvatar] = useState();
+  const [dob, setDob] = useState();
+  const [city, setCity] = useState();
+  const [state, setState] = useState();
+  const [about, setAbout] = useState();
 
+  console.log(storedUser);
   useEffect(() => {
-    setUser(JSON.parse(localStorage.getItem('user')));
-  }, [setUser]);
+    setStoredUser(JSON.parse(localStorage.getItem('user')));
+  }, []);
 
-  const onSubmit = (e) => {
-    const newUser = {
-      first_name: firstName,
-      last_name: lastName,
-      email: email,
-      city: city,
-      state: state,
-      dob: dob,
-      twitter: twitter,
-      about: about,
-      password: user.password_digest,
-      username: user.username,
+  const onSubmit = async (e) => {
+    e.preventDefault();
+    const setNew = (key) => {
+      if (key === 'first') {
+        if (first_name) {
+          return first_name;
+        }
+        return storedUser.first_name;
+      }
+      if (key === 'last') {
+        if (last_name) {
+          return last_name;
+        }
+        return storedUser.last_name;
+      }
+      if (key === 'email') {
+        if (email) {
+          return email;
+        }
+        return storedUser.email;
+      }
+      if (key === 'twitter') {
+        if (twitter) {
+          return twitter;
+        }
+        return storedUser.twitter;
+      }
+      if (key === 'dob') {
+        if (dob) {
+          return dob;
+        }
+        return storedUser.dob;
+      }
+      if (key === 'avatar') {
+        if (avatar) {
+          return avatar;
+        }
+        return storedUser.avatar;
+      }
+      if (key === 'city') {
+        if (city) {
+          return city;
+        }
+        return storedUser.city;
+      }
+      if (key === 'state') {
+        if (state) {
+          return state;
+        }
+        return storedUser.state;
+      }
+      if (key === 'about') {
+        if (about) {
+          return about;
+        }
+        return storedUser.about;
+      }
     };
-    if (user) {
-      fetch(`http://localhost:3000/users/${user.id}`, {
+
+    const newData = {
+      first_name: setNew('first'),
+      last_name: setNew('last'),
+      email: setNew('email'),
+      avatar: setNew('avatar'),
+      twitter: setNew('twitter'),
+      dob: setNew('dob'),
+      city: setNew('city'),
+      state: setNew('state'),
+      about: setNew('about'),
+      username: storedUser.username,
+      id: storedUser.id,
+      password_digest: storedUser.password_digest,
+    };
+
+    const response = await fetch(
+      `http://localhost:3000/users/${storedUser.id}`,
+      {
         method: 'PATCH',
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify(newUser),
-      });
-    }
-    console.log(newUser);
-    e.preventDefault();
-    console.log(user);
+        body: JSON.stringify(newData),
+      }
+    );
+    const data = await response.json();
+    updateAndSwitch(data, newData);
+  };
+
+  const updateAndSwitch = (data, newData) => {
+    localStorage.setItem('user', JSON.stringify(newData));
+    setStoredUser(JSON.parse(localStorage.getItem('user')));
+    setEditing(false);
   };
 
   const populate = (descriptor) => {
-    if (!user) {
+    if (!storedUser) {
       return null;
     }
     if (descriptor === 'avatar') {
-      return user.avatar;
+      return storedUser.avatar;
     }
     if (descriptor === 'title') {
-      return user.username;
+      return storedUser.username;
     }
     if (descriptor === 'firstName') {
-      return user.first_name;
+      return storedUser.first_name;
     }
     if (descriptor === 'lastName') {
-      return user.last_name;
+      return storedUser.last_name;
     }
     if (descriptor === 'email') {
-      return user.email;
+      return storedUser.email;
     }
     if (descriptor === 'twitter') {
-      return user.twitter;
+      return storedUser.twitter;
     }
     if (descriptor === 'dob') {
-      return user.dob;
+      return storedUser.dob;
     }
     if (descriptor === 'city') {
-      return user.city;
+      return storedUser.city;
     }
     if (descriptor === 'state') {
-      return user.state;
+      return storedUser.state;
     }
     if (descriptor === 'about') {
-      return user.about;
+      return storedUser.about;
     }
-    if (descriptor === 'admin' && user.admin === true) {
+    if (descriptor === 'admin' && storedUser.admin === true) {
       return '(Admin)';
     } else {
       return null;
@@ -229,11 +308,13 @@ export default function UserProfile() {
                     id={`${id}-first-name-input`}
                     className='first-name-input'
                     placeholder={
-                      user.first_name ? user.first_name : 'First Name...'
+                      storedUser && storedUser.first_name
+                        ? storedUser.first_name
+                        : 'First Name...'
                     }
-                    value={firstName}
-                    onChange={(e) => setFirstName(e.target.value)}
-                    name='firstName'
+                    value={first_name || ''}
+                    onChange={(e) => setFirst_name(e.target.value)}
+                    name='first_name'
                   />
                 </div>
                 <div className='last-name-wrapper'>
@@ -242,11 +323,13 @@ export default function UserProfile() {
                     id={`${id}-last-name-input`}
                     className='last-name-input'
                     placeholder={
-                      user.last_name ? user.last_name : 'Last Name...'
+                      storedUser && storedUser.last_name
+                        ? storedUser.last_name
+                        : 'Last Name...'
                     }
-                    value={lastName}
-                    onChange={(e) => setLastName(e.target.value)}
-                    name='lastName'
+                    value={last_name || ''}
+                    onChange={(e) => setLast_name(e.target.value)}
+                    name='last_name'
                   />
                 </div>
                 <div className='email-wrapper'>
@@ -255,9 +338,11 @@ export default function UserProfile() {
                     id={`${id}-email-input`}
                     className='email-input'
                     placeholder={
-                      user.email ? user.email : 'sombody@gmail.com...'
+                      storedUser && storedUser.email
+                        ? storedUser.email
+                        : 'sombody@gmail.com...'
                     }
-                    value={email}
+                    value={email || ''}
                     onChange={(e) => setEmail(e.target.value)}
                     name='email'
                   />
@@ -268,7 +353,9 @@ export default function UserProfile() {
                     id={`${id}-twitter-input`}
                     className='twitter-input'
                     placeholder={
-                      user.twitter ? user.twitter : 'twitter.com/Joe-Fan'
+                      storedUser && storedUser.twitter
+                        ? storedUser.twitter
+                        : 'twitter.com/Joe-Fan'
                     }
                     value={twitter}
                     onChange={(e) => setTwitter(e.target.value)}
@@ -280,8 +367,12 @@ export default function UserProfile() {
                   <input
                     id={`${id}-dob-input`}
                     className='dob-input'
-                    value={dob}
-                    placeholder={user.dob ? user.dob : '01/10/1990'}
+                    value={dob || ''}
+                    placeholder={
+                      storedUser && storedUser.dob
+                        ? storedUser.dob
+                        : '01/10/1990'
+                    }
                     onChange={(e) => setDob(e.target.value)}
                     name='dob'
                   />
@@ -291,8 +382,12 @@ export default function UserProfile() {
                   <input
                     id={`${id}-city-input`}
                     className='city-input'
-                    value={city}
-                    placeholder={user.city ? user.city : 'Chicago'}
+                    value={city || ''}
+                    placeholder={
+                      storedUser && storedUser.city
+                        ? storedUser.city
+                        : 'Chicago'
+                    }
                     onChange={(e) => setCity(e.target.value)}
                     name='city'
                   />
@@ -302,7 +397,7 @@ export default function UserProfile() {
                   <select
                     id={`${id}-state-select`}
                     className='state-select'
-                    value={state}
+                    value={state || ''}
                     onChange={(e) => setState(e.target.value)}
                     name='state'
                   >
@@ -318,9 +413,11 @@ export default function UserProfile() {
                     id={`${id}-avatar-input`}
                     className='avatar-input'
                     placeholder={
-                      user.avatar ? user.avatar : 'Some image link...'
+                      storedUser && storedUser.avatar
+                        ? storedUser.avatar
+                        : 'Some image link...'
                     }
-                    value={avatar}
+                    value={avatar || ''}
                     onChange={(e) => setAvatar(e.target.value)}
                     name='avatar'
                   />
@@ -331,9 +428,11 @@ export default function UserProfile() {
                     id={`${id}-about-input`}
                     className='about-input'
                     placeholder={
-                      user.about ? user.about : 'Tell us about yourself...'
+                      storedUser && storedUser.about
+                        ? storedUser.about
+                        : 'Tell us about yourself...'
                     }
-                    value={about}
+                    value={about || ''}
                     onChange={(e) => setAbout(e.target.value)}
                     name='about'
                   />
@@ -351,7 +450,7 @@ export default function UserProfile() {
               </div>
             </form>
             <hr className='form-divider' />
-            <UpdatePass user={user} id={id} />
+            <UpdatePass user={storedUser} id={id} />
           </div>
         )}
       </div>
