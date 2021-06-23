@@ -6,17 +6,6 @@ import {Link} from 'react-router-dom';
 import './UserProfile.css';
 
 export default function UserProfile() {
-  const defaultUser = {
-    first_name: '',
-    last_name: '',
-    email: '',
-    dob: '',
-    twitter: '',
-    avatar: '',
-    city: '',
-    state: '',
-    about: '',
-  };
   const [storedUser, setStoredUser] = useState();
   const [editing, setEditing] = useState(false);
   const [twitter, setTwitter] = useState();

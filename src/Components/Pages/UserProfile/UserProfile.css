@@ -101,6 +101,13 @@
   margin-bottom: 2em;
 }
 
+.about {
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande',
+    'Lucida Sans', Arial, sans-serif;
+  font-size: 20px;
+  text-align: left;
+}
+
 .edit-button {
   margin-right: 1em;
 }
