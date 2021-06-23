@@ -1,9 +1,10 @@
 import React, {useState, useEffect} from 'react';
 import UpdatePass from './UpdatePass';
+import states from './states';
 import {Button} from '../../Button/Button';
 import {Link} from 'react-router-dom';
-
 import './UserProfile.css';
+import './UpdatePass.css';
 
 export default function UserProfile() {
   const [storedUser, setStoredUser] = useState();
@@ -17,8 +18,9 @@ export default function UserProfile() {
   const [city, setCity] = useState();
   const [state, setState] = useState();
   const [about, setAbout] = useState();
+  console.log(states);
 
-  console.log(storedUser);
+
   useEffect(() => {
     setStoredUser(JSON.parse(localStorage.getItem('user')));
   }, []);
@@ -159,60 +161,6 @@ export default function UserProfile() {
   };
 
   const id = 'profile';
-  const states = [
-    'AK',
-    'AL',
-    'AR',
-    'AZ',
-    'CA',
-    'CO',
-    'CT',
-    'DC',
-    'DE',
-    'FL',
-    'GA',
-    'HI',
-    'IA',
-    'ID',
-    'IL',
-    'IN',
-    'KS',
-    'KY',
-    'LA',
-    'MA',
-    'ME',
-    'MI',
-    'MD',
-    'MN',
-    'MO',
-    'MS',
-    'MT',
-    'NE',
-    'NC',
-    'ND',
-    'NH',
-    'NJ',
-    'NM',
-    'NV',
-    'NY',
-    'OH',
-    'OK',
-    'OR',
-    'PA',
-    'RI',
-    'SC',
-    'SD',
-    'TN',
-    'TX',
-    'UT',
-    'VA',
-    'VT',
-    'WA',
-    'WI',
-    'WV',
-    'WY',
-  ];
-
   return (
     <div className='profile-container'>
       <div className='profile-body'>
@@ -391,7 +339,7 @@ export default function UserProfile() {
                     name='state'
                   >
                     <option value='IL'>IL</option>
-                    {states.map((state) => (
+                    {states.states.map((state) => (
                       <option value={state}>{state}</option>
                     ))}
                   </select>
