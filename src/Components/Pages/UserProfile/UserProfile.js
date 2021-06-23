@@ -4,7 +4,6 @@ import states from './states';
 import {Button} from '../../Button/Button';
 import {Link} from 'react-router-dom';
 import './UserProfile.css';
-import './UpdatePass.css';
 
 export default function UserProfile() {
   const [storedUser, setStoredUser] = useState();
@@ -18,8 +17,6 @@ export default function UserProfile() {
   const [city, setCity] = useState();
   const [state, setState] = useState();
   const [about, setAbout] = useState();
-  console.log(states);
-
 
   useEffect(() => {
     setStoredUser(JSON.parse(localStorage.getItem('user')));
@@ -239,140 +236,145 @@ export default function UserProfile() {
             </header>
             <form className='edit-profile-form' onSubmit={onSubmit}>
               <div className='input-wrapper'>
-                <div className='first-name-wrapper'>
-                  <label className='form-label'>First Name:</label>
-                  <input
-                    id={`${id}-first-name-input`}
-                    className='first-name-input'
-                    placeholder={
-                      storedUser && storedUser.first_name
-                        ? storedUser.first_name
-                        : 'First Name...'
-                    }
-                    value={first_name || ''}
-                    onChange={(e) => setFirst_name(e.target.value)}
-                    name='first_name'
-                  />
+                <div className='first-column'>
+                  <div className='first-name-wrapper'>
+                    <label className='form-label'>First Name:</label>
+                    <input
+                      id={`${id}-first-name-input`}
+                      className='first-name-input'
+                      placeholder={
+                        storedUser && storedUser.first_name
+                          ? storedUser.first_name
+                          : 'First Name...'
+                      }
+                      value={first_name || ''}
+                      onChange={(e) => setFirst_name(e.target.value)}
+                      name='first_name'
+                    />
+                  </div>
+                  <div className='last-name-wrapper'>
+                    <label className='form-label'>Last Name:</label>
+                    <input
+                      id={`${id}-last-name-input`}
+                      className='last-name-input'
+                      placeholder={
+                        storedUser && storedUser.last_name
+                          ? storedUser.last_name
+                          : 'Last Name...'
+                      }
+                      value={last_name || ''}
+                      onChange={(e) => setLast_name(e.target.value)}
+                      name='last_name'
+                    />
+                  </div>
+                  <div className='email-wrapper'>
+                    <label className='form-label'>Email:</label>
+                    <input
+                      id={`${id}-email-input`}
+                      className='email-input'
+                      placeholder={
+                        storedUser && storedUser.email
+                          ? storedUser.email
+                          : 'sombody@gmail.com...'
+                      }
+                      value={email || ''}
+                      onChange={(e) => setEmail(e.target.value)}
+                      name='email'
+                    />
+                  </div>
+                  <div className='twitter-wrapper'>
+                    <label className='form-label'>Twitter:</label>
+                    <input
+                      id={`${id}-twitter-input`}
+                      className='twitter-input'
+                      placeholder={
+                        storedUser && storedUser.twitter
+                          ? storedUser.twitter
+                          : 'twitter.com/Joe-Fan'
+                      }
+                      value={twitter}
+                      onChange={(e) => setTwitter(e.target.value)}
+                      name='twitter'
+                    />
+                  </div>
+                  <div className='about-wrapper'>
+                    <label className='about-label'>About:</label>
+                    <textarea
+                      id={`${id}-about-input`}
+                      className='about-input'
+                      placeholder={
+                        storedUser && storedUser.about
+                          ? storedUser.about
+                          : 'Tell us about yourself...'
+                      }
+                      value={about || ''}
+                      onChange={(e) => setAbout(e.target.value)}
+                      name='about'
+                      rows='6'
+                    />
+                  </div>
                 </div>
-                <div className='last-name-wrapper'>
-                  <label className='form-label'>Last Name:</label>
-                  <input
-                    id={`${id}-last-name-input`}
-                    className='last-name-input'
-                    placeholder={
-                      storedUser && storedUser.last_name
-                        ? storedUser.last_name
-                        : 'Last Name...'
-                    }
-                    value={last_name || ''}
-                    onChange={(e) => setLast_name(e.target.value)}
-                    name='last_name'
-                  />
-                </div>
-                <div className='email-wrapper'>
-                  <label className='form-label'>Email:</label>
-                  <input
-                    id={`${id}-email-input`}
-                    className='email-input'
-                    placeholder={
-                      storedUser && storedUser.email
-                        ? storedUser.email
-                        : 'sombody@gmail.com...'
-                    }
-                    value={email || ''}
-                    onChange={(e) => setEmail(e.target.value)}
-                    name='email'
-                  />
-                </div>
-                <div className='twitter-wrapper'>
-                  <label className='form-label'>Twitter:</label>
-                  <input
-                    id={`${id}-twitter-input`}
-                    className='twitter-input'
-                    placeholder={
-                      storedUser && storedUser.twitter
-                        ? storedUser.twitter
-                        : 'twitter.com/Joe-Fan'
-                    }
-                    value={twitter}
-                    onChange={(e) => setTwitter(e.target.value)}
-                    name='twitter'
-                  />
-                </div>
-                <div className='dob-wrapper'>
-                  <label className='form-label'>DOB:</label>
-                  <input
-                    id={`${id}-dob-input`}
-                    className='dob-input'
-                    value={dob || ''}
-                    placeholder={
-                      storedUser && storedUser.dob
-                        ? storedUser.dob
-                        : '01/10/1990'
-                    }
-                    onChange={(e) => setDob(e.target.value)}
-                    name='dob'
-                  />
-                </div>
-                <div className='city-wrapper'>
-                  <label className='city-label'>City:</label>
-                  <input
-                    id={`${id}-city-input`}
-                    className='city-input'
-                    value={city || ''}
-                    placeholder={
-                      storedUser && storedUser.city
-                        ? storedUser.city
-                        : 'Chicago'
-                    }
-                    onChange={(e) => setCity(e.target.value)}
-                    name='city'
-                  />
-                </div>
-                <div className='state-wrapper'>
-                  <label className='state-label'>State:</label>
-                  <select
-                    id={`${id}-state-select`}
-                    className='state-select'
-                    value={state || ''}
-                    onChange={(e) => setState(e.target.value)}
-                    name='state'
-                  >
-                    <option value='IL'>IL</option>
-                    {states.states.map((state) => (
-                      <option value={state}>{state}</option>
-                    ))}
-                  </select>
-                </div>
-                <div className='avatar-wrapper'>
-                  <label className='avatar-label'>Avatar:</label>
-                  <input
-                    id={`${id}-avatar-input`}
-                    className='avatar-input'
-                    placeholder={
-                      storedUser && storedUser.avatar
-                        ? storedUser.avatar
-                        : 'Some image link...'
-                    }
-                    value={avatar || ''}
-                    onChange={(e) => setAvatar(e.target.value)}
-                    name='avatar'
-                  />
-                </div>
-                <div className='about-wrapper'>
-                  <label className='about-label'>About:</label>
-                  <textarea
-                    id={`${id}-about-input`}
-                    className='about-input'
-                    placeholder={
-                      storedUser && storedUser.about
-                        ? storedUser.about
-                        : 'Tell us about yourself...'
-                    }
-                    value={about || ''}
-                    onChange={(e) => setAbout(e.target.value)}
-                    name='about'
-                  />
+                <div className='right-column'>
+                  <div className='dob-wrapper'>
+                    <label className='form-label'>DOB:</label>
+                    <input
+                      id={`${id}-dob-input`}
+                      className='dob-input'
+                      value={dob || ''}
+                      placeholder={
+                        storedUser && storedUser.dob
+                          ? storedUser.dob
+                          : '01/10/1990'
+                      }
+                      onChange={(e) => setDob(e.target.value)}
+                      name='dob'
+                    />
+                  </div>
+                  <div className='city-wrapper'>
+                    <label className='city-label'>City:</label>
+                    <input
+                      id={`${id}-city-input`}
+                      className='city-input'
+                      value={city || ''}
+                      placeholder={
+                        storedUser && storedUser.city
+                          ? storedUser.city
+                          : 'Chicago'
+                      }
+                      onChange={(e) => setCity(e.target.value)}
+                      name='city'
+                    />
+                  </div>
+                  <div className='state-wrapper'>
+                    <label className='state-label'>State:</label>
+                    <select
+                      id={`${id}-state-select`}
+                      className='state-select'
+                      value={state || ''}
+                      onChange={(e) => setState(e.target.value)}
+                      name='state'
+                    >
+                      <option value='IL'>IL</option>
+                      {states.states.map((state) => (
+                        <option value={state}>{state}</option>
+                      ))}
+                    </select>
+                  </div>
+                  <div className='avatar-wrapper'>
+                    <label className='avatar-label'>Avatar:</label>
+                    <input
+                      id={`${id}-avatar-input`}
+                      className='avatar-input'
+                      placeholder={
+                        storedUser && storedUser.avatar
+                          ? storedUser.avatar
+                          : 'Some image link...'
+                      }
+                      value={avatar || ''}
+                      onChange={(e) => setAvatar(e.target.value)}
+                      name='avatar'
+                    />
+                  </div>
                 </div>
               </div>
               <div className='button-container'>

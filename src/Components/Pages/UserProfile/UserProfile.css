@@ -117,3 +117,150 @@
   flex-direction: row;
   margin-bottom: 1em;
 }
+
+.form-container {
+  display: flex;
+  flex-direction: column;
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande',
+    'Lucida Sans', Arial, sans-serif;
+  margin-top: 0.5em;
+  width: 100%;
+}
+
+.header-container {
+  margin-bottom: 1em;
+}
+
+.form-subheader {
+  font-style: italic;
+}
+
+.edit-profile-form {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.input-wrapper {
+  display: flex;
+  flex-direction: row;
+  margin-bottom: 1em;
+}
+
+.left-column {
+  display: flex;
+  flex-direction: column;
+  margin-right: 3em;
+}
+
+.right-column {
+  display: flex;
+  flex-direction: column;
+  margin-left: 3em;
+}
+
+.first-name-wrapper {
+  display: flex;
+  flex-direction: column;
+}
+
+.first-name-input {
+  font-size: 18px;
+  font-style: 'Trebuchet MS';
+  padding: 0.25em;
+}
+
+.last-name-wrapper {
+  display: flex;
+  flex-direction: column;
+  margin-top: 1em;
+}
+
+.last-name-input {
+  font-size: 18px;
+  font-style: 'Trebuchet MS';
+  padding: 0.25em;
+}
+
+.email-wrapper {
+  display: flex;
+  flex-direction: column;
+  margin-top: 1em;
+}
+
+.email-input {
+  font-size: 18px;
+  font-style: 'Trebuchet MS';
+  padding: 0.25em;
+}
+
+.twitter-input {
+  font-size: 18px;
+  font-style: 'Trebuchet MS';
+  padding: 0.25em;
+}
+
+.avatar-input {
+  font-size: 18px;
+  font-style: 'Trebuchet MS';
+  padding: 0.25em;
+}
+
+.twitter-wrapper {
+  display: flex;
+  flex-direction: column;
+  margin-top: 1em;
+}
+
+.about-wrapper {
+  display: flex;
+  flex-direction: column;
+  margin-top: 1em;
+}
+
+.dob-wrapper {
+  display: flex;
+  flex-direction: column;
+}
+
+.dob-input {
+  font-size: 18px;
+  font-style: 'Trebuchet MS';
+  padding: 0.25em;
+}
+
+.city-input {
+  font-size: 18px;
+  font-style: 'Trebuchet MS';
+  padding: 0.25em;
+}
+
+.state-select {
+  font-size: 18px;
+  font-style: 'Trebuchet MS';
+  padding: 0.25em;
+}
+
+.city-wrapper {
+  display: flex;
+  flex-direction: column;
+  margin-top: 1em;
+}
+
+.state-wrapper {
+  display: flex;
+  flex-direction: column;
+  margin-top: 1em;
+}
+
+.avatar-wrapper {
+  display: flex;
+  flex-direction: column;
+  margin-top: 1em;
+}
+
+.about-input {
+  font-size: 18px;
+  font-style: 'Trebuchet MS';
+  padding: 0.25em;
+  width: 200%;
+}
