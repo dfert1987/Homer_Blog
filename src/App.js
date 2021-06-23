@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from 'react';
+import React from 'react';
 import NavBar from './Components/NavBar/NavBar';
 import {BrowserRouter as Router, Switch, Route} from 'react-router-dom';
 import Home from './Components/Pages/Home';
@@ -10,46 +10,27 @@ import Meatball from './Components/Pages/Meatball';
 import Login from './Components/Pages/Login';
 import AdminCreatePost from './Admin/AdminCreatePost';
 import Blog from './Components/Pages/Blog';
+import UserProfile from './Components/Pages/UserProfile/UserProfile';
 import './App.css';
-import UserProfile from './Components/Pages/UserProfile';
+
+
 
 function App() {
-  const [userProfile, setUserProfile] = useState();
-
-  useEffect(() => {
-    setUserProfile(JSON.parse(localStorage.getItem('user')));
-  }, [setUserProfile]);
-
   return (
     <>
       <Router>
-        <NavBar user={userProfile} />
+        <NavBar />
         <Switch>
-          <Route path='/' exact component={Home} user={userProfile} />
-          <Route path='/about' exact component={About} user={userProfile} />
-          <Route path='/login' exact component={Login} user={userProfile} />
-          <Route path='/bulls' exact component={Bulls} user={userProfile} />
-          <Route path='/bears' exact component={Bears} user={userProfile} />
-          <Route path='/cubs' exact component={Cubs} user={userProfile} />
-          <Route
-            path='/meatball'
-            exact
-            component={Meatball}
-            user={userProfile}
-          />
-          <Route path='/blog/:blogId' component={Blog} user={userProfile} />
-          <Route
-            path='/AdminCreatePost'
-            exact
-            component={AdminCreatePost}
-            user={userProfile}
-          />
-          <Route
-            path='/profile'
-            exact
-            component={UserProfile}
-            user={userProfile}
-          />
+          <Route path='/' exact component={Home} />
+          <Route path='/about' exact component={About} />
+          <Route path='/login' exact component={Login} />
+          <Route path='/bulls' exact component={Bulls} />
+          <Route path='/bears' exact component={Bears} />
+          <Route path='/cubs' exact component={Cubs} />
+          <Route path='/meatball' exact component={Meatball} />
+          <Route path='/blog/:blogId' component={Blog} />
+          <Route path='/AdminCreatePost' exact component={AdminCreatePost} />
+          <Route path='/profile' exact component={UserProfile} />
         </Switch>
       </Router>
     </>

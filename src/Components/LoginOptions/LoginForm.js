@@ -38,7 +38,7 @@ export default function LoginForm({id, setSelectedForm}) {
 
   useEffect(() => {
     if (userProf) {
-      console.log(userProf)
+      console.log(userProf);
       localStorage.setItem('user', JSON.stringify(userProf));
       setUsername('');
       setPassword('');
@@ -110,7 +110,7 @@ export default function LoginForm({id, setSelectedForm}) {
                   value={email}
                   name='email'
                   onChange={(e) => setEmail(e.target.value)}
-                />{' '}
+                />
               </div>
             ) : null}
           </div>
