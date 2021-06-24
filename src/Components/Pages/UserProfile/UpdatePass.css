@@ -1,0 +1,81 @@
+.header-container {
+  margin-top: 0.5em;
+}
+
+.instructions {
+  font-style: italic;
+}
+
+.username-password-form {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.old-password-container {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 1em;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 0.5em;
+  width: 50%;
+}
+
+.old-password-input {
+  font-size: 18px;
+  font-style: 'Trebuchet MS';
+  margin-bottom: 1em;
+  padding: 0.25em;
+}
+
+.new-pass-name-container {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 2em;
+}
+
+.submit-old {
+  width: 20%;
+}
+
+.new-pass-container {
+  display: flex;
+  flex-direction: column;
+  margin-right: 2em;
+}
+
+.new-username-container {
+  display: flex;
+  flex-direction: column;
+  margin-left: 2em;
+}
+
+.new-username-input {
+  font-size: 18px;
+  font-style: 'Trebuchet MS';
+  padding: 0.25em;
+}
+
+.new-pass-input {
+  font-size: 18px;
+  font-style: 'Trebuchet MS';
+  padding: 0.25em;
+}
+
+.inputs-container {
+  display: flex;
+  flex-direction: row;
+}
+
+.buttons-container {
+  display: flex;
+  flex-direction: row;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 1em;
+}
+
+.exit-button {
+  margin-left: 2em;
+}
+

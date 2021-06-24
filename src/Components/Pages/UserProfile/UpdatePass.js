@@ -1,9 +1,9 @@
 import React, {useState, useEffect} from 'react';
 import {Button} from '../../Button/Button';
 import {Link} from 'react-router-dom';
-import './UserProfile.css';
+import './UpdatePass.css';
 
-export default function UpdatePass({id, user}) {
+export default function UpdatePass({id, setToggle}) {
   const [currentPassword, setCurrentPassword] = useState('');
   const [disabled, setDisabled] = useState(false);
   const [newPassword, setNewPassword] = useState('');
@@ -20,6 +20,9 @@ export default function UpdatePass({id, user}) {
           Update Username or Password
         </h3>
         <p className='instructions'>First input current password and submit.</p>
+        <p className='instructions'>
+          Only input both fields if you wish to update both fields.
+        </p>
       </div>
       <form onSubmit={onSubmit()} className='username-password-form'>
         <div className='old-password-container'>
@@ -33,46 +36,55 @@ export default function UpdatePass({id, user}) {
             disabled={disabled}
             onChange={(e) => setCurrentPassword(e.target.value)}
           />
-          <Button type='button' onClick={() => setDisabled(true)}>
+          <Button
+            className='submit-old'
+            type='button'
+            onClick={() => setDisabled(true)}
+          >
             Submit
           </Button>
         </div>
         <div className='new-pass-name-container'>
-          <div className='new-pass-container'>
-            <label className='new-password-label'>New Password:</label>
-            <input
-              className='new-password-input'
-              type='password'
-              id={`${id}-new-password`}
-              value={newPassword}
-              name='newPassword'
-              disabled={!disabled}
-              onChange={(e) => setNewPassword(e.target.value)}
-            />
+          <div className='inputs-container'>
+            <div className='new-pass-container'>
+              <label className='new-pass-label'>New Password:</label>
+              <input
+                className='new-pass-input'
+                type='password'
+                id={`${id}-new-password`}
+                value={newPassword}
+                name='newPassword'
+                disabled={!disabled}
+                onChange={(e) => setNewPassword(e.target.value)}
+              />
+            </div>
+            <div className='new-username-container'>
+              <label className='new-username-label'>New Username:</label>
+              <input
+                className='new-username-input'
+                type='text'
+                id={`${id}-new-username`}
+                value={newUsername}
+                name='newUsername'
+                disabled={!disabled}
+                onChange={(e) => setNewUsername(e.target.value)}
+              />
+            </div>
           </div>
-          <div className='new-username-container'>
-            <label className='new-username-label'>New Username:</label>
-            <input
-              className='new-username-input'
-              type='text'
-              id={`${id}-new-username`}
-              value={newUsername}
-              name='newUsername'
-              disabled={!disabled}
-              onChange={(e) => setNewUsername(e.target.value)}
-            />
+          <div className='buttons-container'>
+            <div className='new-button'>
+              <Button type='submit'>Submit</Button>
+            </div>
+            <div className='exit-button'>
+              <Link to='/'>
+                <Button>Exit</Button>
+              </Link>
+            </div>
           </div>
-          <div className='button-container'>
-                <div className='new-button'>
-                  <Button type='submit'>Submit</Button>
-                </div>
-                <div className='exit-button'>
-                  <Link to='/'>
-                    <Button>Exit</Button>
-                  </Link>
-                </div>
-              </div>
         </div>
+        <Button type='button' className='edit-info-button' onClick={() => setToggle()}>
+          Edit User Info
+        </Button>
       </form>
     </>
   );
