@@ -7,6 +7,8 @@
 }
 
 .username-password-form {
+  display: flex;
+  flex-direction: column;
   margin-left: auto;
   margin-right: auto;
 }
@@ -15,8 +17,7 @@
   display: flex;
   flex-direction: column;
   margin-bottom: 1em;
-  margin-left: auto;
-  margin-right: auto;
+  margin-right: 3em;
   margin-top: 0.5em;
   width: 50%;
 }
@@ -32,6 +33,7 @@
   display: flex;
   flex-direction: column;
   margin-bottom: 2em;
+  margin-top: 0.5em;
 }
 
 .submit-old {
@@ -47,7 +49,7 @@
 .new-username-container {
   display: flex;
   flex-direction: column;
-  margin-left: 2em;
+  margin-top: 1em;
 }
 
 .new-username-input {
@@ -64,14 +66,12 @@
 
 .inputs-container {
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
 }
 
 .buttons-container {
   display: flex;
   flex-direction: row;
-  margin-left: auto;
-  margin-right: auto;
   margin-top: 1em;
 }
 
@@ -79,3 +79,16 @@
   margin-left: 2em;
 }
 
+.main-button-container {
+  display: flex;
+  flex-direction: row;
+}
+
+.both-forms {
+  display: flex;
+  flex-direction: row;
+}
+
+.new-button {
+  margin-top: 1em;
+}
