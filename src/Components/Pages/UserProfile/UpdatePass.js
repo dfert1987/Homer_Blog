@@ -3,14 +3,92 @@ import {Button} from '../../Button/Button';
 import {Link} from 'react-router-dom';
 import './UpdatePass.css';
 
-export default function UpdatePass({id, setToggle}) {
+export default function UpdatePass({
+  id,
+  setToggle,
+  avatar,
+  first_name,
+  last_name,
+  city,
+  dob,
+  email,
+  twitter,
+  state,
+  userId,
+  about,
+  password_digest,
+  admin,
+  user_name,
+}) {
   const [currentPassword, setCurrentPassword] = useState('');
   const [disabled, setDisabled] = useState(false);
-  const [newPassword, setNewPassword] = useState('');
-  const [newUsername, setNewUsername] = useState('');
+  const [newPassword, setNewPassword] = useState();
+  const [newUsername, setNewUsername] = useState();
+  const [confirmation, setConfirmation] = useState(false);
+
+  console.log(user_name);
 
   const onSubmit = () => {
-    console.log(currentPassword);
+    const setNew = (key) => {
+      if (key === 'username') {
+        if (newUsername) {
+          return newUsername;
+        }
+        return user_name;
+      }
+      if (key === 'password') {
+        if (newPassword) {
+          return newPassword;
+        }
+        return currentPassword;
+      }
+    };
+
+    const newUsernamePassword = {
+      username: setNew('username'),
+      password: setNew('password'),
+      first_name: first_name,
+      last_name: last_name,
+      email: email,
+      avatar: avatar,
+      twitter: twitter,
+      dob: dob,
+      city: city,
+      state: state,
+      about: about,
+      id: userId,
+      admin: admin,
+    };
+
+    fetch(`http://localhost:3000/users/${userId}`, {
+      method: 'PATCH',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(newUsernamePassword),
+    });
+    update(newUsernamePassword);
+  };
+
+  const update = (newUsernamePassword) => {
+    localStorage.setItem('user', JSON.stringify(newUsernamePassword));
+    confirmation(true);
+  };
+
+  const verify = () => {
+    const user = {
+      username: user_name,
+      password: currentPassword,
+    };
+
+    fetch('http://localhost:3000/login', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(user),
+    });
+    setDisabled(true);
   };
 
   return (
@@ -24,7 +102,7 @@ export default function UpdatePass({id, setToggle}) {
           Only input both fields if you wish to update both fields.
         </p>
       </div>
-      <form onSubmit={onSubmit()} className='username-password-form'>
+      <form onSubmit={onSubmit} className='username-password-form'>
         <div className='both-forms'>
           <div className='old-password-container'>
             <label className='old-password-label'>Current Password:</label>
@@ -40,7 +118,7 @@ export default function UpdatePass({id, setToggle}) {
             <Button
               className='submit-old'
               type='button'
-              onClick={() => setDisabled(true)}
+              onClick={() => verify()}
             >
               Submit
             </Button>
@@ -72,9 +150,9 @@ export default function UpdatePass({id, setToggle}) {
                 />
               </div>
             </div>
-              <div className='new-button'>
-                <Button type='submit'>Submit</Button>
-              </div>
+            <div className='new-button'>
+              <Button type='submit'>Submit</Button>
+            </div>
           </div>
         </div>
         <div className='main-button-container'>

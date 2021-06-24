@@ -22,11 +22,11 @@ export default function UserProfile() {
 
   useEffect(() => {
     setStoredUser(JSON.parse(localStorage.getItem('user')));
-  }, []);
+  }, [setStoredUser]);
 
   const handleSetForm = () => {
-    setForm(!form)
-  }
+    setForm(!form);
+  };
 
   const onSubmit = async (e) => {
     e.preventDefault();
@@ -389,7 +389,23 @@ export default function UserProfile() {
                     </div>
                   </div>
                 ) : (
-                  <UpdatePass toggle={form} setToggle={handleSetForm}/>
+                  <UpdatePass
+                    toggle={form}
+                    setToggle={handleSetForm}
+                    avatar={storedUser.avatar}
+                    first_name={storedUser.first_name}
+                    last_name={storedUser.last_name}
+                    email={storedUser.email}
+                    twitter={storedUser.twitter}
+                    dob={storedUser.dob}
+                    city={storedUser.city}
+                    state={storedUser.state}
+                    about={storedUser.about}
+                    userId={storedUser.id}
+                    user_name={storedUser.username}
+                    password_digest={storedUser.password_digest}
+                    admin={storedUser.admin}
+                  />
                 )}
                 {form ? (
                   <div className='button-container'>

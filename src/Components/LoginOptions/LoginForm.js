@@ -25,6 +25,7 @@ export default function LoginForm({id, setSelectedForm}) {
       username: username,
       password: password,
     };
+    
     fetch('http://localhost:3000/login', {
       method: 'POST',
       headers: {

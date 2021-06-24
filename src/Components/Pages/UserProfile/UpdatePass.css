@@ -82,6 +82,7 @@
 .main-button-container {
   display: flex;
   flex-direction: row;
+  margin-bottom: 2em;
 }
 
 .both-forms {
