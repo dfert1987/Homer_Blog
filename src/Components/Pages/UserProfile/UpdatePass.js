@@ -16,19 +16,19 @@ export default function UpdatePass({
   state,
   userId,
   about,
-  password_digest,
   admin,
   user_name,
+  setStoredUser,
 }) {
   const [currentPassword, setCurrentPassword] = useState('');
   const [disabled, setDisabled] = useState(false);
   const [newPassword, setNewPassword] = useState();
   const [newUsername, setNewUsername] = useState();
   const [confirmation, setConfirmation] = useState(false);
+  const [data, setData] = useState();
 
-  console.log(user_name);
-
-  const onSubmit = () => {
+  const onSubmit = (event) => {
+    event.preventDefault();
     const setNew = (key) => {
       if (key === 'username') {
         if (newUsername) {
@@ -59,40 +59,57 @@ export default function UpdatePass({
       id: userId,
       admin: admin,
     };
-
-    fetch(`http://localhost:3000/users/${userId}`, {
-      method: 'PATCH',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify(newUsernamePassword),
-    });
-    update(newUsernamePassword);
+    patchUser(event, newUsernamePassword);
   };
 
-  const update = (newUsernamePassword) => {
+  const patchUser = async (event, newUsernamePassword) => {
+    event.preventDefault();
+    const response = await fetch(
+      `http://localhost:3000/users/${newUsernamePassword.id}`,
+      {
+        method: 'PATCH',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(newUsernamePassword),
+      }
+    );
+    const data = await response.json();
+    update(data, newUsernamePassword);
+  };
+
+  const update = (data, newUsernamePassword) => {
     localStorage.setItem('user', JSON.stringify(newUsernamePassword));
-    confirmation(true);
+    setStoredUser(JSON.parse(localStorage.getItem('user')));
+    setConfirmation(true);
+    setNewUsername('');
+    setNewPassword('');
+    setCurrentPassword('');
   };
 
-  const verify = () => {
+  const verify = async (e) => {
+    e.preventDefault();
     const user = {
       username: user_name,
       password: currentPassword,
     };
 
-    fetch('http://localhost:3000/login', {
+    const response = await fetch('http://localhost:3000/login', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
       },
       body: JSON.stringify(user),
     });
+    const data = await response.json()
+    setData(data);
+    console.log(data);
+    console.log(user);
     setDisabled(true);
   };
 
   return (
-    <>
+    <div className='all-container'>
       <div className='header-container'>
         <h3 className='update-username-password-header'>
           Update Username or Password
@@ -101,9 +118,14 @@ export default function UpdatePass({
         <p className='instructions'>
           Only input both fields if you wish to update both fields.
         </p>
+        {confirmation ? (
+          <p className='confirmation-message'>
+            Success! Your info has been updated!
+          </p>
+        ) : null}
       </div>
-      <form onSubmit={onSubmit} className='username-password-form'>
-        <div className='both-forms'>
+      <div className='both-forms'>
+        <div className='username-password-form'>
           <div className='old-password-container'>
             <label className='old-password-label'>Current Password:</label>
             <input
@@ -115,14 +137,12 @@ export default function UpdatePass({
               disabled={disabled}
               onChange={(e) => setCurrentPassword(e.target.value)}
             />
-            <Button
-              className='submit-old'
-              type='button'
-              onClick={() => verify()}
-            >
+            <Button className='submit-old' type='button' onClick={verify}>
               Submit
             </Button>
           </div>
+        </div>
+        <div className='new-info-form'>
           <div className='new-pass-name-container'>
             <div className='inputs-container'>
               <div className='new-pass-container'>
@@ -151,25 +171,27 @@ export default function UpdatePass({
               </div>
             </div>
             <div className='new-button'>
-              <Button type='submit'>Submit</Button>
+              <Button type='button' onClick={onSubmit}>
+                Submit
+              </Button>
             </div>
           </div>
         </div>
-        <div className='main-button-container'>
-          <Button
-            type='button'
-            className='edit-info-button'
-            onClick={() => setToggle()}
-          >
-            Edit User Info
-          </Button>
-          <div className='exit-button'>
-            <Link to='/'>
-              <Button>Exit</Button>
-            </Link>
-          </div>
+      </div>
+      <div className='main-button-container'>
+        <Button
+          type='button'
+          className='edit-info-button'
+          onClick={() => setToggle()}
+        >
+          Edit User Info
+        </Button>
+        <div className='exit-button'>
+          <Link to='/'>
+            <Button>Exit</Button>
+          </Link>
         </div>
-      </form>
-    </>
+      </div>
+    </div>
   );
 }

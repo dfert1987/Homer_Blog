@@ -163,7 +163,6 @@ export default function UserProfile() {
       return null;
     }
   };
-
   const id = 'profile';
   return (
     <div className='page-container'>
@@ -405,6 +404,7 @@ export default function UserProfile() {
                     user_name={storedUser.username}
                     password_digest={storedUser.password_digest}
                     admin={storedUser.admin}
+                    setStoredUser={setStoredUser}
                   />
                 )}
                 {form ? (
