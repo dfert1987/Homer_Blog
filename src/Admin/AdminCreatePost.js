@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import ReactQuill from 'react-quill';
 import {useHistory} from 'react-router-dom';
 import './CreatePost.css';
@@ -9,22 +9,27 @@ export default function AdminCreatePost() {
   const [subtitle, setSubtitle] = useState('');
   const [category, setCategory] = useState('');
   const [mainImage, setMainImage] = useState('');
+  const [user, setUser] = useState();
   const history = useHistory();
 
-  const post = {
-    title: title,
-    subtitle: subtitle,
-    mainImage: mainImage,
-    secondImage: '',
-    thirdImage: '',
-    body: content,
-    thumbsUp: 0,
-    thumbsDown: 0,
-    category: category,
-    author: '',
-  };
+  useEffect(() => {
+    setUser(JSON.parse(localStorage.getItem('user')));
+  }, [setUser]);
 
   const onSubmit = (event) => {
+    setUser(JSON.parse(localStorage.getItem('user')));
+    const post = {
+      title: title,
+      subtitle: subtitle,
+      mainImage: mainImage,
+      secondImage: '',
+      thirdImage: '',
+      body: content,
+      thumbsUp: 0,
+      thumbsDown: 0,
+      category: category,
+      author: user ? user.username : '',
+    };
     const newBlog = {
       blog: post,
     };
@@ -41,7 +46,7 @@ export default function AdminCreatePost() {
     setCategory('');
     setContent('');
     history.push('/');
-    window.location.reload(false)
+    window.location.reload(false);
     event.preventDefault();
   };
 

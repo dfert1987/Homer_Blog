@@ -23,7 +23,13 @@
   height: 8em;
 }
 
-.bio-text {
+.follow {
+  margin-top: 1em;
+}
+
+.about-container {
+  display: flex;
+  flex-direction: column;
   font-family: 'Trebuchet MS';
   font-size: 20px;
   margin-left: 1em;
