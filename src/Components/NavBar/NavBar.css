@@ -90,7 +90,7 @@
     height: 100vh;
     position: absolute;
     top: 0px;
-    left: -100%;
+    left: -200%;
     opacity: 1;
     transition: all 0.5s ease;
   }

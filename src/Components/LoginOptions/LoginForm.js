@@ -25,6 +25,7 @@ export default function LoginForm({id, setSelectedForm}) {
       username: username,
       password: password,
     };
+    
     fetch('http://localhost:3000/login', {
       method: 'POST',
       headers: {
@@ -38,11 +39,11 @@ export default function LoginForm({id, setSelectedForm}) {
 
   useEffect(() => {
     if (userProf) {
-      console.log(userProf);
       localStorage.setItem('user', JSON.stringify(userProf));
       setUsername('');
       setPassword('');
       history.push('/');
+      window.location.reload(false)
       return;
     }
   }, [userProf, history]);

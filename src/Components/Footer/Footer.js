@@ -30,7 +30,6 @@ function Footer({setContactModal}) {
           CONTACT US
         </Button>
         {adminOptions()}
-        {/* <CreatePost className='admin' /> */}
       </section>
     </div>
   );

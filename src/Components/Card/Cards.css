@@ -10,7 +10,7 @@
 }
 
 .cards-container {
- background-color: transparent;
+  background-color: transparent;
   display: flex;
   flex-flow: column;
   margin: 0 auto;
@@ -19,7 +19,6 @@
 }
 
 .cards-wrapper {
-  /* background-image: url('https://www.stockvault.net/data/2011/09/08/126785/preview16.jpg'); */
   margin: 50px 0 20px;
   width: 100%;
 }
@@ -53,6 +52,17 @@
   padding-top: 67%;
   position: relative;
   width: 100%;
+  z-index: 1;
+}
+
+.label-box {
+  background-color: white;
+  color: black;
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+  padding: .5em;
+  position: absolute;
+  top: .5em;
+  z-index: 1000000;
 }
 
 .fade-img {
@@ -125,5 +135,9 @@
 @media only screen and (max-width: 1024px) {
   .cards-item {
     margin-bottom: 2rem;
+  }
+
+  .logo {
+    width: 75%;
   }
 }

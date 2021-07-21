@@ -1,4 +1,4 @@
-export const states = [
+const states = [
   'AK',
   'AL',
   'AR',
@@ -53,5 +53,5 @@ export const states = [
 ];
 
 export default {
-    states,
-}
+  states
+};
