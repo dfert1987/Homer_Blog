@@ -50,6 +50,8 @@ function Blog() {
     return null;
   };
 
+  console.log(blog);
+
   return (
     <div className='blogContainer'>
       <div className='blogTitleContainer'>
@@ -61,7 +63,7 @@ function Blog() {
       <div id='bodyContainer' className='bodyContainer'>
         {getBodyHTML(blog.body)}
       </div>
-      <hr className='dividerBottom' /> <AboutTheAuthor />
+      <hr className='dividerBottom' /> <AboutTheAuthor author={blog.author}/>
       <Footer contactModal={contactModal} setContactModal={setContactModal} />
     </div>
   );
