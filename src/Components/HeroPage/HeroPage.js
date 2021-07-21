@@ -9,7 +9,14 @@ function HeroSection() {
 
   useEffect(() => {
     setUser(JSON.parse(localStorage.getItem('user')));
-  }, [setUser]);
+  }, [setUser, localStorage.getItem('user')]);
+
+  console.log(user);
+  const logOut = () => {
+    localStorage.setItem('user', JSON.stringify(''));
+    setUser(null);
+    window.location.reload(false)
+  };
 
   return (
     <div className='hero-container'>
@@ -36,15 +43,14 @@ function HeroSection() {
             </Button>
           </Link>
         ) : (
-          <Link to='/login'>
-            <Button
-              className='btn-left'
-              buttonStyle='btn--bigprimary'
-              buttonSize='btn--xlarge'
-            >
-              Logout
-            </Button>
-          </Link>
+          <Button
+            className='btn-left'
+            buttonStyle='btn--bigprimary'
+            buttonSize='btn--xlarge'
+            onClick={(e) => logOut()}
+          >
+            Logout
+          </Button>
         )}
       </div>
     </div>

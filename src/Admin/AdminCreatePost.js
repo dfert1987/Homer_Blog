@@ -41,6 +41,7 @@ export default function AdminCreatePost() {
     setCategory('');
     setContent('');
     history.push('/');
+    window.location.reload(false)
     event.preventDefault();
   };
 
