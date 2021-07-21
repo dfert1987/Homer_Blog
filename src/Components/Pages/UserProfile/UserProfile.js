@@ -1,5 +1,4 @@
 import React, {useState, useEffect} from 'react';
-import UpdatePass from './UpdatePass';
 import states from './states';
 import {Button} from '../../Button/Button';
 import Footer from '../../Footer/Footer';
@@ -9,7 +8,6 @@ import './UserProfile.css';
 export default function UserProfile() {
   const [storedUser, setStoredUser] = useState();
   const [editing, setEditing] = useState(false);
-  const [form, setForm] = useState(true);
   const [twitter, setTwitter] = useState();
   const [first_name, setFirst_name] = useState();
   const [last_name, setLast_name] = useState();
@@ -23,10 +21,6 @@ export default function UserProfile() {
   useEffect(() => {
     setStoredUser(JSON.parse(localStorage.getItem('user')));
   }, [setStoredUser]);
-
-  const handleSetForm = () => {
-    setForm(!form);
-  };
 
   const onSubmit = async (e) => {
     e.preventDefault();
@@ -100,7 +94,7 @@ export default function UserProfile() {
       username: storedUser.username,
       id: storedUser.id,
       password_digest: storedUser.password_digest,
-      admin: storedUser.admin,
+      admin: storedUser,
     };
 
     const response = await fetch(
@@ -235,16 +229,13 @@ export default function UserProfile() {
             </div>
           ) : (
             <div className='form-container'>
-              {form ? (
                 <header className='header-container'>
                   <h3 className='form-header'>Edit Your Personal Info</h3>
                   <h4 className='form-subheader'>
                     Only fill out fields you want updated
                   </h4>
                 </header>
-              ) : null}
               <form className='edit-profile-form' onSubmit={onSubmit}>
-                {form ? (
                   <div className='input-wrapper'>
                     <div className='first-column'>
                       <div className='first-name-wrapper'>
@@ -387,35 +378,11 @@ export default function UserProfile() {
                       </div>
                     </div>
                   </div>
-                ) : (
-                  <UpdatePass
-                    toggle={form}
-                    setToggle={handleSetForm}
-                    avatar={storedUser.avatar}
-                    first_name={storedUser.first_name}
-                    last_name={storedUser.last_name}
-                    email={storedUser.email}
-                    twitter={storedUser.twitter}
-                    dob={storedUser.dob}
-                    city={storedUser.city}
-                    state={storedUser.state}
-                    about={storedUser.about}
-                    userId={storedUser.id}
-                    user_name={storedUser.username}
-                    password_digest={storedUser.password_digest}
-                    admin={storedUser.admin}
-                    setStoredUser={setStoredUser}
-                  />
-                )}
-                {form ? (
                   <div className='button-container'>
                     <div className='edit-button'>
                       <Button type='submit'>Submit</Button>
                     </div>
                     <div className='Toggle-button'>
-                      <Button onClick={() => handleSetForm()} type='button'>
-                        Change Username / Password
-                      </Button>
                     </div>
                     <div className='exit-button'>
                       <Link to='/'>
@@ -423,7 +390,6 @@ export default function UserProfile() {
                       </Link>
                     </div>
                   </div>
-                ) : null}
               </form>
             </div>
           )}
