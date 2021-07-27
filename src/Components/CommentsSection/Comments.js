@@ -1,4 +1,6 @@
 import React, {useState} from 'react';
+import {Button} from '../Button/Button';
+// dummy image
 import smallAv from './meprofile.jpeg';
 import './CommentsSection.css';
 
@@ -9,6 +11,7 @@ export default function Comments(props) {
   const [downvote, setDownVote] = useState(1);
   const [downVoteColor, setDownVoteColor] = useState('black_downvote');
   const [upVoteColor, setUpVoteColor] = useState('black_upvote');
+  const [showReplyInput, setShowReplyInput] = useState(false);
 
   const setDVColor = () => {
     if (downVoteColor === 'black_downvote' && upVoteColor === 'black_upvote') {
@@ -55,8 +58,13 @@ export default function Comments(props) {
           This is the best article I have ever read!
         </p>
         <div className='response-options'>
-          <button className='reply-toggle'>Reply</button>
-          {/* these are going to need to be their own component to render optimistically */}
+          <button
+            className='reply-toggle'
+            onClick={() => setShowReplyInput(!showReplyInput)}
+          >
+            Reply
+          </button>
+          {/* these are going to need to be their own component 'comment' to render optimistically */}
           <button className={uv_button_class} onClick={setUVColor}>
             <i className='far fa-thumbs-up'></i>
             {upvote}
@@ -66,6 +74,22 @@ export default function Comments(props) {
             {downvote}
           </button>
         </div>
+        {/* this is going to have to be it's own component 'replies' inwith component*/}
+        {showReplyInput === true ? (
+          <div className='reply-container'>
+            <form className='reply-form'>
+              <textarea
+                className='reply-input'
+                name='reply'
+                rows='3'
+                placeholder='Reply to user...'
+              ></textarea>
+              <div className='reply-submit-container'>
+                <Button className='submit-reply'>REPLY</Button>
+              </div>
+            </form>
+          </div>
+        ) : null}
       </div>
     </div>
   );

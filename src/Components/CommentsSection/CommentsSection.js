@@ -34,6 +34,7 @@ export default function CommentSection(props) {
             <Button
               className='submit-comment-button'
               buttonStyle='btn--outline3'
+              type='submit'
             >
               SUBMIT
             </Button>
