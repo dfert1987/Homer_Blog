@@ -1,5 +1,4 @@
 import React, {useEffect, useState} from 'react';
-import profile from './meprofile.jpeg';
 import './AboutTheAuthor.css';
 
 export default function AboutTheAuthor(props) {
@@ -34,7 +33,7 @@ export default function AboutTheAuthor(props) {
 
   return (
     <div className='author-container'>
-      <h3 className='author-title'>AUTHOR: {props.author}</h3>
+      <h3 className='author-title'>BY {props.author}</h3>
       <div className='bio-container'>
         <img className='bio-image' alt='author' src={findAvatar()} />
         <div className='about-container'>

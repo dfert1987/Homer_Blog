@@ -268,3 +268,13 @@
 .exit-button {
   margin-left: 1em;
 }
+
+.active-form-container {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 1em;
+}
+
+.submit-comment-button {
+  width: 8em;
+}
