@@ -99,6 +99,7 @@
 
 .about-container {
   margin-bottom: 2em;
+  margin-left: 0;
 }
 
 .about {
@@ -158,24 +159,12 @@
   margin-left: 3em;
 }
 
-.first-name-wrapper {
+.name-wrapper {
   display: flex;
   flex-direction: column;
 }
 
-.first-name-input {
-  font-size: 18px;
-  font-style: 'Trebuchet MS';
-  padding: 0.25em;
-}
-
-.last-name-wrapper {
-  display: flex;
-  flex-direction: column;
-  margin-top: 1em;
-}
-
-.last-name-input {
+.name-input {
   font-size: 18px;
   font-style: 'Trebuchet MS';
   padding: 0.25em;
@@ -260,9 +249,9 @@
 
 .about-input {
   font-size: 18px;
-  font-style: 'Trebuchet MS';
+  font-family: 'Trebuchet MS';
   padding: 0.25em;
-  width: 200%;
+  width: 100%;
 }
 
 .exit-button {

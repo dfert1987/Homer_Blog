@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from 'react';
+import React, {useState} from 'react';
 import {Button} from '../Button/Button';
 import {useHistory} from 'react-router-dom';
 import './LoginForm.css';
@@ -7,9 +7,7 @@ export default function LoginForm({id, setSelectedForm}) {
   const history = useHistory();
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
-  const [email, setEmail] = useState('');
   const [showLogin, setShowLogin] = useState(true);
-  const [userProf, setUserProf] = useState();
 
   const onSubmit = (event) => {
     if (showLogin) {
@@ -21,38 +19,38 @@ export default function LoginForm({id, setSelectedForm}) {
   };
 
   const loginUser = () => {
-    const user = {
-      username: username,
-      password: password,
-    };
+
     
     fetch('http://localhost:3000/login', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
       },
-      body: JSON.stringify(user),
+      body: JSON.stringify({
+        user: {
+          username: username,
+          password: password
+        }
+      }),
     })
       .then((response) => response.json())
-      .then((result) => setUserProf(result.user));
-  };
-
-  useEffect(() => {
-    if (userProf) {
-      localStorage.setItem('user', JSON.stringify(userProf));
-      setUsername('');
-      setPassword('');
-      history.push('/');
-      window.location.reload(false)
-      return;
-    }
-  }, [userProf, history]);
+      .then((result) => {
+      if (result.error) {
+        console.error(result.error);
+      } else {
+        console.log('token', result.token);
+        setUsername('');
+        setPassword('');
+        history.push('/');
+        localStorage.setItem('token', result.token)
+      }
+  })
+};
 
   const createUser = () => {
     const newUser = {
       username: username,
       password: password,
-      email: email,
     };
     fetch('http://localhost:3000/users', {
       method: 'POST',
@@ -63,7 +61,6 @@ export default function LoginForm({id, setSelectedForm}) {
     });
     setUsername('');
     setPassword('');
-    setEmail('');
     setShowLogin(true);
     return;
   };
@@ -99,21 +96,6 @@ export default function LoginForm({id, setSelectedForm}) {
               name='password'
               onChange={(e) => setPassword(e.target.value)}
             />
-          </div>
-          <div className='input-wrapper-bottom'>
-            {!showLogin ? (
-              <div className='input-wrapper-middle'>
-                <label className='email-label'>Email</label>
-                <input
-                  className='password-input'
-                  type='text'
-                  id={`${loginFormId}-email`}
-                  value={email}
-                  name='email'
-                  onChange={(e) => setEmail(e.target.value)}
-                />
-              </div>
-            ) : null}
           </div>
           <div className='buttons'>
             {showLogin ? (

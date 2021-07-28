@@ -12,8 +12,18 @@ function NavBar() {
   const closeMobileMenu = () => setClick(false);
 
   useEffect(() => {
-    setUser(JSON.parse(localStorage.getItem('user')));
-  }, [setUser]);
+    if (localStorage.token === 'null') {
+      setUser();
+    } else {
+      fetch('http://localhost:3000/profile', {
+        headers: {
+          Authorization: `Bearer ${localStorage.token}`,
+        },
+      })
+        .then((response) => response.json())
+        .then((result) => setUser(result));
+    }
+  }, []);
 
   const showButton = () => {
     if (window.innerWidth <= 960) {

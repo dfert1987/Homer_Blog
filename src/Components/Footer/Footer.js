@@ -8,14 +8,25 @@ function Footer({setContactModal}) {
   const handleClick = () => setContactModal(true);
 
   useEffect(() => {
-    setUser(JSON.parse(localStorage.getItem('user')));
-  }, [setUser]);
+    if (localStorage.token === 'null') {
+      return null;
+    } else {
+      fetch('http://localhost:3000/profile', {
+        headers: {
+          Authorization: `Bearer ${localStorage.token}`,
+        },
+      })
+        .then((response) => response.json())
+        .then((result) => setUser(result));
+    }
+  }, []);
 
   const adminOptions = () => {
     if (user && user.admin === true) {
       return <CreatePost className='admin' />;
+    } else {
+      return null;
     }
-    return null;
   };
 
   return (
