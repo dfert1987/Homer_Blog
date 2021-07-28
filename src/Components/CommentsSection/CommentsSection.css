@@ -187,3 +187,11 @@
   margin-left: auto;
 }
 
+.comment-button-container {
+  display: flex;
+  flex-direction: row;
+}
+
+.submit-comment-button-container {
+  margin-right: 0.5em;
+}
