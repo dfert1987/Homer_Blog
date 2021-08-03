@@ -7,7 +7,6 @@ export default function CommentSection(props) {
   const [user, setUser] = useState();
   const [form, setForm] = useState(false);
   const [userComment, setUserComment] = useState('');
-  console.log(userComment);
 
   useEffect(() => {
     if (localStorage.token === 'null') {
@@ -22,8 +21,6 @@ export default function CommentSection(props) {
         .then((result) => setUser(result));
     }
   }, []);
-  console.log(props.blog);
-  console.log(user);
 
   const submitComment = (e) => {
     e.preventDefault();
@@ -96,6 +93,7 @@ export default function CommentSection(props) {
                       className='exit-comment-button'
                       buttonStyle='btn--outline3'
                       type='button'
+                      onClick={() => setForm(false)}
                     >
                       CLOSE
                     </Button>
