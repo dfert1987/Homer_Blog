@@ -1,9 +1,11 @@
 .author-title {
   color: red;
-  font-family: 'Trebuchet MS';
+  font-family: 'New Athletic M54';
   font-size: 25px;
   margin-bottom: 0.5em;
-  margin-left: 9em;
+  margin-left: auto;
+  margin-right: auto;
+  width: 70%;
   margin-top: 0em;
   text-shadow: 2px 2px 3px black;
 }
@@ -20,7 +22,8 @@
 
 .bio-image {
   border-radius: 40px;
-  height: 8em;
+  height: 6em;
+  margin-right: 3em;
 }
 
 .follow {

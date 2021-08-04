@@ -1,0 +1,298 @@
+.comment-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.comment-title-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin-left: auto;
+  margin-right: auto;
+  width: 70%;
+}
+
+.comment-title {
+  color: red;
+  font-family: 'New Athletic M54';
+  font-size: 1.5em;
+  margin-right: 0.5em;
+  text-shadow: 2px 2px 3px black;
+}
+
+.comment-count {
+  color: grey;
+  font-family: 'Trebuchet MS';
+  margin-top: 0.5em;
+}
+
+.light-divider {
+  margin-bottom: 1em;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 0.5em;
+  width: 70%;
+}
+
+.light-divider-hundo {
+  margin-bottom: 1em;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 0.5em;
+  width: 100%;
+}
+
+.comment-form {
+  display: flex;
+  flex-direction: column;
+  margin-left: auto;
+  margin-right: auto;
+  width: 70%;
+}
+
+.comment-inactive {
+  border-radius: 4px;
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande',
+    'Lucida Sans', Arial, sans-serif;
+  font-size: 16px;
+  margin-bottom: 1em;
+  padding: 0.5em;
+}
+
+.comment-active {
+  border: 2px black solid;
+  border-radius: 4px;
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande',
+    'Lucida Sans', Arial, sans-serif;
+  font-size: 16px;
+  margin-bottom: 1em;
+  padding: 0.5em;
+}
+
+.submit-comment-button {
+  width: 20%;
+}
+
+.submit-reply-container {
+  width: 7em;
+}
+
+.submit-cancel-container {
+  width: 7em;
+}
+
+.reply-button-container {
+  display: flex;
+  flex-direction: row;
+  width: 70%;
+}
+
+.comments-section {
+  display: flex;
+  flex-direction: column;
+}
+
+.all-comments {
+  display: flex;
+  flex-direction: column;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 1em;
+  width: 70%;
+}
+
+.one-comment {
+  display: flex;
+  flex-direction: column;
+}
+
+.comment-plus-username {
+  display: flex;
+  flex-direction: column;
+}
+
+.comment-avatar {
+  border-radius: 12px;
+  height: 2.5em;
+  margin-right: 0.5em;
+}
+
+.commenter-username {
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande',
+    'Lucida Sans', Arial, sans-serif;
+  font-size: 18px;
+}
+
+.image-comment {
+  display: flex;
+  flex-direction: row;
+}
+
+.comment-text {
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande',
+    'Lucida Sans', Arial, sans-serif;
+  font-size: 15px;
+  font-style: italic;
+  margin-left: 0.25em;
+  margin-right: auto;
+  margin-top: 0.5em;
+  width: 80%;
+}
+
+.response-options {
+  display: flex;
+  flex-direction: row;
+  margin-bottom: 0.5em;
+  margin-left: auto;
+  margin-right: auto;
+  width: 93%;
+}
+
+.reply-toggle {
+  border: none;
+  background-color: transparent;
+  color: grey;
+  cursor: pointer;
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande',
+    'Lucida Sans', Arial, sans-serif;
+  font-size: 14px;
+  margin-right: .25em;
+  transition: all 0.2s ease-out;
+}
+
+.reply-toggle:hover {
+  color: #b3ddf2;
+}
+
+.black_upvote {
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
+  margin-right: 1em;
+  margin-left: 1em;
+}
+
+.black_upvote-two {
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
+  margin-right: 1em;
+  margin-left: 1em;
+  margin-top: 1em;
+}
+
+.green_upvote {
+  border: none;
+  background-color: transparent;
+  color: green;
+  cursor: pointer;
+  margin-right: 1em;
+  margin-left: 1em;
+}
+
+.green_upvote-two {
+  border: none;
+  background-color: transparent;
+  color: green;
+  cursor: pointer;
+  margin-right: 1em;
+  margin-left: 1em;
+  margin-top: 1em;
+}
+
+.red_downvote {
+  border: none;
+  background-color: transparent;
+  color: red;
+  cursor: pointer;
+  margin-left: 0.5em;
+}
+
+.red_downvote-two {
+  border: none;
+  background-color: transparent;
+  color: red;
+  cursor: pointer;
+  margin-left: 0.5em;
+  margin-top: 1em;
+}
+
+.black_downvote {
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
+  margin-left: 0.5em;
+
+}
+
+.black_downvote-two {
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
+  margin-left: 0.5em;
+  margin-top: 1em;
+}
+
+.reply-form {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 0.5em;
+  margin-left: auto;
+  margin-right: auto;
+  width: 93%;
+}
+
+.reply-input {
+  border: 2px black solid;
+  border-radius: 4px;
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande',
+    'Lucida Sans', Arial, sans-serif;
+  font-size: 16px;
+  margin-bottom: 0.5em;
+  padding: 0.5em;
+}
+
+.comment-reply-input {
+  border: 2px black solid;
+  border-radius: 4px;
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande',
+    'Lucida Sans', Arial, sans-serif;
+  font-size: 16px;
+  margin-bottom: 0.5em;
+  padding: 0.5em;
+}
+
+.reply-form {
+  width: 100%;
+}
+
+.reply-submit-container {
+  display: flex;
+  margin-left: auto;
+}
+
+.comment-button-container {
+  display: flex;
+  flex-direction: row;
+}
+
+.submit-comment-button-container {
+  margin-right: 0.5em;
+}
+
+.up-down-container {
+  margin-top: 0.5em;
+}
+
+.title-and-count {
+  display: flex;
+  flex-direction: row;
+}
+
+.comment-divider {
+  margin-bottom: 1em;
+}
+
+.two {
+  margin-top: 1em;
+}

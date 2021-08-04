@@ -8,14 +8,24 @@ function HeroSection() {
   const [user, setUser] = useState();
 
   useEffect(() => {
-    setUser(JSON.parse(localStorage.getItem('user')));
-  }, [setUser, localStorage.getItem('user')]);
+    if (localStorage.token === 'null') {
+      return null;
+    } else {
+      fetch('http://localhost:3000/profile', {
+        headers: {
+          Authorization: `Bearer ${localStorage.token}`,
+        },
+      })
+        .then((response) => response.json())
+        .then((result) => setUser(result));
+    }
+  },[]);
 
   console.log(user);
+
   const logOut = () => {
-    localStorage.setItem('user', JSON.stringify(''));
     setUser(null);
-    window.location.reload(false)
+    localStorage.clear()
   };
 
   return (
@@ -47,7 +57,7 @@ function HeroSection() {
             className='btn-left'
             buttonStyle='btn--bigprimary'
             buttonSize='btn--xlarge'
-            onClick={(e) => logOut()}
+            onClick={(e) => logOut(e)}
           >
             Logout
           </Button>

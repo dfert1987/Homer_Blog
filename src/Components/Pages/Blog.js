@@ -2,6 +2,7 @@ import React, {useEffect, useState} from 'react';
 import {useParams} from 'react-router-dom';
 import Footer from '../../Components/Footer/Footer';
 import AboutTheAuthor from '../../Components/AboutTheAuthor/AboutTheAuthor';
+import CommentsSection from '../../Components/CommentsSection/CommentsSection';
 import './Blog.css';
 
 const defaultBlog = {
@@ -50,8 +51,6 @@ function Blog() {
     return null;
   };
 
-  console.log(blog);
-
   return (
     <div className='blogContainer'>
       <div className='blogTitleContainer'>
@@ -63,7 +62,10 @@ function Blog() {
       <div id='bodyContainer' className='bodyContainer'>
         {getBodyHTML(blog.body)}
       </div>
-      <hr className='dividerBottom' /> <AboutTheAuthor author={blog.author}/>
+      <div className='post-blog'>
+        <hr className='dividerBottom' /> <AboutTheAuthor author={blog.author} />
+        <hr className='dividerBottom' /> <CommentsSection blog={blog} />
+      </div>
       <Footer contactModal={contactModal} setContactModal={setContactModal} />
     </div>
   );

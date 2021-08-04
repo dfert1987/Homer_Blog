@@ -13,11 +13,17 @@ export default function AdminCreatePost() {
   const history = useHistory();
 
   useEffect(() => {
-    setUser(JSON.parse(localStorage.getItem('user')));
-  }, [setUser]);
+    fetch('http://localhost:3000/profile', {
+      headers: {
+        Authorization: `Bearer ${localStorage.token}`,
+      },
+    })
+      .then((response) => response.json())
+      .then((result) => setUser(result));
+  }, []);
 
   const onSubmit = (event) => {
-    setUser(JSON.parse(localStorage.getItem('user')));
+    event.preventDefault();
     const post = {
       title: title,
       subtitle: subtitle,
@@ -28,7 +34,7 @@ export default function AdminCreatePost() {
       thumbsUp: 0,
       thumbsDown: 0,
       category: category,
-      author: user ? user.username : '',
+      author: user ? user.name : '',
     };
     const newBlog = {
       blog: post,
@@ -39,15 +45,20 @@ export default function AdminCreatePost() {
         'Content-Type': 'application/json',
       },
       body: JSON.stringify(newBlog),
-    });
-    setTitle('');
-    setSubtitle('');
-    setMainImage('');
-    setCategory('');
-    setContent('');
-    history.push('/');
-    window.location.reload(false);
-    event.preventDefault();
+    })
+      .then((response) => response.json())
+      .then((result) => {
+        if (result.error) {
+          console.error(result.error);
+        } else {
+          setTitle('');
+          setSubtitle('');
+          setMainImage('');
+          setCategory('');
+          setContent('');
+          history.push('/');
+        }
+      });
   };
 
   return (
