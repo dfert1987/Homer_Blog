@@ -7,6 +7,11 @@ export default function CommentSection(props) {
   const [user, setUser] = useState();
   const [form, setForm] = useState(false);
   const [userComment, setUserComment] = useState('');
+  const [currentBlogComments, setCurrentBlogComments] = useState([]);
+  const [downVoteColor, setDownVoteColor] = useState('black_downvote');
+  const [upVoteColor, setUpVoteColor] = useState('black_upvote');
+  const [upvote, setUpVote] = useState(2);
+  const [downvote, setDownVote] = useState(1);
 
   useEffect(() => {
     if (localStorage.token === 'null') {
@@ -51,13 +56,84 @@ export default function CommentSection(props) {
       });
   };
 
+  useEffect(() => {
+    let isUnmount = false;
+    const filterComments = (data) => {
+      const filteredComments = data.filter(
+        (comment) => comment.blogID === props.blog.id
+      );
+      setCurrentBlogComments(filteredComments);
+    };
+
+    const fetchComments = async () => {
+      const response = await fetch('http://localhost:3000/remarks');
+      const data = await response.json();
+      if (!isUnmount) {
+        filterComments(data);
+      }
+    };
+
+    setTimeout(() => {
+      fetchComments();
+    });
+
+    return () => {
+      isUnmount = true;
+    };
+  }, [props.blog.id]);
+
+  const setDVColor = () => {
+    if (downVoteColor === 'black_downvote' && upVoteColor === 'black_upvote') {
+      setDownVoteColor('red_downvote');
+      setDownVote(downvote + 1);
+    }
+    if (downVoteColor === 'black_downvote' && upVoteColor === 'green_upvote') {
+      setDownVoteColor('red_downvote');
+      setUpVoteColor('black_upvote');
+      setDownVote(downvote + 1);
+      setUpVote(upvote - 1);
+    }
+    return null;
+  };
+
+  const setUVColor = () => {
+    if (upVoteColor === 'black_upvote' && downVoteColor === 'black_downvote') {
+      setUpVoteColor('green_upvote');
+      setUpVote(upvote + 1);
+    }
+    if (upVoteColor === 'black_upvote' && downVoteColor === 'red_downvote') {
+      setDownVoteColor('black_downvote');
+      setUpVoteColor('green_upvote');
+      setDownVote(downvote - 1);
+      setUpVote(upvote + 1);
+    }
+    return null;
+  };
+
+  let uv_button_class =
+    upVoteColor === 'black_upvote' ? 'black_upvote' : 'green_upvote';
+  let dv_button_class =
+    downVoteColor === 'black_downvote' ? 'black_downvote' : 'red_downvote';
+
   return (
     <>
       {user ? (
         <div className='comment-container'>
           <div className='comment-title-container'>
-            <h3 className='comment-title'>COMMENTS</h3>
-            <p className='comment-count'>10 comments</p>
+            <div className='title-and-count'>
+              <h3 className='comment-title'>COMMENTS</h3>
+              <p className='comment-count'>10 comments</p>
+            </div>
+            <div className='up-down-container'>
+              <button className={uv_button_class} onClick={setUVColor}>
+                <i className='far fa-thumbs-up'></i>
+                {upvote}
+              </button>
+              <button className={dv_button_class} onClick={setDVColor}>
+                <i class='far fa-thumbs-down'></i>
+                {downvote}
+              </button>
+            </div>
           </div>
           <hr className='light-divider' />
           <form className='comment-form' onSubmit={submitComment}>
@@ -102,11 +178,11 @@ export default function CommentSection(props) {
               </div>
             )}
           </form>
-          <Comments comments={props} />
+          <Comments comments={currentBlogComments} />
         </div>
       ) : (
         <div className='comment-container'>
-          <Comments comments={props} />
+          <Comments comments={currentBlogComments} />
         </div>
       )}
     </>

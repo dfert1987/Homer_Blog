@@ -3,38 +3,7 @@ import Comment from './Comment';
 import './CommentsSection.css';
 
 export default function Comments(props) {
-  const [currentBlogComments, setCurrentBlogComments] = useState([]);
   const [allUsers, setAllUsers] = useState([]);
-
-  console.log(props);
-  console.log(currentBlogComments);
-
-  useEffect(() => {
-    let isUnmount = false;
-    const filterComments = (data) => {
-      console.log(props.comments.blog.id);
-      const filteredComments = data.filter(
-        (comment) => comment.blogID === props.comments.blog.id
-      );
-      setCurrentBlogComments(filteredComments);
-    };
-
-    const fetchComments = async () => {
-      const response = await fetch('http://localhost:3000/remarks');
-      const data = await response.json();
-      if (!isUnmount) {
-        filterComments(data);
-      }
-    };
-
-    setTimeout(() => {
-      fetchComments();
-    });
-
-    return () => {
-      isUnmount = true;
-    };
-  }, [props.comments.blog.id]);
 
   useEffect(() => {
     fetch('http://localhost:3000/users', {
@@ -46,7 +15,7 @@ export default function Comments(props) {
   }, []);
 
   const currentBlogFunction = () => {
-    const blog = currentBlogComments.map((remark) => {
+    const blog = props.comments.map((remark) => {
       return (
         <Comment
           id={`comment-${remark.id}`}
@@ -60,8 +29,8 @@ export default function Comments(props) {
 
   return (
     <>
-      {currentBlogComments ? (
-        <div id={`${props.comments.blog.id}-comments`} className='all-comments'>
+      {props.comments ? (
+        <div id={`${props.comments.id}-comments`} className='all-comments'>
           {currentBlogFunction()}
         </div>
       ) : (
