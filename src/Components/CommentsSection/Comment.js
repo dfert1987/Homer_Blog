@@ -8,11 +8,16 @@ function Comment(props) {
   const [downVoteColor, setDownVoteColor] = useState('black_downvote');
   const [upVoteColor, setUpVoteColor] = useState('black_upvote');
   const [replyInput, setReplyInput] = useState(false);
+  const [userReply, setUserReply] = useState('');
 
   const setDVColor = () => {
     if (downVoteColor === 'black_downvote' && upVoteColor === 'black_upvote') {
       setDownVoteColor('red_downvote');
       setDownVote(downvote + 1);
+    }
+    if (downVoteColor === 'red_downvote') {
+      setDownVoteColor('black_downvote');
+      setDownVote(downvote - 1)
     }
     if (downVoteColor === 'black_downvote' && upVoteColor === 'green_upvote') {
       setDownVoteColor('red_downvote');
@@ -28,6 +33,10 @@ function Comment(props) {
       setUpVoteColor('green_upvote');
       setUpVote(upvote + 1);
     }
+    if (upVoteColor === 'green_upvote') {
+      setUpVoteColor('black_upvote');
+      setUpVote(upvote - 1)
+    }
     if (upVoteColor === 'black_upvote' && downVoteColor === 'red_downvote') {
       setDownVoteColor('black_downvote');
       setUpVoteColor('green_upvote');
@@ -40,7 +49,9 @@ function Comment(props) {
   let uv_button_class =
     upVoteColor === 'black_upvote' ? 'black_upvote-two' : 'green_upvote-two';
   let dv_button_class =
-    downVoteColor === 'black_downvote' ? 'black_downvote-two' : 'red_downvote-two';
+    downVoteColor === 'black_downvote'
+      ? 'black_downvote-two'
+      : 'red_downvote-two';
 
   useEffect(() => {
     if (props.allUsers !== []) {
@@ -54,8 +65,8 @@ function Comment(props) {
 
   const submitReply = (e) => {
     e.preventDefault();
+    setReplyInput(false);
   };
-
 
   return (
     <div className='one-comment' id={`${props.comment.id}-remark`}>
@@ -91,34 +102,40 @@ function Comment(props) {
           </div>
         </div>
       </div>
-      <form className='reply-form' onSubmit={submitReply}>
-        <input
-          className='comment-reply-input'
-          placeholder='Reply here...'
-          type='text'
-        ></input>
-        <div className='reply-button-container'>
-          <div className='submit-reply-container'>
-            <Button
-              className='submit-reply'
-              buttonStyle='btn--outline3'
-              type='submit'
-            >
-              SUBMIT
-            </Button>
+      {replyInput ? (
+        <form className='reply-form' onSubmit={submitReply}>
+          <textarea
+            className='comment-reply-input'
+            placeholder='Reply here...'
+            type='text'
+            rows='8'
+            columns='3'
+            name='userReply'
+            onChange={(e) => setUserReply(e.target.value)}
+          ></textarea>
+          <div className='reply-button-container'>
+            <div className='submit-reply-container'>
+              <Button
+                className='submit-reply'
+                buttonStyle='btn--outline3'
+                type='submit'
+              >
+                SUBMIT
+              </Button>
+            </div>
+            <div className='submit-cancel-container'>
+              <Button
+                className='submit-cancel'
+                buttonStyle='btn--outline3'
+                type='button'
+                onClick={() => setReplyInput(false)}
+              >
+                CLOSE
+              </Button>
+            </div>
           </div>
-          <div className='submit-cancel-container'>
-            <Button
-              className='submit-cancel'
-              buttonStyle='btn--outline3'
-              type='button'
-              onClick={() => setReplyInput(false)}
-            >
-              CLOSE
-            </Button>
-          </div>
-        </div>
-      </form>
+        </form>
+      ) : null}
       <hr className='comment-divider' />
     </div>
   );

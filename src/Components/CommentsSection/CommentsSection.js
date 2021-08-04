@@ -87,6 +87,10 @@ export default function CommentSection(props) {
       setDownVoteColor('red_downvote');
       setDownVote(downvote + 1);
     }
+    if (downVoteColor === 'red_downvote') {
+      setDownVoteColor('black_downvote');
+      setDownVote(downvote - 1);
+    }
     if (downVoteColor === 'black_downvote' && upVoteColor === 'green_upvote') {
       setDownVoteColor('red_downvote');
       setUpVoteColor('black_upvote');
@@ -100,6 +104,10 @@ export default function CommentSection(props) {
     if (upVoteColor === 'black_upvote' && downVoteColor === 'black_downvote') {
       setUpVoteColor('green_upvote');
       setUpVote(upvote + 1);
+    }
+    if (upVoteColor === 'green_upvote') {
+      setUpVoteColor('black_upvote');
+      setUpVote(upvote - 1);
     }
     if (upVoteColor === 'black_upvote' && downVoteColor === 'red_downvote') {
       setDownVoteColor('black_downvote');
@@ -121,8 +129,8 @@ export default function CommentSection(props) {
         <div className='comment-container'>
           <div className='comment-title-container'>
             <div className='title-and-count'>
-              <h3 className='comment-title'>COMMENTS</h3>
-              <p className='comment-count'>10 comments</p>
+              <h3 className='comment-title'>CONVERSATION</h3>
+              <p className='comment-count'>{`${currentBlogComments.length} COMMENTS`}</p>
             </div>
             <div className='up-down-container'>
               <button className={uv_button_class} onClick={setUVColor}>
