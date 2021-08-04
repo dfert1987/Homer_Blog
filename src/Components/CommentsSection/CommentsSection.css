@@ -73,17 +73,17 @@
 }
 
 .submit-reply-container {
-  width: 18%;
+  width: 7em;
 }
 
 .submit-cancel-container {
-  margin-left: 0.5em;
-  width: 18%;
+  width: 7em;
 }
 
 .reply-button-container {
   display: flex;
   flex-direction: row;
+  width: 70%;
 }
 
 .comments-section {
@@ -156,6 +156,7 @@
   font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande',
     'Lucida Sans', Arial, sans-serif;
   font-size: 14px;
+  margin-right: 1em;
   transition: all 0.2s ease-out;
 }
 
@@ -171,6 +172,15 @@
   margin-left: 1em;
 }
 
+.black_upvote-two {
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
+  margin-right: 1em;
+  margin-left: 1em;
+  margin-top: 1em;
+}
+
 .green_upvote {
   border: none;
   background-color: transparent;
@@ -180,13 +190,31 @@
   margin-left: 1em;
 }
 
+.green_upvote-two {
+  border: none;
+  background-color: transparent;
+  color: green;
+  cursor: pointer;
+  margin-right: 1em;
+  margin-left: 1em;
+  margin-top: 1em;
+}
+
 .red_downvote {
   border: none;
   background-color: transparent;
   color: red;
   cursor: pointer;
-  margin-right: 1em;
   margin-left: 0.5em;
+}
+
+.red_downvote-two {
+  border: none;
+  background-color: transparent;
+  color: red;
+  cursor: pointer;
+  margin-left: 0.5em;
+  margin-top: 1em;
 }
 
 .black_downvote {
@@ -194,6 +222,15 @@
   background-color: transparent;
   cursor: pointer;
   margin-left: 0.5em;
+
+}
+
+.black_downvote-two {
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
+  margin-left: 0.5em;
+  margin-top: 1em;
 }
 
 .reply-form {

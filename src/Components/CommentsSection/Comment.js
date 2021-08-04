@@ -10,13 +10,13 @@ function Comment(props) {
   const [replyInput, setReplyInput] = useState(false);
 
   const setDVColor = () => {
-    if (downVoteColor === 'black_downvote-two' && upVoteColor === 'black_upvote') {
-      setDownVoteColor('red_downvote-two');
+    if (downVoteColor === 'black_downvote' && upVoteColor === 'black_upvote') {
+      setDownVoteColor('red_downvote');
       setDownVote(downvote + 1);
     }
-    if (downVoteColor === 'black_downvote-two' && upVoteColor === 'green_upvote') {
-      setDownVoteColor('red_downvote-two');
-      setUpVoteColor('black_upvote-two');
+    if (downVoteColor === 'black_downvote' && upVoteColor === 'green_upvote') {
+      setDownVoteColor('red_downvote');
+      setUpVoteColor('black_upvote');
       setDownVote(downvote + 1);
       setUpVote(upvote - 1);
     }
@@ -24,13 +24,13 @@ function Comment(props) {
   };
 
   const setUVColor = () => {
-    if (upVoteColor === 'black_upvote-two' && downVoteColor === 'black_downvote') {
-      setUpVoteColor('green_upvote two');
+    if (upVoteColor === 'black_upvote' && downVoteColor === 'black_downvote') {
+      setUpVoteColor('green_upvote');
       setUpVote(upvote + 1);
     }
-    if (upVoteColor === 'black_upvote-two' && downVoteColor === 'red_downvote') {
-      setDownVoteColor('black_downvote-two');
-      setUpVoteColor('green_upvote-twotwo');
+    if (upVoteColor === 'black_upvote' && downVoteColor === 'red_downvote') {
+      setDownVoteColor('black_downvote');
+      setUpVoteColor('green_upvote');
       setDownVote(downvote - 1);
       setUpVote(upvote + 1);
     }
@@ -38,9 +38,9 @@ function Comment(props) {
   };
 
   let uv_button_class =
-    upVoteColor === 'black_upvote-two' ? 'black_upvote-two' : 'green_upvote-two';
+    upVoteColor === 'black_upvote' ? 'black_upvote-two' : 'green_upvote-two';
   let dv_button_class =
-    downVoteColor === 'black_downvote-two' ? 'black_downvote-two' : 'red_downvote-two';
+    downVoteColor === 'black_downvote' ? 'black_downvote-two' : 'red_downvote-two';
 
   useEffect(() => {
     if (props.allUsers !== []) {
