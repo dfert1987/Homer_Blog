@@ -4,6 +4,7 @@ import './CommentsSection.css';
 
 export default function Comments(props) {
   const [allUsers, setAllUsers] = useState([]);
+  const [currentBlogComments, setCurrentBlogComments] = useState([]);
 
   useEffect(() => {
     fetch('http://localhost:3000/users', {
@@ -15,7 +16,7 @@ export default function Comments(props) {
   }, []);
 
   const currentBlogFunction = () => {
-    const blog = props.comments.map((remark) => {
+    const blog = currentBlogComments.map((remark) => {
       return (
         <Comment
           id={`comment-${remark.id}`}
@@ -26,6 +27,34 @@ export default function Comments(props) {
     });
     return blog;
   };
+
+  useEffect(() => {
+    let isUnmount = false;
+    const filterComments = (data) => {
+      const filteredComments = data.filter(
+        (comment) => comment.blogID === props.comments.blog.id
+      );
+      setCurrentBlogComments(filteredComments);
+    };
+
+    const fetchComments = async () => {
+      const response = await fetch('http://localhost:3000/remarks');
+      const data = await response.json();
+      if (!isUnmount) {
+        filterComments(data);
+      }
+    };
+
+    setTimeout(() => {
+      fetchComments();
+    });
+
+    return () => {
+      isUnmount = true;
+    };
+  }, [props.comments.blog.id]);
+
+
 
   return (
     <>

@@ -130,7 +130,7 @@ export default function CommentSection(props) {
                 {upvote}
               </button>
               <button className={dv_button_class} onClick={setDVColor}>
-                <i class='far fa-thumbs-down'></i>
+                <i className='far fa-thumbs-down'></i>
                 {downvote}
               </button>
             </div>
@@ -178,11 +178,11 @@ export default function CommentSection(props) {
               </div>
             )}
           </form>
-          <Comments comments={currentBlogComments} />
+          <Comments comments={props} />
         </div>
       ) : (
         <div className='comment-container'>
-          <Comments comments={currentBlogComments} />
+          <Comments comments={props} />
         </div>
       )}
     </>
