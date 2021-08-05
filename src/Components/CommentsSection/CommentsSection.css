@@ -309,4 +309,11 @@
   border: none;
   color: grey;
   cursor: pointer;
+  margin-bottom: 0.5em;
+  position: relative;
+  bottom: 0.1em;
+}
+
+.show-replies:hover {
+  text-decoration: underline;
 }

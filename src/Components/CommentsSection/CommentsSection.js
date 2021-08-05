@@ -192,7 +192,7 @@ export default function CommentSection(props) {
         </div>
       ) : (
         <div className='comment-container'>
-          <Comments comments={props} />
+          <Comments comment={props} />
         </div>
       )}
     </>
