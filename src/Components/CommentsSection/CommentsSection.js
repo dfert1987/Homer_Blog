@@ -10,8 +10,8 @@ export default function CommentSection(props) {
   const [currentBlogComments, setCurrentBlogComments] = useState([]);
   const [downVoteColor, setDownVoteColor] = useState('black_downvote');
   const [upVoteColor, setUpVoteColor] = useState('black_upvote');
-  const [upvote, setUpVote] = useState(2);
-  const [downvote, setDownVote] = useState(1);
+  const [upvote, setUpVote] = useState(props.blog.thumbsUp);
+  const [downvote, setDownVote] = useState(props.blog.thumbsDown);
 
   useEffect(() => {
     if (localStorage.token === 'null') {
@@ -70,7 +70,7 @@ export default function CommentSection(props) {
       const data = await response.json();
       if (!isUnmount) {
         filterComments(data);
-        console.log(data);
+        console.log(props);
       }
       
     };

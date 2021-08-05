@@ -1,4 +1,5 @@
 import React, {useState, useEffect} from 'react';
+import Replies from './Replies';
 import {Button} from '../Button/Button';
 
 function Comment(props) {
@@ -11,6 +12,7 @@ function Comment(props) {
   const [replyInput, setReplyInput] = useState(false);
   const [userReply, setUserReply] = useState('');
 
+  console.log(props)
   const setDVColor = () => {
     if (downVoteColor === 'black_downvote' && upVoteColor === 'black_upvote') {
       setDownVoteColor('red_downvote');
@@ -138,6 +140,7 @@ function Comment(props) {
           </div>
         </form>
       ) : null}
+      <Replies comment={props.comment}/>
       <hr className='comment-divider' />
     </div>
   );
