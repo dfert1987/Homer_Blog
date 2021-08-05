@@ -17,6 +17,7 @@ export default function Comments(props) {
 
   const currentBlogFunction = () => {
     const blog = currentBlogComments.map((remark) => {
+      console.log(remark)
       return (
         <Comment
           id={`comment-${remark.id}`}

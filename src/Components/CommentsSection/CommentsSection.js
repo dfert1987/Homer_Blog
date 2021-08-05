@@ -70,7 +70,9 @@ export default function CommentSection(props) {
       const data = await response.json();
       if (!isUnmount) {
         filterComments(data);
+        console.log(data);
       }
+      
     };
 
     setTimeout(() => {

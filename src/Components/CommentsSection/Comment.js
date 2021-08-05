@@ -3,8 +3,9 @@ import {Button} from '../Button/Button';
 
 function Comment(props) {
   const [avatar, setUserAvatar] = useState('');
-  const [upvote, setUpVote] = useState(2);
-  const [downvote, setDownVote] = useState(1);
+  const [userName, setUserName] = useState('');
+  const [upvote, setUpVote] = useState(props.comment.upVote);
+  const [downvote, setDownVote] = useState(props.comment.downVote);
   const [downVoteColor, setDownVoteColor] = useState('black_downvote');
   const [upVoteColor, setUpVoteColor] = useState('black_upvote');
   const [replyInput, setReplyInput] = useState(false);
@@ -59,6 +60,7 @@ function Comment(props) {
         (user) => user.id === props.comment.userID
       );
       setUserAvatar(user.avatar);
+      setUserName(user.username);
     }
     return null;
   }, [props.allUsers, props.comment.userID]);
@@ -79,7 +81,7 @@ function Comment(props) {
         />
         <div className='comment-plus-username' id={`${props.comment.id}`}>
           <p className='commenter-username' id={`${props.comment.id}-username`}>
-            JOBO69
+            {userName}
           </p>
           <p className='comment-text' id={`${props.comment.id}-text`}>
             {props.comment.comment}
