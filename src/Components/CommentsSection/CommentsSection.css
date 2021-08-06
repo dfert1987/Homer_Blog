@@ -317,3 +317,38 @@
 .show-replies:hover {
   text-decoration: underline;
 }
+
+.reply-avatar {
+  border-radius: 12px;
+  height: 2.5em;
+  margin-right: 0.5em;
+}
+
+.image-reply {
+  display: flex;
+  flex-direction: row;
+}
+
+.reply-plus-username {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.replier-username {
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande',
+    'Lucida Sans', Arial, sans-serif;
+  font-size: 18px;
+}
+
+.reply-text {
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande',
+  'Lucida Sans', Arial, sans-serif;
+  font-size: 14px;
+  font-style: italic;
+  margin-top: .5em;
+}
+
+.reply {
+  margin-bottom: .5em;
+}

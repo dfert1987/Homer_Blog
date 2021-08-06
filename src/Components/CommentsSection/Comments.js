@@ -16,7 +16,7 @@ export default function Comments(props) {
   }, []);
 
   const currentBlogFunction = () => {
-    const blog = currentBlogComments.map((remark) => {
+    const blog = currentBlogComments.reverse().map((remark) => {
       console.log(remark);
       return (
         <Comment

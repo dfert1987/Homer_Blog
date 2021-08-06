@@ -72,7 +72,6 @@ export default function CommentSection(props) {
         filterComments(data);
         console.log(props);
       }
-      
     };
 
     setTimeout(() => {
@@ -82,7 +81,7 @@ export default function CommentSection(props) {
     return () => {
       isUnmount = true;
     };
-  }, [props.blog.id]);
+  }, [props]);
 
   const setDVColor = () => {
     if (downVoteColor === 'black_downvote' && upVoteColor === 'black_upvote') {

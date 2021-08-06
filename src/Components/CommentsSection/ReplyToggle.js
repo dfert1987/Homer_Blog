@@ -32,7 +32,7 @@ function ReplyToggle(props) {
     return () => {
       isUnmount = true;
     };
-  }, [props.comment.id]);
+  }, [props]);
 
   const replyCount = () => {
     console.log(replies);
