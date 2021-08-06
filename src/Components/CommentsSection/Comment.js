@@ -5,12 +5,15 @@ import {Button} from '../Button/Button';
 function Comment(props) {
   const [avatar, setUserAvatar] = useState('');
   const [userName, setUserName] = useState('');
+  const [user, setUser] = useState();
   const [upvote, setUpVote] = useState(props.comment.upVote);
   const [downvote, setDownVote] = useState(props.comment.downVote);
   const [downVoteColor, setDownVoteColor] = useState('black_downvote');
   const [upVoteColor, setUpVoteColor] = useState('black_upvote');
   const [replyInput, setReplyInput] = useState(false);
   const [userReply, setUserReply] = useState('');
+  console.log(user);
+  console.log(props.allUsers)
 
   const setDVColor = () => {
     if (downVoteColor === 'black_downvote' && upVoteColor === 'black_upvote') {
@@ -55,11 +58,25 @@ function Comment(props) {
       ? 'black_downvote-two'
       : 'red_downvote-two';
 
+      useEffect(() => {
+        if (localStorage.token === 'null') {
+          setUser();
+        } else {
+          fetch('http://localhost:3000/profile', {
+            headers: {
+              Authorization: `Bearer ${localStorage.token}`,
+            },
+          })
+            .then((response) => response.json())
+            .then((result) => setUser(result));
+        }
+      }, []);
+
   useEffect(() => {
     if (props.allUsers !== []) {
       const user = props.allUsers.find(
         (user) => user.id === props.comment.userID
-      );
+      ); 
       setUserAvatar(user.avatar);
       setUserName(user.username);
     }
@@ -68,6 +85,28 @@ function Comment(props) {
 
   const submitReply = (e) => {
     e.preventDefault();
+
+    fetch('http://localhost:3000/reps', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        rep: {
+          reply: userReply,
+          upVotes: 0,
+          downVotes: 0,
+          commentID: props.comment.id,
+          userID: user.id
+        },
+      }),
+    })
+    .then((response) => response.json())
+    .then((result) => {
+      if (result.error) {
+        console.error(result.error);
+      } 
+    })
     setReplyInput(false);
   };
 
@@ -139,7 +178,7 @@ function Comment(props) {
           </div>
         </form>
       ) : null}
-      <ReplyToggle comment={props.comment}/>
+      <ReplyToggle allUsers={props.users} comment={props.comment}/>
       <hr className='comment-divider' />
     </div>
   );

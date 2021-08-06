@@ -10,16 +10,17 @@ function ReplyToggle(props) {
     let isUnmount = false;
 
     const filterReplies = (data) => {
+      console.log(data);
       if (data) {
         const filteredReplies = data.filter(
-          (reply) => reply.comment === props.comment.id
+          (reply) => reply.commentID === props.comment.id
         );
         setReplies(filteredReplies);
       }
     };
 
     const fetchReplies = async () => {
-      const response = await fetch('http://localhost:3000/replies');
+      const response = await fetch('http://localhost:3000/reps');
       const data = await response.json();
       if (!isUnmount) {
         filterReplies(data);
@@ -69,7 +70,9 @@ function ReplyToggle(props) {
   return (
     <div className='replies-container'>
       <div className='main-row'>{replyCount()}</div>
-      {showReplies && replies ? <Replies replies={replies} /> : null}
+      {showReplies && replies ? (
+        <Replies allUsers={props.allUsers} replies={replies} />
+      ) : null}
     </div>
   );
 }
