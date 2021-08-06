@@ -343,12 +343,46 @@
 
 .reply-text {
   font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande',
-  'Lucida Sans', Arial, sans-serif;
+    'Lucida Sans', Arial, sans-serif;
   font-size: 14px;
   font-style: italic;
-  margin-top: .5em;
+  margin-top: 0.5em;
 }
 
 .reply {
-  margin-bottom: .5em;
+  margin-bottom: 0.5em;
+}
+
+.reply-vote-options {
+  margin-top: 0.5em;
+}
+
+.black_downvote-three {
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
+  margin-left: 0.5em;
+}
+
+.red_downvote-three {
+  border: none;
+  background-color: transparent;
+  color: red;
+  cursor: pointer;
+  margin-left: 0.5em;
+}
+
+.black_upvote-three {
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
+  margin-right: .5em;
+}
+
+.green_upvote-three {
+  border: none;
+  background-color: transparent;
+  color: green;
+  cursor: pointer;
+  margin-right: .5em;
 }

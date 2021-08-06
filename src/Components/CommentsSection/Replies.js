@@ -1,4 +1,5 @@
 import React, {useState} from 'react';
+import ReplyButtons from './ReplyButtons'
 
 function Replies(props) {
   const [av, setAv] = useState('');
@@ -40,7 +41,17 @@ function Replies(props) {
             <div className='reply-plus-username'>
               <p className='replier-username'>{getUsername(reply.userID)}</p>
               <p className='reply-text'>{reply.reply}</p>
-              <div className='reply-vote-options'></div>
+              <div className='reply-vote-options'>
+                  <ReplyButtons reply={reply} />
+                {/* <button className={uv_button_class} onClick={setUVColor}>
+                  <i className='far fa-thumbs-up'></i>
+                  {upvote}
+                </button>
+                <button className={dv_button_class} onClick={setDVColor}>
+                  <i className='far fa-thumbs-down'></i>
+                  {downvote}
+                </button> */}
+              </div>
             </div>
           </div>
         </div>
