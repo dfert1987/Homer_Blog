@@ -12,7 +12,8 @@ export default function CommentSection(props) {
   const [upVoteColor, setUpVoteColor] = useState('black_upvote');
   const [upvote, setUpVote] = useState(props.blog.thumbsUp);
   const [downvote, setDownVote] = useState(props.blog.thumbsDown);
-  console.log(props.blog);
+  console.log(props.blog.thumbsDown);
+  console.log(downvote);
 
   useEffect(() => {
     if (localStorage.token === 'null') {
@@ -28,6 +29,17 @@ export default function CommentSection(props) {
     }
   }, []);
 
+  useEffect(() => {
+    fetch(`http://localhost:3000/blogs/${props.blog.id}`)
+      .then((response) => response.json())
+      .then((response) => setNewVotes(response));
+  }, [props]);
+
+  const setNewVotes = (newBlog) => {
+    setUpVote(newBlog.thumbsUp);
+    setDownVote(newBlog.thumbsDown);
+  };
+
   const submitComment = (e) => {
     e.preventDefault();
 
@@ -39,8 +51,8 @@ export default function CommentSection(props) {
       body: JSON.stringify({
         remark: {
           comment: userComment,
-          upVote: 0,
-          downVote: 0,
+          upVote: upvote,
+          downVote: downvote,
           blogID: props.blog.id,
           userID: user.id,
         },
@@ -94,7 +106,20 @@ export default function CommentSection(props) {
       },
       body: JSON.stringify(newData),
     });
-    console.log(props.blog.thumbsDown);
+  };
+
+
+  const updateUpVotes = async (change) => {
+    const newData = {
+      thumbsUp: props.blog.thumbsUp + change,
+    };
+    await fetch(`http://localhost:3000/blogs/${props.blog.id}`, {
+      method: 'PATCH',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(newData),
+    });
   };
 
   const setDVColor = () => {
@@ -105,8 +130,8 @@ export default function CommentSection(props) {
     }
     if (downVoteColor === 'red_downvote') {
       setDownVoteColor('black_downvote');
-      setDownVote(downvote - 1);
-      updateDownVotes(-1);
+      setDownVote(downvote -1);
+      updateDownVotes(0);
     }
     if (downVoteColor === 'black_downvote' && upVoteColor === 'green_upvote') {
       setDownVoteColor('red_downvote');
@@ -114,7 +139,7 @@ export default function CommentSection(props) {
       setDownVote(downvote + 1);
       setUpVote(upvote - 1);
       updateDownVotes(1);
-      // updateUpVotes(-1);
+      updateUpVotes(0);
     }
     return null;
   };
@@ -123,10 +148,12 @@ export default function CommentSection(props) {
     if (upVoteColor === 'black_upvote' && downVoteColor === 'black_downvote') {
       setUpVoteColor('green_upvote');
       setUpVote(upvote + 1);
+      updateUpVotes(1)
     }
     if (upVoteColor === 'green_upvote') {
       setUpVoteColor('black_upvote');
       setUpVote(upvote - 1);
+      updateUpVotes(0)
     }
     if (upVoteColor === 'black_upvote' && downVoteColor === 'red_downvote') {
       setDownVoteColor('black_downvote');
