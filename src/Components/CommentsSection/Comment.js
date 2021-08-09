@@ -12,8 +12,6 @@ function Comment(props) {
   const [upVoteColor, setUpVoteColor] = useState('black_upvote');
   const [replyInput, setReplyInput] = useState(false);
   const [userReply, setUserReply] = useState('');
-  console.log(user);
-  console.log(props.allUsers)
 
   const setDVColor = () => {
     if (downVoteColor === 'black_downvote' && upVoteColor === 'black_upvote') {

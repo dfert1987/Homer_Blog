@@ -12,6 +12,7 @@ export default function CommentSection(props) {
   const [upVoteColor, setUpVoteColor] = useState('black_upvote');
   const [upvote, setUpVote] = useState(props.blog.thumbsUp);
   const [downvote, setDownVote] = useState(props.blog.thumbsDown);
+  console.log(props.blog);
 
   useEffect(() => {
     if (localStorage.token === 'null') {
@@ -50,7 +51,6 @@ export default function CommentSection(props) {
         if (result.error) {
           console.error(result.error);
         } else {
-          console.log(result);
           setForm(false);
         }
       });
@@ -70,7 +70,6 @@ export default function CommentSection(props) {
       const data = await response.json();
       if (!isUnmount) {
         filterComments(data);
-        console.log(props);
       }
     };
 
@@ -83,20 +82,39 @@ export default function CommentSection(props) {
     };
   }, [props]);
 
+  const updateDownVotes = async (change) => {
+    const newData = {
+      thumbsDown: props.blog.thumbsDown + change,
+    };
+
+    await fetch(`http://localhost:3000/blogs/${props.blog.id}`, {
+      method: 'PATCH',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(newData),
+    });
+    console.log(props.blog.thumbsDown);
+  };
+
   const setDVColor = () => {
     if (downVoteColor === 'black_downvote' && upVoteColor === 'black_upvote') {
       setDownVoteColor('red_downvote');
       setDownVote(downvote + 1);
+      updateDownVotes(1);
     }
     if (downVoteColor === 'red_downvote') {
       setDownVoteColor('black_downvote');
       setDownVote(downvote - 1);
+      updateDownVotes(-1);
     }
     if (downVoteColor === 'black_downvote' && upVoteColor === 'green_upvote') {
       setDownVoteColor('red_downvote');
       setUpVoteColor('black_upvote');
       setDownVote(downvote + 1);
       setUpVote(upvote - 1);
+      updateDownVotes(1);
+      // updateUpVotes(-1);
     }
     return null;
   };

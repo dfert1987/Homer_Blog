@@ -4,13 +4,11 @@ import Replies from './Replies';
 function ReplyToggle(props) {
   const [showReplies, setShowReplies] = useState(false);
   const [replies, setReplies] = useState([]);
-  console.log(props);
 
   useEffect(() => {
     let isUnmount = false;
 
     const filterReplies = (data) => {
-      console.log(data);
       if (data) {
         const filteredReplies = data.filter(
           (reply) => reply.commentID === props.comment.id
@@ -35,7 +33,6 @@ function ReplyToggle(props) {
   }, [props]);
 
   const replyCount = () => {
-    console.log(replies);
     if (replies.length === 0) {
       return null;
     }

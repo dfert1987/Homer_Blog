@@ -104,22 +104,21 @@ export default function AdminCreatePost() {
               <option value='cubs'>Cubs</option>
               <option value='meatball'>The Meatball</option>
             </select>
+            <ReactQuill
+              placeholder="Start Bloggin'..."
+              modules={AdminCreatePost.modules}
+              formats={AdminCreatePost.formats}
+              onChange={setContent}
+              value={content}
+              className='quill'
+            />
           </div>
-          <ReactQuill
-            placeholder="Start Bloggin'..."
-            modules={AdminCreatePost.modules}
-            formats={AdminCreatePost.formats}
-            onChange={setContent}
-            value={content}
-            className='quill'
-          />
           <input className='submit-button' type='submit' />
         </form>
       </div>
     </div>
   );
 }
-
 AdminCreatePost.modules = {
   toolbar: [
     [{header: '1'}, {header: '2'}, {header: [3, 4, 5, 6]}, {font: []}],

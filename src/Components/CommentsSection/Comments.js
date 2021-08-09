@@ -17,7 +17,6 @@ export default function Comments(props) {
 
   const currentBlogFunction = () => {
     const blog = currentBlogComments.reverse().map((remark) => {
-      console.log(remark);
       return (
         <Comment
           id={`comment-${remark.id}`}
@@ -28,8 +27,6 @@ export default function Comments(props) {
     });
     return blog;
   };
-
-  console.log(props);
 
   useEffect(() => {
     let isUnmount = false;
