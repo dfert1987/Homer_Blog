@@ -32,7 +32,7 @@ function Replies(props) {
   };
 
   const showReplies = () => {
-    const oneReply = props.replies.reverse().map((reply) => {
+    const oneReply = props.replies.reverse().map((reply, i) => {
       console.log(reply);
       return (
         <div className='reply'>
@@ -42,7 +42,7 @@ function Replies(props) {
               <p className='replier-username'>{getUsername(reply.userID)}</p>
               <p className='reply-text'>{reply.reply}</p>
               <div className='reply-vote-options'>
-                <ReplyButtons reply={reply} />
+                <ReplyButtons reply={reply} key={i}/>
               </div>
             </div>
           </div>
