@@ -109,6 +109,7 @@
 .comment-plus-username {
   display: flex;
   flex-direction: column;
+  width: 100%;
 }
 
 .comment-avatar {
@@ -143,8 +144,9 @@
   display: flex;
   flex-direction: row;
   margin-bottom: 0.5em;
-  margin-left: auto;
+  margin-left: 0;
   margin-right: auto;
+  margin-top: 0.5em;
   width: 93%;
 }
 
@@ -156,7 +158,7 @@
   font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande',
     'Lucida Sans', Arial, sans-serif;
   font-size: 14px;
-  margin-right: .25em;
+  margin-right: 0.25em;
   transition: all 0.2s ease-out;
 }
 
@@ -178,7 +180,6 @@
   cursor: pointer;
   margin-right: 1em;
   margin-left: 1em;
-  margin-top: 1em;
 }
 
 .green_upvote {
@@ -197,7 +198,6 @@
   cursor: pointer;
   margin-right: 1em;
   margin-left: 1em;
-  margin-top: 1em;
 }
 
 .red_downvote {
@@ -214,7 +214,6 @@
   color: red;
   cursor: pointer;
   margin-left: 0.5em;
-  margin-top: 1em;
 }
 
 .black_downvote {
@@ -222,7 +221,6 @@
   background-color: transparent;
   cursor: pointer;
   margin-left: 0.5em;
-
 }
 
 .black_downvote-two {
@@ -230,7 +228,6 @@
   background-color: transparent;
   cursor: pointer;
   margin-left: 0.5em;
-  margin-top: 1em;
 }
 
 .reply-form {
@@ -295,4 +292,97 @@
 
 .two {
   margin-top: 1em;
+}
+
+.fa-share {
+  color: grey;
+  margin-right: 0.5em;
+}
+
+.replies-container {
+  margin-bottom: 0.5em;
+  margin-left: 3em;
+}
+
+.show-replies {
+  background-color: transparent;
+  border: none;
+  color: grey;
+  cursor: pointer;
+  margin-bottom: 0.5em;
+  position: relative;
+  bottom: 0.1em;
+}
+
+.show-replies:hover {
+  text-decoration: underline;
+}
+
+.reply-avatar {
+  border-radius: 12px;
+  height: 2.5em;
+  margin-right: 0.5em;
+}
+
+.image-reply {
+  display: flex;
+  flex-direction: row;
+}
+
+.reply-plus-username {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.replier-username {
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande',
+    'Lucida Sans', Arial, sans-serif;
+  font-size: 18px;
+}
+
+.reply-text {
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande',
+    'Lucida Sans', Arial, sans-serif;
+  font-size: 14px;
+  font-style: italic;
+  margin-top: 0.5em;
+}
+
+.reply {
+  margin-bottom: 0.5em;
+}
+
+.reply-vote-options {
+  margin-top: 0.5em;
+}
+
+.black_downvote-three {
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
+  margin-left: 0.5em;
+}
+
+.red_downvote-three {
+  border: none;
+  background-color: transparent;
+  color: red;
+  cursor: pointer;
+  margin-left: 0.5em;
+}
+
+.black_upvote-three {
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
+  margin-right: .5em;
+}
+
+.green_upvote-three {
+  border: none;
+  background-color: transparent;
+  color: green;
+  cursor: pointer;
+  margin-right: .5em;
 }

@@ -17,8 +17,6 @@ export default function UserProfile() {
   const [state, setState] = useState();
   const [about, setAbout] = useState();
 
-  console.log(storedUser);
-
   useEffect(() => {
     fetch('http://localhost:3000/profile', {
       headers: {
