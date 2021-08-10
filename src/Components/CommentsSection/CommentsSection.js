@@ -162,9 +162,11 @@ export default function CommentSection(props) {
     downVoteColor === 'black_downvote' ? 'black_downvote' : 'red_downvote';
 
   useEffect(() => {
-    fetch(`http://localhost:3000/blogs/${props.blog.id}`)
-      .then((response) => response.json())
-      .then((response) => setNewVotes(response));
+    if (props.blog.id > 0) {
+      fetch(`http://localhost:3000/blogs/${props.blog.id}`)
+        .then((response) => response.json())
+        .then((response) => setNewVotes(response));
+    }
   }, [props]);
 
   return (

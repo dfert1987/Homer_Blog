@@ -16,12 +16,13 @@ export default function Comments(props) {
   }, []);
 
   const currentBlogFunction = () => {
-    const blog = currentBlogComments.reverse().map((remark) => {
+    const blog = currentBlogComments.reverse().map((remark, i) => {
       return (
         <Comment
           id={`comment-${remark.id}`}
           comment={remark}
           allUsers={allUsers}
+          key={i}
         />
       );
     });
