@@ -16,7 +16,7 @@ export default function Comments(props) {
   }, []);
 
   const currentBlogFunction = () => {
-    const blog = currentBlogComments.map((remark) => {
+    const blog = currentBlogComments.reverse().map((remark) => {
       return (
         <Comment
           id={`comment-${remark.id}`}
@@ -31,10 +31,12 @@ export default function Comments(props) {
   useEffect(() => {
     let isUnmount = false;
     const filterComments = (data) => {
-      const filteredComments = data.filter(
-        (comment) => comment.blogID === props.comments.blog.id
-      );
-      setCurrentBlogComments(filteredComments);
+      if (props.comments) {
+        const filteredComments = data.filter(
+          (comment) => comment.blogID === props.comments.blog.id
+        );
+        setCurrentBlogComments(filteredComments);
+      }
     };
 
     const fetchComments = async () => {
@@ -45,16 +47,12 @@ export default function Comments(props) {
       }
     };
 
-    setTimeout(() => {
-      fetchComments();
-    });
+    fetchComments();
 
     return () => {
       isUnmount = true;
     };
-  }, [props.comments.blog.id]);
-
-
+  }, [props]);
 
   return (
     <>

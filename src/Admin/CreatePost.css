@@ -1,3 +1,5 @@
+@import '~quill/dist/quill.snow.css';
+
 .main {
   margin-left: auto;
   margin-right: auto;
@@ -21,7 +23,7 @@
   margin-bottom: 2em;
   margin-left: auto;
   margin-right: auto;
-  width: 90%
+  width: 90%;
 }
 
 .above-blog-container {
@@ -102,7 +104,6 @@
   width: 3em;
 }
 
-
 @media only screen and (min-width: 1024px) {
   .quill {
     height: 30em;
@@ -110,7 +111,6 @@
 }
 
 @media only screen and (min-width: 1500px) {
-
   .add-post-form {
     width: 80%;
   }

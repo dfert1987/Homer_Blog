@@ -10,8 +10,8 @@ export default function CommentSection(props) {
   const [currentBlogComments, setCurrentBlogComments] = useState([]);
   const [downVoteColor, setDownVoteColor] = useState('black_downvote');
   const [upVoteColor, setUpVoteColor] = useState('black_upvote');
-  const [upvote, setUpVote] = useState(2);
-  const [downvote, setDownVote] = useState(1);
+  const [upvote, setUpVote] = useState(props.blog.thumbsUp);
+  const [downvote, setDownVote] = useState(props.blog.thumbsDown);
 
   useEffect(() => {
     if (localStorage.token === 'null') {
@@ -27,6 +27,11 @@ export default function CommentSection(props) {
     }
   }, []);
 
+  const setNewVotes = (newBlog) => {
+    setUpVote(newBlog.thumbsUp);
+    setDownVote(newBlog.thumbsDown);
+  };
+
   const submitComment = (e) => {
     e.preventDefault();
 
@@ -38,8 +43,8 @@ export default function CommentSection(props) {
       body: JSON.stringify({
         remark: {
           comment: userComment,
-          upVote: 0,
-          downVote: 0,
+          upVote: upvote,
+          downVote: downvote,
           blogID: props.blog.id,
           userID: user.id,
         },
@@ -50,7 +55,6 @@ export default function CommentSection(props) {
         if (result.error) {
           console.error(result.error);
         } else {
-          console.log(result);
           setForm(false);
         }
       });
@@ -80,22 +84,52 @@ export default function CommentSection(props) {
     return () => {
       isUnmount = true;
     };
-  }, [props.blog.id]);
+  }, [props]);
+
+  const updateDownVotes = async (change) => {
+    const newData = {
+      thumbsDown: props.blog.thumbsDown + change,
+    };
+
+    await fetch(`http://localhost:3000/blogs/${props.blog.id}`, {
+      method: 'PATCH',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(newData),
+    });
+  };
+
+  const updateUpVotes = async (change) => {
+    const newData = {
+      thumbsUp: props.blog.thumbsUp + change,
+    };
+    await fetch(`http://localhost:3000/blogs/${props.blog.id}`, {
+      method: 'PATCH',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(newData),
+    });
+  };
 
   const setDVColor = () => {
     if (downVoteColor === 'black_downvote' && upVoteColor === 'black_upvote') {
       setDownVoteColor('red_downvote');
       setDownVote(downvote + 1);
+      updateDownVotes(1);
     }
     if (downVoteColor === 'red_downvote') {
       setDownVoteColor('black_downvote');
       setDownVote(downvote - 1);
+      updateDownVotes(0);
     }
     if (downVoteColor === 'black_downvote' && upVoteColor === 'green_upvote') {
       setDownVoteColor('red_downvote');
       setUpVoteColor('black_upvote');
       setDownVote(downvote + 1);
       setUpVote(upvote - 1);
+      updateDownVotes(1);
     }
     return null;
   };
@@ -104,16 +138,20 @@ export default function CommentSection(props) {
     if (upVoteColor === 'black_upvote' && downVoteColor === 'black_downvote') {
       setUpVoteColor('green_upvote');
       setUpVote(upvote + 1);
+      updateUpVotes(1);
     }
     if (upVoteColor === 'green_upvote') {
       setUpVoteColor('black_upvote');
       setUpVote(upvote - 1);
+      updateUpVotes(0);
     }
     if (upVoteColor === 'black_upvote' && downVoteColor === 'red_downvote') {
       setDownVoteColor('black_downvote');
       setUpVoteColor('green_upvote');
       setDownVote(downvote - 1);
       setUpVote(upvote + 1);
+      updateUpVotes(1);
+      updateDownVotes(0);
     }
     return null;
   };
@@ -122,6 +160,12 @@ export default function CommentSection(props) {
     upVoteColor === 'black_upvote' ? 'black_upvote' : 'green_upvote';
   let dv_button_class =
     downVoteColor === 'black_downvote' ? 'black_downvote' : 'red_downvote';
+
+  useEffect(() => {
+    fetch(`http://localhost:3000/blogs/${props.blog.id}`)
+      .then((response) => response.json())
+      .then((response) => setNewVotes(response));
+  }, [props]);
 
   return (
     <>
@@ -190,7 +234,7 @@ export default function CommentSection(props) {
         </div>
       ) : (
         <div className='comment-container'>
-          <Comments comments={props} />
+          <Comments comment={props} />
         </div>
       )}
     </>
