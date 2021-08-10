@@ -12,7 +12,6 @@ function Comment(props) {
   const [upVoteColor, setUpVoteColor] = useState('black_upvote');
   const [replyInput, setReplyInput] = useState(false);
   const [userReply, setUserReply] = useState('');
-  console.log(props);
 
   const updateDownVotes = async (change) => {
     const newData = {
@@ -111,11 +110,13 @@ function Comment(props) {
       const user = props.allUsers.find(
         (user) => user.id === props.comment.userID
       );
-      setUserAvatar(user.avatar);
-      setUserName(user.username);
+      if (user) {
+        setUserAvatar(user.avatar);
+        setUserName(user.username);
+      }
     }
     return null;
-  }, [props.allUsers, props.comment.userID]);
+  }, [props]);
 
   const submitReply = (e) => {
     e.preventDefault();
