@@ -12,21 +12,53 @@ function Comment(props) {
   const [upVoteColor, setUpVoteColor] = useState('black_upvote');
   const [replyInput, setReplyInput] = useState(false);
   const [userReply, setUserReply] = useState('');
+  console.log(props);
+
+  const updateDownVotes = async (change) => {
+    const newData = {
+      downVote: props.comment.downVote + change,
+    };
+
+    await fetch(`http://localhost:3000/remarks/${props.comment.id}`, {
+      method: 'PATCH',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(newData),
+    });
+  };
+
+  const updateUpVotes = async (change) => {
+    const newData = {
+      upVote: props.comment.upVote + change,
+    };
+
+    await fetch(`http://localhost:3000/remarks/${props.comment.id}`, {
+      method: 'PATCH',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(newData),
+    });
+  };
 
   const setDVColor = () => {
     if (downVoteColor === 'black_downvote' && upVoteColor === 'black_upvote') {
       setDownVoteColor('red_downvote');
       setDownVote(downvote + 1);
+      updateDownVotes(1);
     }
     if (downVoteColor === 'red_downvote') {
       setDownVoteColor('black_downvote');
-      setDownVote(downvote - 1)
+      setDownVote(downvote - 1);
+      updateDownVotes(0);
     }
     if (downVoteColor === 'black_downvote' && upVoteColor === 'green_upvote') {
       setDownVoteColor('red_downvote');
       setUpVoteColor('black_upvote');
       setDownVote(downvote + 1);
       setUpVote(upvote - 1);
+      updateDownVotes(1);
     }
     return null;
   };
@@ -35,16 +67,20 @@ function Comment(props) {
     if (upVoteColor === 'black_upvote' && downVoteColor === 'black_downvote') {
       setUpVoteColor('green_upvote');
       setUpVote(upvote + 1);
+      updateUpVotes(1);
     }
     if (upVoteColor === 'green_upvote') {
       setUpVoteColor('black_upvote');
-      setUpVote(upvote - 1)
+      setUpVote(upvote - 1);
+      updateUpVotes(0);
     }
     if (upVoteColor === 'black_upvote' && downVoteColor === 'red_downvote') {
       setDownVoteColor('black_downvote');
       setUpVoteColor('green_upvote');
       setDownVote(downvote - 1);
       setUpVote(upvote + 1);
+      updateUpVotes(1);
+      updateDownVotes(0);
     }
     return null;
   };
@@ -56,25 +92,25 @@ function Comment(props) {
       ? 'black_downvote-two'
       : 'red_downvote-two';
 
-      useEffect(() => {
-        if (localStorage.token === 'null') {
-          setUser();
-        } else {
-          fetch('http://localhost:3000/profile', {
-            headers: {
-              Authorization: `Bearer ${localStorage.token}`,
-            },
-          })
-            .then((response) => response.json())
-            .then((result) => setUser(result));
-        }
-      }, []);
+  useEffect(() => {
+    if (localStorage.token === 'null') {
+      setUser();
+    } else {
+      fetch('http://localhost:3000/profile', {
+        headers: {
+          Authorization: `Bearer ${localStorage.token}`,
+        },
+      })
+        .then((response) => response.json())
+        .then((result) => setUser(result));
+    }
+  }, []);
 
   useEffect(() => {
     if (props.allUsers !== []) {
       const user = props.allUsers.find(
         (user) => user.id === props.comment.userID
-      ); 
+      );
       setUserAvatar(user.avatar);
       setUserName(user.username);
     }
@@ -95,16 +131,16 @@ function Comment(props) {
           upVotes: 0,
           downVotes: 0,
           commentID: props.comment.id,
-          userID: user.id
+          userID: user.id,
         },
       }),
     })
-    .then((response) => response.json())
-    .then((result) => {
-      if (result.error) {
-        console.error(result.error);
-      } 
-    })
+      .then((response) => response.json())
+      .then((result) => {
+        if (result.error) {
+          console.error(result.error);
+        }
+      });
     setReplyInput(false);
   };
 
@@ -176,7 +212,7 @@ function Comment(props) {
           </div>
         </form>
       ) : null}
-      <ReplyToggle allUsers={props.users} comment={props.comment}/>
+      <ReplyToggle allUsers={props.users} comment={props.comment} />
       <hr className='comment-divider' />
     </div>
   );
