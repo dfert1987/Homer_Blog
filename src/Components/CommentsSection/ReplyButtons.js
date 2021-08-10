@@ -1,8 +1,8 @@
 import React, {useState} from 'react';
 
 function ReplyButtons(props) {
-  const [upvote, setUpVote] = useState(0);
-  const [downvote, setDownVote] = useState(0);
+  const [upvote, setUpVote] = useState(props.reply.upVotes);
+  const [downvote, setDownVote] = useState(props.reply.downVotes);
   const [downVoteColor, setDownVoteColor] = useState('black_downvote');
   const [upVoteColor, setUpVoteColor] = useState('black_upvote');
   console.log(props);
@@ -52,6 +52,7 @@ function ReplyButtons(props) {
       setDownVote(downvote + 1);
       setUpVote(upvote - 1);
       updateDownVotes(1);
+      updateUpVotes(0);
     }
     return null;
   };

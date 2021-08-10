@@ -58,6 +58,7 @@ function Comment(props) {
       setDownVote(downvote + 1);
       setUpVote(upvote - 1);
       updateDownVotes(1);
+      updateUpVotes(0);
     }
     return null;
   };
