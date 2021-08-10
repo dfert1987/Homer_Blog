@@ -1,10 +1,39 @@
 import React, {useState} from 'react';
 
-function ReplyButtons() {
+function ReplyButtons(props) {
   const [upvote, setUpVote] = useState(0);
   const [downvote, setDownVote] = useState(0);
   const [downVoteColor, setDownVoteColor] = useState('black_downvote');
   const [upVoteColor, setUpVoteColor] = useState('black_upvote');
+  console.log(props);
+
+  const updateDownVotes = async (change) => {
+    const newData = {
+      downVotes: props.reply.downVotes + change,
+    };
+
+    await fetch(`http://localhost:3000/reps/${props.reply.id}`, {
+      method: 'PATCH',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(newData),
+    });
+  };
+
+  const updateUpVotes = async (change) => {
+    const newData = {
+      upVotes: props.reply.upVotes + change,
+    };
+
+    await fetch(`http://localhost:3000/reps/${props.reply.id}`, {
+      method: 'PATCH',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(newData),
+    });
+  };
 
   const setDVColor = () => {
     if (downVoteColor === 'black_downvote' && upVoteColor === 'black_upvote') {
