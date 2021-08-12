@@ -1,5 +1,6 @@
 import React, {useState, useEffect} from 'react';
 import ReactQuill from 'react-quill';
+import InputTag from '../Components/InputTag/InputTag';
 import {useHistory} from 'react-router-dom';
 import './CreatePost.css';
 
@@ -9,8 +10,25 @@ export default function AdminCreatePost() {
   const [subtitle, setSubtitle] = useState('');
   const [category, setCategory] = useState('');
   const [mainImage, setMainImage] = useState('');
+  const [tags, setTags] = useState([]);
   const [user, setUser] = useState();
   const history = useHistory();
+
+  const checkKeyDown = (e) => {
+    if (e.code === 'Enter') e.preventDefault();
+  };
+
+  const onAddTag = (tag) => {
+    setTags([...tags, tag]);
+  };
+
+  const onDeleteTag = (tag) => {
+    alert(`deleting ${tag}`);
+    let remainingTags = tags.filter((t) => {
+      return t !== tag;
+    });
+    setTags([...remainingTags]);
+  };
 
   useEffect(() => {
     fetch('http://localhost:3000/profile', {
@@ -23,6 +41,7 @@ export default function AdminCreatePost() {
   }, []);
 
   const onSubmit = (event) => {
+    event.target.keyCode === 13 && event.preventDefault();
     event.preventDefault();
     const post = {
       title: title,
@@ -65,7 +84,7 @@ export default function AdminCreatePost() {
     <div className='container'>
       <div className='main'>
         <h1 className='add-title'>Add A Post</h1>
-        <form className='add-post-form' onSubmit={onSubmit}>
+        <form className='add-post-form' onSubmit={onSubmit} onKeyDown={(e) => checkKeyDown(e)}>
           <div className='above-blog-container'>
             <input
               className='input'
@@ -111,6 +130,14 @@ export default function AdminCreatePost() {
               onChange={setContent}
               value={content}
               className='quill'
+            />
+          </div>
+          <div className='tags-input-container'>
+            <InputTag
+              onAddTag={onAddTag}
+              onDeleteTag={onDeleteTag}
+              defaultTags={tags}
+              placeholder='enter tags separated by comma'
             />
           </div>
           <input className='submit-button' type='submit' />
