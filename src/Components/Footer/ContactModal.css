@@ -5,8 +5,11 @@
   width: 27%;
   height: 600px;
   min-width: 300px;
-  position: relative;
+  position: absolute;
   bottom: 30em;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
   background-color: #b3ddf2;
   border-radius: 6px;
   box-shadow: 0 0 40px -10px #000;
@@ -89,8 +92,6 @@
 
 @media screen and (max-width: 960px) {
   .modal-container {
-    position: absolute;
-    left: 30%;
-    top: 380%;
+    top: 60%;
   }
 }

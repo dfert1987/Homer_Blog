@@ -5,7 +5,14 @@ import './Footer.css';
 
 function Footer({setContactModal}) {
   const [user, setUser] = useState();
-  const handleClick = () => setContactModal(true);
+
+  const handleClick = () => {
+    setContactModal(true);
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth',
+    });
+  };
 
   useEffect(() => {
     if (localStorage.token === 'null') {
