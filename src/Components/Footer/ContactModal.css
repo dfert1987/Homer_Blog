@@ -3,10 +3,13 @@
   margin-left: auto;
   margin-right: auto;
   width: 27%;
+  height: 600px;
   min-width: 300px;
-  height: 550px;
-  position: relative;
+  position: absolute;
   bottom: 30em;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
   background-color: #b3ddf2;
   border-radius: 6px;
   box-shadow: 0 0 40px -10px #000;
@@ -27,30 +30,36 @@
 
 .name-header {
   font-family: 'New Athletic M54';
+  color: red;
 }
 
 .email-header {
   font-family: 'New Athletic M54';
+  color: red;
 }
 
 .message-header {
   font-family: 'New Athletic M54';
   margin-bottom: 0.3em;
+  color: red;
 }
 
-.input {
+.modal-input {
   width: 90%;
-  padding: 10px;
+  padding-left: 10px;
   box-sizing: border-box;
   background: none;
   outline: none;
   resize: none;
+  font-size: 16px;
   border: 0;
+  padding-bottom: 0.25em;
   font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande',
     'Lucida Sans', Arial, sans-serif;
   transition: all 0.3s;
-  border-bottom: 2px solid black;
+  border-bottom: 2px solid white;
   margin-bottom: 1.5em;
+  margin-top: 0.5em;
 }
 
 .message-input {
@@ -62,16 +71,27 @@
   width: 90%;
   border: 2px solid black;
 }
+
 .contact-container {
-margin-left: auto;
-margin-right: auto;
-height: 0em;
+  margin-left: auto;
+  margin-right: auto;
+  height: 0em;
+}
+
+.sent-message {
+  color: green;
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+  margin-bottom: .5em;
+}
+
+.error-message {
+  color:red;
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+  margin-bottom: .5em;
 }
 
 @media screen and (max-width: 960px) {
   .modal-container {
-    position: absolute;
-    left: 30%;
-    top: 380%;
+    top: 60%;
   }
 }
