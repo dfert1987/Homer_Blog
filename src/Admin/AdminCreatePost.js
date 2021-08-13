@@ -1,5 +1,6 @@
 import React, {useState, useEffect} from 'react';
 import ReactQuill from 'react-quill';
+import InputTag from '../Components/InputTag/InputTag';
 import {useHistory} from 'react-router-dom';
 import './CreatePost.css';
 
@@ -9,8 +10,32 @@ export default function AdminCreatePost() {
   const [subtitle, setSubtitle] = useState('');
   const [category, setCategory] = useState('');
   const [mainImage, setMainImage] = useState('');
+  const [tags, setTags] = useState([]);
   const [user, setUser] = useState();
+  const [tagLimit, setTagLimit] = useState(false);
   const history = useHistory();
+
+  console.log(tags[1]);
+
+  const checkKeyDown = (e) => {
+    if (e.code === 'Enter') e.preventDefault();
+  };
+
+  const onAddTag = (tag) => {
+    if (tags.length < 3) {
+      setTags([...tags, tag]);
+    } else {
+      setTagLimit(true);
+    }
+  };
+
+  const onDeleteTag = (tag) => {
+    let remainingTags = tags.filter((t) => {
+      return t !== tag;
+    });
+    setTags([...remainingTags]);
+    setTagLimit(false);
+  };
 
   useEffect(() => {
     fetch('http://localhost:3000/profile', {
@@ -23,6 +48,7 @@ export default function AdminCreatePost() {
   }, []);
 
   const onSubmit = (event) => {
+    event.target.keyCode === 13 && event.preventDefault();
     event.preventDefault();
     const post = {
       title: title,
@@ -31,6 +57,9 @@ export default function AdminCreatePost() {
       secondImage: '',
       thirdImage: '',
       body: content,
+      tagOne: tags.length ? tags[0].toString() : '',
+      tagTwo: tags.length >= 2 ? tags[1].toString() : '',
+      tagThree: tags.length === 3 ? tags[2].toString() : '',
       thumbsUp: 0,
       thumbsDown: 0,
       category: category,
@@ -61,11 +90,21 @@ export default function AdminCreatePost() {
       });
   };
 
+  const tagMessage = () => {
+    if (tagLimit) {
+      return 'Tag Limit Reached';
+    }
+  };
+
   return (
     <div className='container'>
       <div className='main'>
         <h1 className='add-title'>Add A Post</h1>
-        <form className='add-post-form' onSubmit={onSubmit}>
+        <form
+          className='add-post-form'
+          onSubmit={onSubmit}
+          onKeyDown={(e) => checkKeyDown(e)}
+        >
           <div className='above-blog-container'>
             <input
               className='input'
@@ -112,6 +151,15 @@ export default function AdminCreatePost() {
               value={content}
               className='quill'
             />
+          </div>
+          <div className='tags-input-container'>
+            <InputTag
+              onAddTag={onAddTag}
+              onDeleteTag={onDeleteTag}
+              defaultTags={tags}
+              placeholder='enter tags separated by comma'
+            />
+            <p className='tag-message'>{tagMessage()}</p>
           </div>
           <input className='submit-button' type='submit' />
         </form>
