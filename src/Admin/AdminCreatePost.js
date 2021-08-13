@@ -21,6 +21,7 @@ export default function AdminCreatePost() {
     setMainImage(URL.createObjectURL(e.target.files[0]));
   };
 
+
   const checkKeyDown = (e) => {
     if (e.code === 'Enter') e.preventDefault();
   };
@@ -100,7 +101,6 @@ export default function AdminCreatePost() {
     }
   };
 
- 
   return (
     <div className='container'>
       <div className='main'>

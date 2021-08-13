@@ -3439,7 +3439,9 @@ class-utils@^0.3.5:
     isobject "^3.0.0"
     static-extend "^0.1.1"
 
+
 classnames@2.x, classnames@^2.2.1, classnames@^2.2.3, classnames@^2.2.5, classnames@^2.2.6, classnames@~2.3.1:
+
   version "2.3.1"
   resolved "https://registry.yarnpkg.com/classnames/-/classnames-2.3.1.tgz#dfcfa3891e306ec1dad105d0e88f4417b8535e8e"
   integrity sha512-OlQdbZ7gLfGarSqxesMesDa5uz7KFbID8Kpq/SxIoNGDqY8lSYs0D+hhtBXhcdB3rcbXArFr7vlHheLk1voeNA==
@@ -7457,6 +7459,7 @@ lodash.uniq@^4.5.0:
   integrity sha512-PlhdFcillOINfeV7Ni6oF1TAEayyZBoZ8bcshTHqOYJYlrqzRK5hagpagky5o4HfCzzd1TRkXPMFq6cKk9rGmA==
 
 lodash@^4.17.21, lodash@^4.17.4, lodash@~4.17.12:
+
   version "4.17.21"
   resolved "https://registry.yarnpkg.com/lodash/-/lodash-4.17.21.tgz#679591c564c3bffaae8454cf0b3df370c3d6911c"
   integrity sha512-v2kDEe57lecTulaDIuNTPy3Ry4gLGJ6Z1O3vE1krgXZNrsQ+LFTGHVxVjcXPs17LhbZVGedAJv8XZ1tvj5FvSg==
@@ -9996,12 +9999,15 @@ react-images-uploading@^3.1.3:
   resolved "https://registry.yarnpkg.com/react-images-uploading/-/react-images-uploading-3.1.3.tgz#1cd1894f801e7ecba28b65f713980aa0c130722f"
   integrity sha512-Ak9uaHTsCM6JboEo5JU0esx13IxQuZ1ZxgWgdqVIsK5ZSty88lcf1CTxpMTZFZVVuIxWOm9VsRvs6cyMUDTWeg==
 
+
 react-input-tags-hooks@^0.0.2:
   version "0.0.2"
   resolved "https://registry.yarnpkg.com/react-input-tags-hooks/-/react-input-tags-hooks-0.0.2.tgz#ab68479b5849112c236ad966fceb85a400bce9ac"
   integrity sha512-kwJvVDyOODY/C/rRElJ1wvXU6aNE/7ug/STUmXpEsnzWp42N6xqIWPXBO+5xejBCNmSV9+nkaxf3XzYKt3Mo8g==
 
+
 react-is@^16.12.0, react-is@^16.6.0, react-is@^16.7.0, react-is@^16.8.1:
+
   version "16.13.1"
   resolved "https://registry.npmjs.org/react-is/-/react-is-16.13.1.tgz"
   integrity sha512-24e6ynE2H+OKt4kqsOvNd8kBpV65zoxbA4BVsEOB3ARVWQki/DHzaUoC5KuON/BiccDaCCTZBuOcfZs70kR8bQ==
@@ -10160,7 +10166,6 @@ react@^16.12.0:
   dependencies:
     loose-envify "^1.1.0"
     object-assign "^4.1.1"
-    prop-types "^15.6.2"
 
 react@^17.0.1:
   version "17.0.1"
