@@ -8,7 +8,7 @@ export default function AdminCreatePost() {
   const [title, setTitle] = useState('');
   const [subtitle, setSubtitle] = useState('');
   const [category, setCategory] = useState('');
-  const [mainImage, setMainImage] = useState('');
+  const [mainImage, setMainImage] = useState(null);
   const [user, setUser] = useState();
   const history = useHistory();
 
@@ -85,11 +85,10 @@ export default function AdminCreatePost() {
             />
             <input
               className='input'
-              type='text'
-              placeholder='Paste Preview Image Link..'
+              type='file'
               value={mainImage}
               name='mainImage'
-              onChange={(e) => setMainImage(e.target.value)}
+              onChange={(e) => setMainImage(e.target.files)[0]}
             />
             <select
               className='category-input'
