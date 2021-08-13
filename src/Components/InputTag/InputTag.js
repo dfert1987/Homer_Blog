@@ -1,5 +1,6 @@
 import React from 'react';
 import TagList from './TagList';
+import './Tag.css';
 
 function InputTag({defaultTags, onAddTag, onDeleteTag, placeHolder}) {
   const onKeyUp = (e) => {
@@ -21,7 +22,8 @@ function InputTag({defaultTags, onAddTag, onDeleteTag, placeHolder}) {
       <input
         onKeyUp={(e) => onKeyUp(e)}
         type='text'
-        placeholder={placeHolder}
+        placeholder='Enter tags separated by comma'
+        className='tag input'
       />
     </div>
   );

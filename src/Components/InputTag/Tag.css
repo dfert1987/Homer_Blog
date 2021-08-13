@@ -1,0 +1,20 @@
+.tag {
+  padding-bottom: 0.1em;
+  width: 94%;
+}
+
+.tag-list {
+  display: flex;
+  flex-direction: row;
+  margin-left: 1.25em;
+}
+
+.tag-container {
+  display: flex;
+  flex-direction: row;
+}
+
+.tag-value {
+  margin-left: 0.25em;
+  margin-right: 1em;
+}

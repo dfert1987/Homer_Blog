@@ -12,6 +12,7 @@ export default function AdminCreatePost() {
   const [mainImage, setMainImage] = useState('');
   const [tags, setTags] = useState([]);
   const [user, setUser] = useState();
+  const [tagLimit, setTagLimit] = useState(false);
   const history = useHistory();
 
   const checkKeyDown = (e) => {
@@ -19,15 +20,19 @@ export default function AdminCreatePost() {
   };
 
   const onAddTag = (tag) => {
-    setTags([...tags, tag]);
+    if (tags.length < 3) {
+      setTags([...tags, tag]);
+    } else {
+      setTagLimit(true);
+    }
   };
 
   const onDeleteTag = (tag) => {
-    alert(`deleting ${tag}`);
     let remainingTags = tags.filter((t) => {
       return t !== tag;
     });
     setTags([...remainingTags]);
+    setTagLimit(false);
   };
 
   useEffect(() => {
@@ -80,11 +85,21 @@ export default function AdminCreatePost() {
       });
   };
 
+  const tagMessage = () => {
+    if(tagLimit) {
+      return "Tag Limit Reached"
+    }
+  }
+
   return (
     <div className='container'>
       <div className='main'>
         <h1 className='add-title'>Add A Post</h1>
-        <form className='add-post-form' onSubmit={onSubmit} onKeyDown={(e) => checkKeyDown(e)}>
+        <form
+          className='add-post-form'
+          onSubmit={onSubmit}
+          onKeyDown={(e) => checkKeyDown(e)}
+        >
           <div className='above-blog-container'>
             <input
               className='input'
@@ -139,6 +154,7 @@ export default function AdminCreatePost() {
               defaultTags={tags}
               placeholder='enter tags separated by comma'
             />
+            <p className='tag-message'>{tagMessage()}</p>
           </div>
           <input className='submit-button' type='submit' />
         </form>
