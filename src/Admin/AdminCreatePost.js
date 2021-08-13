@@ -1,7 +1,9 @@
 import React, {useState, useEffect} from 'react';
 import ReactQuill from 'react-quill';
+import ImageUpload from 'image-upload-react';
 import InputTag from '../Components/InputTag/InputTag';
 import {useHistory} from 'react-router-dom';
+import 'image-upload-react/dist/index.css';
 import './CreatePost.css';
 
 export default function AdminCreatePost() {
@@ -9,13 +11,16 @@ export default function AdminCreatePost() {
   const [title, setTitle] = useState('');
   const [subtitle, setSubtitle] = useState('');
   const [category, setCategory] = useState('');
-  const [mainImage, setMainImage] = useState('');
+  const [mainImage, setMainImage] = useState();
   const [tags, setTags] = useState([]);
   const [user, setUser] = useState();
   const [tagLimit, setTagLimit] = useState(false);
   const history = useHistory();
 
-  console.log(tags[1]);
+  const handleImageSelect = (e) => {
+    setMainImage(URL.createObjectURL(e.target.files[0]));
+  };
+
 
   const checkKeyDown = (e) => {
     if (e.code === 'Enter') e.preventDefault();
@@ -122,14 +127,22 @@ export default function AdminCreatePost() {
               name='subtitle'
               onChange={(e) => setSubtitle(e.target.value)}
             />
-            <input
-              className='input'
-              type='text'
-              placeholder='Paste Preview Image Link..'
-              value={mainImage}
-              name='mainImage'
-              onChange={(e) => setMainImage(e.target.value)}
-            />
+            <div className='uploadContainer'>
+              <div className='upload-label'>Upload and Preview Main Image</div>
+              <ImageUpload
+                handleImageSelect={handleImageSelect}
+                imageSrc={mainImage}
+                setImageSrc={setMainImage}
+                style={{
+                  width: '98%',
+                  height: '700px',
+                  background: '#b3ddf2',
+                  zIndex: 0,
+                  position: 'static;',
+                }}
+                className='uploader'
+              />
+            </div>
             <select
               className='category-input'
               placeholder='Some Category...'
