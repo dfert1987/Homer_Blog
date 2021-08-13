@@ -23,6 +23,7 @@ function Blog() {
   const {blogId} = useParams();
   const [blog, setBlog] = useState(defaultBlog);
   const [contactModal, setContactModal] = useState(false);
+  console.log(blog);
 
   useEffect(() => {
     fetch(`http://localhost:3000/blogs/${blogId}`)

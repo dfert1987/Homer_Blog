@@ -15,6 +15,8 @@ export default function AdminCreatePost() {
   const [tagLimit, setTagLimit] = useState(false);
   const history = useHistory();
 
+  console.log(tags[1]);
+
   const checkKeyDown = (e) => {
     if (e.code === 'Enter') e.preventDefault();
   };
@@ -55,6 +57,9 @@ export default function AdminCreatePost() {
       secondImage: '',
       thirdImage: '',
       body: content,
+      tagOne: tags.length ? tags[0].toString() : '',
+      tagTwo: tags.length >= 2 ? tags[1].toString() : '',
+      tagThree: tags.length === 3 ? tags[2].toString() : '',
       thumbsUp: 0,
       thumbsDown: 0,
       category: category,
@@ -86,10 +91,10 @@ export default function AdminCreatePost() {
   };
 
   const tagMessage = () => {
-    if(tagLimit) {
-      return "Tag Limit Reached"
+    if (tagLimit) {
+      return 'Tag Limit Reached';
     }
-  }
+  };
 
   return (
     <div className='container'>
