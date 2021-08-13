@@ -5,7 +5,6 @@ import InputTag from '../Components/InputTag/InputTag';
 import {useHistory} from 'react-router-dom';
 import 'image-upload-react/dist/index.css';
 import './CreatePost.css';
-import {onUpdated} from 'vue';
 
 export default function AdminCreatePost() {
   const [content, setContent] = useState('');
@@ -17,10 +16,8 @@ export default function AdminCreatePost() {
   const [user, setUser] = useState();
   const [tagLimit, setTagLimit] = useState(false);
   const history = useHistory();
-  console.log(mainImage);
 
   const handleImageSelect = (e) => {
-    console.log(URL.createObjectURL(e.target.files[0]));
     setMainImage(URL.createObjectURL(e.target.files[0]));
   };
 
@@ -103,11 +100,7 @@ export default function AdminCreatePost() {
     }
   };
 
-  const onDrop = (picture) => {
-    console.log(picture);
-    setMainImage(mainImage.concat(picture));
-  };
-
+ 
   return (
     <div className='container'>
       <div className='main'>
