@@ -1,16 +1,48 @@
 import React, {useState, useEffect} from 'react';
 import ReactQuill from 'react-quill';
+import ImageUpload from 'image-upload-react';
+import InputTag from '../Components/InputTag/InputTag';
 import {useHistory} from 'react-router-dom';
+import 'image-upload-react/dist/index.css';
 import './CreatePost.css';
+import {onUpdated} from 'vue';
 
 export default function AdminCreatePost() {
   const [content, setContent] = useState('');
   const [title, setTitle] = useState('');
   const [subtitle, setSubtitle] = useState('');
   const [category, setCategory] = useState('');
-  const [mainImage, setMainImage] = useState(null);
+  const [mainImage, setMainImage] = useState();
+  const [tags, setTags] = useState([]);
   const [user, setUser] = useState();
+  const [tagLimit, setTagLimit] = useState(false);
   const history = useHistory();
+  console.log(mainImage);
+
+  const handleImageSelect = (e) => {
+    console.log(URL.createObjectURL(e.target.files[0]));
+    setMainImage(URL.createObjectURL(e.target.files[0]));
+  };
+
+  const checkKeyDown = (e) => {
+    if (e.code === 'Enter') e.preventDefault();
+  };
+
+  const onAddTag = (tag) => {
+    if (tags.length < 3) {
+      setTags([...tags, tag]);
+    } else {
+      setTagLimit(true);
+    }
+  };
+
+  const onDeleteTag = (tag) => {
+    let remainingTags = tags.filter((t) => {
+      return t !== tag;
+    });
+    setTags([...remainingTags]);
+    setTagLimit(false);
+  };
 
   useEffect(() => {
     fetch('http://localhost:3000/profile', {
@@ -23,6 +55,7 @@ export default function AdminCreatePost() {
   }, []);
 
   const onSubmit = (event) => {
+    event.target.keyCode === 13 && event.preventDefault();
     event.preventDefault();
     const post = {
       title: title,
@@ -31,6 +64,9 @@ export default function AdminCreatePost() {
       secondImage: '',
       thirdImage: '',
       body: content,
+      tagOne: tags.length ? tags[0].toString() : '',
+      tagTwo: tags.length >= 2 ? tags[1].toString() : '',
+      tagThree: tags.length === 3 ? tags[2].toString() : '',
       thumbsUp: 0,
       thumbsDown: 0,
       category: category,
@@ -61,11 +97,26 @@ export default function AdminCreatePost() {
       });
   };
 
+  const tagMessage = () => {
+    if (tagLimit) {
+      return 'Tag Limit Reached';
+    }
+  };
+
+  const onDrop = (picture) => {
+    console.log(picture);
+    setMainImage(mainImage.concat(picture));
+  };
+
   return (
     <div className='container'>
       <div className='main'>
         <h1 className='add-title'>Add A Post</h1>
-        <form className='add-post-form' onSubmit={onSubmit}>
+        <form
+          className='add-post-form'
+          onSubmit={onSubmit}
+          onKeyDown={(e) => checkKeyDown(e)}
+        >
           <div className='above-blog-container'>
             <input
               className='input'
@@ -83,13 +134,22 @@ export default function AdminCreatePost() {
               name='subtitle'
               onChange={(e) => setSubtitle(e.target.value)}
             />
-            <input
-              className='input'
-              type='file'
-              value={mainImage}
-              name='mainImage'
-              onChange={(e) => setMainImage(e.target.files)[0]}
-            />
+            <div className='uploadContainer'>
+              <div className='upload-label'>Upload and Preview Main Image</div>
+              <ImageUpload
+                handleImageSelect={handleImageSelect}
+                imageSrc={mainImage}
+                setImageSrc={setMainImage}
+                style={{
+                  width: '98%',
+                  height: '700px',
+                  background: '#b3ddf2',
+                  zIndex: 0,
+                  position: 'static;',
+                }}
+                className='uploader'
+              />
+            </div>
             <select
               className='category-input'
               placeholder='Some Category...'
@@ -111,6 +171,15 @@ export default function AdminCreatePost() {
               value={content}
               className='quill'
             />
+          </div>
+          <div className='tags-input-container'>
+            <InputTag
+              onAddTag={onAddTag}
+              onDeleteTag={onDeleteTag}
+              defaultTags={tags}
+              placeholder='enter tags separated by comma'
+            />
+            <p className='tag-message'>{tagMessage()}</p>
           </div>
           <input className='submit-button' type='submit' />
         </form>
